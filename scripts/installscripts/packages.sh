@@ -12,6 +12,7 @@ environment=(
 	base-devel
 	cmake
 	curl
+	flatpak
 	hyprpaper
 	imagemagick
 	mako
@@ -35,12 +36,12 @@ environment=(
 	waybar
 	wget
 	wireplumber
+	wine
 	wl-clipboard
 	wofi
 	xdg-desktop-portal-hyprland
 	xdg-user-dirs
 	xdg-utils
-	flatpak
 )
 
 for PKG1 in "${environment[@]}" "${extra[@]}"; do
