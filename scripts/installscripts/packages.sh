@@ -1,12 +1,15 @@
 #!/bin/bash
 #https://github.com/trevorbaughn/dotfiles
 
+LOG="sysinstall-$(date +%d-%H%M%S)-packages.log"
+
 extra=(
 	kitty
 	nvim
 )
 
 environment=(
+	base-devel
 	cmake
 	curl
 	hyprpaper
@@ -47,3 +50,5 @@ for PKG1 in "${environment[@]}" "${extra[@]}"; do
 		exit 1
 	fi
 done
+
+clear
