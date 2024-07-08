@@ -15,6 +15,7 @@ environment=(
 	flatpak
 	hyprpaper
 	imagemagick
+	linux-headers
 	mako
 	meson
 	network-manager-applet
@@ -33,6 +34,7 @@ environment=(
 	slurp
 	swayidle
 	swaylock
+	v4l2loopback-dkms
 	waybar
 	wget
 	wireplumber
