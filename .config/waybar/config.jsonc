@@ -20,6 +20,37 @@
                     "clock",
                     "custom/power"],
   
+  "network": {
+    "interval": 5,
+    "format-wifi": "    {essid} ({signalStrength}%) ",
+    "format-ethernet": "   {ifname}: {ipaddr}/{cidr} ",
+    "format-disconnected": "  ⚠  Disconnected  ",
+    "tooltip": false,
+  },
+
+  "temperature": {
+    "critical-threshold": 79,
+    "interval": 4,
+    "format": "{icon}  {temperatureC}°C",
+    "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+    ],
+    "tooltip": true
+  },
+
+  "cpu": { 
+    "interval": 10, 
+    "format": " CPU: {usage}%" 
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "  RAM: {used:0.1f}/{total:0.1f}GiB ({percentage}%)  "
+  },
 
   "hyprland/window": {
     "format": "{title}"
@@ -46,37 +77,12 @@
     "tooltip-format": "Games running: {count}"
   },
 
-  "cpu": { 
-    "interval": 10, 
-    "format": " CPU: {usage}%" 
-  },
-
-  "memory": {
-    "interval": 30,
-    "format": "  RAM: {used:0.1f}/{total:0.1f}GiB ({percentage}%)  "
-  },
-
-  "temperature": {
-    "critical-threshold": 79,
-    "interval": 4,
-    "format": "{icon}  {temperatureC}°C",
-    "format-icons": [
-        "",
-        "",
-        "",
-        "",
-        ""
-    ],
-    "tooltip": true
-  },
-
-  "network": {
-    "interval": 5,
-    "format-wifi": "    {essid} ({signalStrength}%) ",
-    "format-ethernet": "   {ifname}: {ipaddr}/{cidr} ",
-    "format-disconnected": "  ⚠  Disconnected  ",
-    "tooltip": false,
-  },
+  "hyprland/language": {
+		"format": " {}",
+		"min-length": 5,
+		"on-click": "hyprctl 'input * xkb_switch_layout next'",
+		"tooltip": false
+	},
 
   "pulseaudio": {
     "format": " {icon} {volume}% ",
@@ -86,6 +92,22 @@
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
     "format-muted": "\uf00d {volume}%"
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+  
+  "custom/weather": {
+    "format": "{}",
+    "format-alt": "{alt}",
+    "format-alt-click": "click-right",
+    "interval": 1800,
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/weather/weather.py",
+    "exec-if": "ping openweathermap.org -c1",
+    "signal": 8
   },
 
   "clock": {
@@ -98,29 +120,6 @@
         "today": "<span color='#ff6699'><b>{}</b></span>"
       }
     }
-  },
-
-  "hyprland/language": {
-		"format": " {}",
-		"min-length": 5,
-		"on-click": "hyprctl 'input * xkb_switch_layout next'",
-		"tooltip": false
-	},
-
-  "custom/weather": {
-    "format": "{}",
-    "format-alt": "{alt}",
-    "format-alt-click": "click-right",
-    "interval": 1800,
-    "return-type": "json",
-    "exec": "~/.config/waybar/modules/weather/weather.py",
-    "exec-if": "ping openweathermap.org -c1",
-    "signal": 8
-  },
-
-  "tray": {
-    "icon-size": 20,
-    "spacing": 10
   },
 
   "custom/power": {
