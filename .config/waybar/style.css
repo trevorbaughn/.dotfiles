@@ -79,8 +79,8 @@
 #cpu,
 #memory,
 #window,
-#idle_inhibitor,
 #gamemode,
+#idle_inhibitor,
 #language,
 #pulseaudio,
 #tray,
@@ -167,6 +167,14 @@ button {
 
 #memory {
   background: @bg1;
+  color: @green;
+}
+
+#gamemode {
+  color: @fg;
+}
+
+#gamemode.running {
   color: @green;
 }
 

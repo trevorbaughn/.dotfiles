@@ -19,6 +19,8 @@ environment=(
   dotnet-sdk
   fd
   flatpak
+  gamemode
+  gamescope
   go
   gtk-engine-murrine
   hyprland
@@ -29,6 +31,7 @@ environment=(
   java-runtime-common
   jdk-openjdk
   julia
+  lib32-gamemode
   linux-headers
   lua
   luarocks

@@ -11,8 +11,8 @@
                     "cpu",
                     "memory"],
   "modules-center":["hyprland/window"],
-  "modules-right": ["idle_inhibitor",
-                    "gamemode",
+  "modules-right": ["gamemode",
+                    "idle_inhibitor",
                     "hyprland/language",
                     "pulseaudio",
                     "tray",
@@ -56,14 +56,6 @@
     "format": "{title}"
   },
 
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "\uf06e",
-      "deactivated": "\uf070"
-    }
-  },
-
   "gamemode": {
     "format": "{glyph}",
     "format-alt": "{glyph} {count}",
@@ -77,10 +69,20 @@
     "tooltip-format": "Games running: {count}"
   },
 
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "\uf06e",
+      "deactivated": "\uf070"
+    }
+  },
+ 
   "hyprland/language": {
 		"format": " {}",
+    "format-en": "US",
+    "format-ja": "JP",
 		"min-length": 5,
-		"on-click": "hyprctl 'input * xkb_switch_layout next'",
+		"on-click": "hyprctl switchxkblayout semico-usb-keyboard next",
 		"tooltip": false
 	},
 
@@ -119,7 +121,8 @@
         "months": "<span color='#ffead3'><b>{}</b></span>",
         "today": "<span color='#ff6699'><b>{}</b></span>"
       }
-    }
+    },
+    "on-click": ""
   },
 
   "custom/power": {
