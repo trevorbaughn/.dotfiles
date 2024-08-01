@@ -13,6 +13,7 @@
   "modules-center":["hyprland/window"],
   "modules-right": ["gamemode",
                     "idle_inhibitor",
+                    "hyprland/language",
                     "pulseaudio",
                     "tray",
                     "custom/weather",
@@ -35,7 +36,7 @@
   "gamemode": {
     "format": "{glyph}",
     "format-alt": "{glyph} {count}",
-    "glyph": "",
+    "glyph": "f",
     "hide-not-running": true,
     "use-icon": true,
     "icon-name": "input-gaming-symbolic",
@@ -98,6 +99,13 @@
       }
     }
   },
+
+  "hyprland/language": {
+		"format": " {}",
+		"min-length": 5,
+		"on-click": "hyprctl 'input * xkb_switch_layout next'",
+		"tooltip": false
+	},
 
   "custom/weather": {
     "format": "{}",
