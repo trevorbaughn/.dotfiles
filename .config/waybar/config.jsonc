@@ -11,8 +11,8 @@
                     "cpu",
                     "memory"],
   "modules-center":["hyprland/window"],
-  "modules-right": ["gamemode",
-                    "idle_inhibitor",
+  "modules-right": ["idle_inhibitor",
+                    "gamemode",
                     "hyprland/language",
                     "pulseaudio",
                     "tray",
@@ -53,7 +53,7 @@
 
   "memory": {
     "interval": 30,
-    "format": " RAM: {used:0.1f}/{total:0.1f}GiB ({percentage}%)"
+    "format": "  RAM: {used:0.1f}/{total:0.1f}GiB ({percentage}%)  "
   },
 
   "temperature": {
@@ -72,14 +72,14 @@
 
   "network": {
     "interval": 5,
-    "format-wifi": "  {essid} ({signalStrength}%)",
-    "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
-    "format-disconnected": "⚠  Disconnected",
+    "format-wifi": "    {essid} ({signalStrength}%) ",
+    "format-ethernet": "   {ifname}: {ipaddr}/{cidr} ",
+    "format-disconnected": "  ⚠  Disconnected  ",
     "tooltip": false,
   },
 
   "pulseaudio": {
-    "format": "{icon} {volume}%",
+    "format": " {icon} {volume}% ",
     "format-icons": {
       "default": ["\uf026", "\uf027", "\uf028"]
     },
