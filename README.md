@@ -4,7 +4,8 @@ These dotfiles are what I use on my main pc, which is used for multimedia produc
 - English / Japanese Keyboard input
 - Floating file manager
 - Wayland Compositor
-- Everforest themes (Which are designed to be easy on the eyes)
+- Everforest themes
+  - ... Which are designed to be easy on the eyes!
 
 ... Key software includes;
 - Waybar (Status Bar)
