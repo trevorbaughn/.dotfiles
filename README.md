@@ -31,6 +31,7 @@ These dotfiles are what I use on my main pc, which is used for multimedia produc
 - Audacity (Light Audio Editing)
 - Obsidian (Notes)
 - VLC (Media Player)
+- Darktable (Photo Editing)
 - ImageLounge (Image Viewer)
 - Steam, Lutris (Gaming)
 - Webcord, Element, Slack, Zoom (Message Clients)

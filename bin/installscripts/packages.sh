@@ -22,6 +22,7 @@ flatpaks=(
   md.obsidian.Obsidian
   one.ablaze.floorp
   org.audacityteam.Audacity
+  org.darktable.Darktable
   org.gimp.GIMP
   org.inkscape.Inkscape
   org.kde.kdenlive
