@@ -10,6 +10,7 @@ extra=(
 )
 
 environment=(
+  aliases
   base-devel
   cmake
   composer
@@ -87,11 +88,11 @@ environment=(
 )
 
 for PKG1 in "${environment[@]}" "${extra[@]}"; do
-	sudo pacman -S --noconfirm "$PKG1" | tee -a "$LOG"
-	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG1 Package installation failed, Please check the installation logs"
-		exit 1
-	fi
+  sudo pacman -S --noconfirm "$PKG1" | tee -a "$LOG"
+  if [ $? -ne 0 ]; then
+    echo -e "\e[1A\e[K${ERROR} - $PKG1 Package installation failed, Please check the installation logs"
+    exit 1
+  fi
 done
 
 clear
