@@ -19,6 +19,7 @@ These dotfiles are what I use on my main pc, which is used for multimedia produc
 
 -- Tools --
 - Kitty (Terminal Emulator)
+- Evolution (Mail/Calendar/Contacts)
 - Floorp (Web Browser)
 - Neovim w/LazyVim (IDE)
 - Unity3D, Unreal Engine 5, Godot (Game Engines)
