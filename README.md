@@ -37,7 +37,7 @@ These dotfiles are what I use on my main pc, which is used for multimedia produc
 
 ## Installation
 
-To install these dotfiles should be mostly as simple as cloning this repository into your `Home/` directory and running the yet-to-be-documented-or-tested install scripts under `bin/installscripts/`.
+To install these dotfiles should be mostly as simple as cloning this repository into your Home directory and running the yet-to-be-documented-or-tested install scripts under `bin/installscripts/`.
 
 
 ### Archinstall
