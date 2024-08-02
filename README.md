@@ -2,6 +2,7 @@
 
 These dotfiles are what I use on my main pc, which is used for multimedia production, primarily across film, photography, and game development.  I also game on this machine.  Many of these dotfiles were initially inspired by someone else's dotfiles - this repository is up as part of contributing to the same community that helped me.  Some key features include;
 - English / Japanese Keyboard input
+- Timeshift + Rsync Backups
 - Floating file manager
 - Wayland Compositor
 - Everforest themes
@@ -14,9 +15,23 @@ These dotfiles are what I use on my main pc, which is used for multimedia produc
 - Swaylock / Swayidle (Lock Screen)
 - Hyprshot (Screenshot Tool)
 - wlogout (Power Button)
+- wine, Bottles, Proton (Compatibility Layers)
+
+-- Tools --
 - Kitty (Terminal Emulator)
 - Floorp (Web Browser)
 - Neovim w/LazyVim (IDE)
+- Unity3D, Unreal Engine 5, Godot (Game Engines)
+- Krita, GIMP, Inkscape (Art)
+- OBS Studio (Recording)
+- Davinci Resolve (Video Editing)
+- LMMS (Digital Audio Workstation)
+- Audacity (Light Audio Editing)
+- Obsidian (Notes)
+- VLC (Media Player)
+- ImageLounge (Image Viewer)
+- Steam, Lutris (Gaming)
+- Webcord, Element, Slack, Zoom (Message Clients)
 
 ## Installation
 
@@ -34,4 +49,4 @@ Create `~/.config/waybar/modules/weather/weather_conf.py` and fill in the follow
 city_id = <7-digit city ID on OpenWeatherMap>
 api_key = "<API Key from OpenWeatherMap>"
 ```
-Once complete, `chmod a=rwx ~/.config/waybar/modules/weather/weaather_conf.py` to finish enabling weather on the status bar.
+Once saved, run `chmod a=rwx ~/.config/waybar/modules/weather/weather_conf.py` to finish enabling weather on the status bar.
