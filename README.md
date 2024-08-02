@@ -41,7 +41,7 @@ To install these dotfiles should be mostly as simple as cloning this repository 
 ### Archinstall
 
 ### bin/installscripts/sysinstall.sh
-
+### Configure Hardware
 ### For weather on the status bar - 
 Create `~/.config/waybar/modules/weather/weather_conf.py` and fill in the following;
 ```
