@@ -5,6 +5,7 @@ LOG="sysinstall-$(date +%d-%H%M%S)-packages.log"
 
 extra=(
   kitty
+  lxappearance
   neofetch
   nvim
 )
@@ -18,11 +19,15 @@ environment=(
   dhcpcd
   dotnet-runtime
   dotnet-sdk
+  everforest-gtk-theme-git
   fd
   flatpak
   gamemode
   gamescope
   go
+  gtk2
+  gtk3
+  gtk4
   gtk-engine-murrine
   hyprland
   hyprpaper
@@ -65,6 +70,7 @@ environment=(
   ruby
   rubygems
   rust
+  sassc
   slurp
   sshd
   swayidle
