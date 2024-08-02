@@ -5,5 +5,6 @@
 
 loadkeys us
 
-
 execute_script "packages.sh"
+
+ln -s /usr/bin/kitty /usr/bin/gnome-terminal #makes certain gnome apps work with kitty
