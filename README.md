@@ -14,6 +14,7 @@ These dotfiles are what I use on my main pc, which is used for multimedia produc
 - Hyprpaper (Wallpaper Daemon)
 - Swaylock / Swayidle (Lock Screen)
 - Hyprshot (Screenshot Tool)
+- Mako (Notification Daemon)
 - wlogout (Power Button)
 - wine, Bottles, Proton (Compatibility Layers)
 
@@ -38,12 +39,16 @@ These dotfiles are what I use on my main pc, which is used for multimedia produc
 
 To install these dotfiles should be mostly as simple as cloning this repository into your `Home/` directory and running the yet-to-be-documented-or-tested install scripts under `bin/installscripts/`.
 
--------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
-### Archinstall
 
+### Archinstall
+-------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
 ### bin/installscripts/sysinstall.sh
+-------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
 ### Configure Hardware
+-------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
 ### For weather on the status bar - 
+Make an account on (OpenWeatherMap)[] and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
+
 Create `~/.config/waybar/modules/weather/weather_conf.py` and fill in the following;
 ```
 # OpenWeatherMap API and City ID
