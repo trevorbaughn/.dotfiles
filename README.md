@@ -48,7 +48,7 @@ To install these dotfiles should be mostly as simple as cloning this repository 
 ### Configure Hardware
 -------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
 ### For weather on the status bar - 
-Make an account on (OpenWeatherMap)[] and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
+Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
 
 Create `~/.config/waybar/modules/weather/weather_conf.py` and fill in the following;
 ```
