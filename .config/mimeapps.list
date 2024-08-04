@@ -1,0 +1,12 @@
+[Added Associations]
+image/png=org.nomacs.ImageLounge-8.desktop;org.nomacs.ImageLounge-7.desktop;org.nomacs.ImageLounge-6.desktop;org.nomacs.ImageLounge-5.desktop;org.nomacs.ImageLounge-4.desktop;org.nomacs.ImageLounge-3.desktop;org.nomacs.ImageLounge-2.desktop;org.nomacs.ImageLounge.desktop-2.desktop;org.nomacs.ImageLounge.desktop.desktop;
+application/x-shellscript=nvim.desktop;vim.desktop;kitty-open.desktop;
+application/x-zerosize=nvim.desktop;
+
+[Default Applications]
+image/png=org.nomacs.ImageLounge-8.desktop;
+application/uproject=com.epicgames.UnrealEngineEditor.desktop
+application/x-shellscript=kitty-open.desktop
+application/x-zerosize=nvim.desktop
+inode/directory=nemo.desktop
+application/x-gnome-saved-search=nemo.desktop
