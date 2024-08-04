@@ -4,10 +4,8 @@
 LOG="sysinstall-$(date +%d-%H%M%S)-packages.log"
 
 extra=(
-  kitty
   lxappearance
   neofetch
-  nvim
 )
 
 flatpaks=(
@@ -60,6 +58,7 @@ environment=(
   java-runtime-common
   jdk-openjdk
   julia
+  kitty
   lib32-gamemode
   linux-headers
   lua
@@ -68,12 +67,17 @@ environment=(
   meson
   network-manager-applet
   nemo
+  nemo-emblems
+  nemo-fileroller
+  nemo-preview
+  nemo-image-converter
   nodejs
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
   npm
   ntp
+  nvim
   openssh
   pamixer
   pavucontrol
