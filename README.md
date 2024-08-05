@@ -1,24 +1,26 @@
 # Arch + Hyprland Dotfiles
+### TODO:
+- Replace Waybar with EWW
+- Everforest w/Kvantum
+- Floorp Addons
+- Move configs to allow for better multi-user support
+- Clean up `~/.bashrc` and `~/.config/hypr/hyprland.conf`
 
-These dotfiles are what I use on my main pc, which is used for multimedia production, primarily across film, photography, and game development.  I also game on this machine.  Many of these dotfiles were initially inspired by someone else's dotfiles - this repository is up as part of contributing to the same community that helped me.  Some key features include;
+## Key Features
 - English / Japanese Keyboard input
 - Timeshift + Rsync Backups
-- Floating file manager
-- Wayland Compositor
 - Everforest themes
   - ... Which are designed to be easy on the eyes!
-
-... Key software includes;
-- Waybar (Status Bar)
-- Wofi (Application Launcher)
 - Hyprpaper (Wallpaper Daemon)
 - Swaylock / Swayidle (Lock Screen)
-- Hyprshot (Screenshot Tool)
+- Waybar (Status Bar)
+- wlogout (Shutdown GUI)
 - Mako (Notification Daemon)
-- wlogout (Power Button)
-- wine, Bottles, Proton (Compatibility Layers)
+- Wofi (Application Launcher)
+- Hyprshot (Screenshot Tool)
+- Wine, Bottles, Proton (Compatibility Layers)
 
--- Tools --
+-- Additional Tools --
 - Kitty (Terminal Emulator)
 - Evolution (Mail/Calendar/Contacts)
 - Floorp (Web Browser)
@@ -42,9 +44,9 @@ To install these dotfiles should be mostly as simple as cloning this repository 
 
 
 ### Archinstall
--------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
+Please start from a fresh installation of Arch Linux.  A fresh installation can be attained by following the [Arch Installation Guide on the Arch Wiki](https://wiki.archlinux.org/title/Installation_guide) to the very end.
 ### bin/installscripts/sysinstall.sh
--------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
+Run `chmod +x ~/bin/installscripts/sysinstall.sh` followed by `~/bin/installscripts/sysinstall.sh`.  This should kick off the main installation script, which may take a while.
 ### Configure Hardware
 -------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
 ### For weather on the status bar - 
@@ -71,4 +73,4 @@ Select `Everforest-Green-Dark` under Widget, and `oomox-Everforest-Dark` under I
 At the bottom right, hit apply and close out of the application.
 
 Open `Qt5 Settings` using `Super+D` to open `wofi`.
-Select `kvantum-dark` under Style, `GTK2` under "Standard dialogs", and `darker` under "Color scheme"
+Select `kvantum-dark` under Style, `GTK2` under "Standard dialogs", and `darker` under "Color scheme".
