@@ -5,6 +5,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+###############
+### ALIASES ###
+###############
+
+# Color & Direct Upgrades
+alias ls='ls --color=auto'
+alias grep='rg'
+
+# Misc.
+alias nvim-soc='nvim --listen /tmp/nvimsocket'
+alias dotfiles='git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+
 #############################
 ### PROGRAMMING LANGUAGES ###
 #############################
