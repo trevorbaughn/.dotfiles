@@ -25,6 +25,7 @@ flatpaks=(
   org.inkscape.Inkscape
   org.kde.kdenlive
   org.kde.krita
+  org.kde.KStyle.Kvantum #install all runtimes how? figure out
   org.libreoffice.LibreOffice
   org.nomacs.ImageLounge
   org.videolan.VLC
@@ -59,6 +60,8 @@ environment=(
   jdk-openjdk
   julia
   kitty
+  kvantum
+  kvantum-qt5
   lib32-gamemode
   linux-headers
   lua
@@ -88,6 +91,8 @@ environment=(
   python
   python-pip
   python-requests
+  qt5-styleplugins
+  qt5-svg
   qt5-wayland
   qt6-wayland
   qt5ct

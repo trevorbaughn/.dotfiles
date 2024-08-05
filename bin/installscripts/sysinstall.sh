@@ -8,6 +8,7 @@ loadkeys us
 execute_script "packages.sh"
 
 # Theme (still need to set in lxappearance???)
+# GTK
 mkdir /usr/share/themes/
 mkdir /usr/share/icons/
 mv /usr/share/themes/ $HOME/.themes/
@@ -21,6 +22,8 @@ gsettings set org.gnome.desktop.interface gtk-theme Everforest-Green-Dark
 gsettings set org.gnome.desktop.interface icon-theme Everforest-Dark
 flatpak override --env=GTK_THEME=Everforest-Green-Dark
 flatpak override --env=ICON_THEME=oomox-Everforest-Dark
+# QT
+flatpak override --user --env=QT_STYLE_OVERRIDE=kvantum --filesystem=xdg-config/Kvantum:ro
 
 # Create directories for bookmarking
 mkdir $HOME/Art/

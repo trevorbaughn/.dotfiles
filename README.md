@@ -57,3 +57,18 @@ city_id = <7-digit city ID on OpenWeatherMap>
 api_key = "<API Key from OpenWeatherMap>"
 ```
 Once saved, run `chmod a=rwx ~/.config/waybar/modules/weather/weather_conf.py` to finish enabling weather on the status bar.
+### Manual Theme Fixes
+Some manual fixes for getting themes working for now.  This should be automated later.
+
+First, install **all** of the `org.kde.KStyle.Kvantum` runtimes for flatpaks to be able to use Kvantum themes.
+```
+# Run this command as many times as necessary
+flatpak install org.kde.KStyle.Kvantum
+```
+
+Open `lxappearance` in a terminal emulator.
+Select `Everforest-Green-Dark` under Widget, and `oomox-Everforest-Dark` under Icon Theme.
+At the bottom right, hit apply and close out of the application.
+
+Open `Qt5 Settings` using `Super+D` to open `wofi`.
+Select `kvantum-dark` under Style, `GTK2` under "Standard dialogs", and `darker` under "Color scheme"
