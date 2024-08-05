@@ -1,5 +1,5 @@
 [Added Associations]
-image/png=org.nomacs.ImageLounge.desktop.desktop;
+image/png=org.nomacs.ImageLounge.desktop;
 application/x-shellscript=nvim.desktop;vim.desktop;kitty-open.desktop;
 application/x-zerosize=nvim.desktop;
 
