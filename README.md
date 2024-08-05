@@ -6,7 +6,6 @@
 - Move configs to allow for better multi-user support
 - Pro Audio support w/JACK
 - Baikal
-- Clean up install scripts
 
 ## Key Features
 - English / Japanese Keyboard input

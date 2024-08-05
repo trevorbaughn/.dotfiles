@@ -1,12 +1,7 @@
 #!/bin/bash
-#https://github.com/trevorbaughn/dotfiles
+#https://github.com/trevorbaughn/.dotfiles
 
 LOG="sysinstall-$(date +%d-%H%M%S)-packages.log"
-
-extra=(
-  lxappearance
-  neofetch
-)
 
 flatpaks=(
   com.felipekinoshita.Kana
@@ -32,65 +27,36 @@ flatpaks=(
   us.zoom.Zoom
 )
 
-environment=(
-  aliases
-  base-devel
+clitools=(
+  cargo
   cmake
-  composer
   curl
-  dhcpcd
-  dotnet-runtime
-  dotnet-sdk
-  everforest-gtk-theme-git
   fd
-  flatpak
-  gamemode
-  gamescope
-  go
-  gtk2
-  gtk3
-  gtk4
-  gtk-engine-murrine
-  hyprland
-  hyprpaper
-  hyprshot
-  imagemagick
-  java-environment-common
-  java-runtime-common
-  jdk-openjdk
-  julia
-  kitty
-  kvantum
-  kvantum-qt5
-  lib32-gamemode
-  linux-headers
-  lua
-  luarocks
-  mako
-  meson
-  network-manager-applet
+  ripgrep
+  slurp
+  tar
+  unzip
+  wget
+  wine
+)
+
+nemo=(
   nemo
   nemo-emblems
   nemo-fileroller
   nemo-preview
   nemo-image-converter
-  nodejs
-  noto-fonts
-  noto-fonts-cjk
-  noto-fonts-emoji
-  npm
-  ntp
-  nvim
-  openssh
-  pamixer
-  pavucontrol
-  php
-  pipewire
-  pipewire-alsa
-  polkit-kde-agent
-  python
-  python-pip
-  python-requests
+)
+
+themes=(
+  lxappearance
+  everforest-gtk-theme-git
+  gtk2
+  gtk3
+  gtk4
+  gtk-engine-murrine
+  kvantum
+  kvantum-qt5
   qt5-styleplugins
   qt5-svg
   qt5-wayland
@@ -98,24 +64,76 @@ environment=(
   qt5ct
   qt6ct
   qt6-svg
-  ripgrep
+)
+
+audio=(
+  pamixer
+  pavucontrol
+  pipewire
+  pipewire-alsa
+  wireplumber
+)
+
+fonts=(
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-emoji
+  ttf-firacode-nerd
+)
+
+programminglanguages=(
+  dotnet-runtime
+  dotnet-sdk
+  go
+  java-environment-common
+  java-runtime-common
+  jdk-openjdk
+  julia
+  lua
+  luarocks
+  nodejs
+  php
+  python
+  python-pip
+  python-requests
   ruby
   rubygems
   rust
   sassc
-  slurp
+)
+
+environment=(
+  aliases
+  base-devel
+  composer
+  dhcpcd
+  flatpak
+  gamemode
+  gamescope
+  hyprland
+  hyprpaper
+  hyprshot
+  imagemagick
+  kitty
+  lib32-gamemode
+  linux-headers
+  mako
+  meson
+  network-manager-applet
+  neofetch
+  npm
+  ntp
+  nvim
+  openssh
+  polkit-kde-agent
   sshd
   swayidle
   swaylock
-  tar
   tree-sitter
   tree-sitter-cli
-  ttf-firacode-nerd
-  unzip
   v4l2loopback-dkms
   waybar
   wget
-  wireplumber
   wine
   wl-clipboard
   wlogout
@@ -125,8 +143,8 @@ environment=(
   xdg-utils
 )
 
-for PKG1 in "${environment[@]}" "${extra[@]}"; do
-  sudo pacman -S --noconfirm "$PKG1" | tee -a "$LOG"
+for PKG1 in "${environment[@]}" "${programminglanguages[@]}" "${fonts[@]}" "${themes[@]}" "${audio[@]}" "${clitools[@]}" ${nemo[@]}"; do
+  sudo yay -S --noconfirm "$PKG1" | tee -a "$LOG"
   if [ $? -ne 0 ]; then
     echo -e "\e[1A\e[K${ERROR} - $PKG1 Package installation failed, Please check the installation logs"
     exit 1
