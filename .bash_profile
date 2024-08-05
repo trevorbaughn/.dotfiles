@@ -22,7 +22,7 @@ alias dotfiles='git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 ############
 
 # Scripts directory
-export PATH='$PATH:$HOME/bin/'
+export PATH=$PATH:$HOME/bin/
 
 # Source .bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc
