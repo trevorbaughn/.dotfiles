@@ -4,7 +4,9 @@
 - Everforest w/Kvantum
 - Floorp Addons
 - Move configs to allow for better multi-user support
-- Clean up `~/.bashrc` and `~/.config/hypr/hyprland.conf`
+- Pro Audio support w/JACK
+- Baikal
+- Clean up install scripts
 
 ## Key Features
 - English / Japanese Keyboard input
@@ -42,15 +44,15 @@ A full list of packages can be found in [`/bin/installscripts/packages.sh`](/bin
 
 ## Installation
 
-To install these dotfiles should be mostly as simple as cloning this repository into your Home directory and running the yet-to-be-documented-or-tested install scripts under `bin/installscripts/`.
+To install these dotfiles should be mostly as simple as cloning this repository into your Home directory and running the yet-to-be-documented-or-tested install scripts under `~/bin/installscripts/`.
 
 
-### Archinstall
+### Install Arch Linux
 Please start from a fresh installation of Arch Linux.  A fresh installation can be attained by following the [Arch Installation Guide on the Arch Wiki](https://wiki.archlinux.org/title/Installation_guide) to the very end.
-### bin/installscripts/sysinstall.sh
+### ~/bin/installscripts/sysinstall.sh
 Run `chmod +x ~/bin/installscripts/sysinstall.sh` followed by `~/bin/installscripts/sysinstall.sh`.  This should kick off the main installation script, which may take a while.
-### Configure Hardware
--------- SKIPPING SOME TO-BE-VERIFIED STEPS ----------
+### Configure Hardware & Workspaces
+Create `~/.config/hypr/hardware.conf`.  Configure monitors according to [the Hyprland Wiki](https://wiki.hyprland.org/Configuring/Monitors/). Next, create `~/.config/hypr/workspaces.conf` and make workspaces via [workspace rules](https://wiki.hyprland.org/Configuring/Workspace-Rules/).
 ### For weather on the status bar - 
 Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
 
@@ -74,5 +76,20 @@ Open `lxappearance` in a terminal emulator.
 Select `Everforest-Green-Dark` under Widget, and `oomox-Everforest-Dark` under Icon Theme.
 At the bottom right, hit apply and close out of the application.
 
-Open `Qt5 Settings` using `Super+D` to open `wofi`.
+Open the wofi application launcher using `Super+D`, then open `Qt5 Settings`.
 Select `kvantum-dark` under Style, `GTK2` under "Standard dialogs", and `darker` under "Color scheme".
+
+## Extra Configuration
+### Autostarting Applications
+While you could simply throw auto-starting applications into `~/.config/hypr/hyprland.conf`, I throw them into `~/.config/hypr/autostart-extra.conf` instead if they're the sort of application I'm meant to be interacting with, rather than some daemon.  You'll need to make the file yourself - here's an example;
+```
+#######################
+### AUTOSTART EXTRA ###
+#######################
+
+exec-once = $Terminal
+exec-once = ~/Applications/WebCord-4.10.0-x64.AppImage
+exec-once = flatpak run one.ablaze.floorp
+```
+
+If you don't want to use this file, then you must remove the source from SOURCES at the top of `~/.config/hypr/hyprland.conf`.
