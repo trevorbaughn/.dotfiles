@@ -2,8 +2,6 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-
 # Bash prompt format
 PS1='[\u@\h \W]\$ '
 
@@ -25,3 +23,6 @@ alias dotfiles='git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 
 # Scripts directory
 export PATH='$PATH:$HOME/bin/'
+
+# Source .bashrc
+[[ -f ~/.bashrc ]] && . ~/.bashrc
