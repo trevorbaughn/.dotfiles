@@ -67,10 +67,21 @@ themes=(
 )
 
 audio=(
+  alsa-firmware
+  alsa-oss
+  alsa-plugins
+  alsa-utils
+  alsamixer
+  apulse
+  jack_mixer
+  lib32-pipewire-jack
   pamixer
   pavucontrol
   pipewire
   pipewire-alsa
+  pipewire-jack
+  pipewire-jack-client
+  qjackctl
   wireplumber
 )
 
@@ -118,7 +129,6 @@ environment=(
   kitty
   lib32-gamemode
   linux-headers
-  lutris
   mako
   meson
   network-manager-applet
@@ -127,6 +137,7 @@ environment=(
   ntp
   nvim
   openssh
+  pipewire-v4l2
   polkit-kde-agent
   sshd
   steam
