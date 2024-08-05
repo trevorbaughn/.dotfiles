@@ -38,6 +38,8 @@
 - Steam, Lutris (Gaming)
 - Webcord, Element, Slack, Zoom (Message Clients)
 
+A full list of packages can be found in [`/bin/installscripts/packages.sh`](/bin/installscripts/packages.sh).
+
 ## Installation
 
 To install these dotfiles should be mostly as simple as cloning this repository into your Home directory and running the yet-to-be-documented-or-tested install scripts under `bin/installscripts/`.
