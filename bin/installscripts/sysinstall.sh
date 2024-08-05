@@ -41,3 +41,14 @@ ln -s /usr/bin/kitty /usr/bin/gnome-terminal # Makes certain GNOME apps work wit
 
 # Nemo
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
+
+# User Groups
+gpasswd -a $(whoami) wheel
+gpasswd -a $(whoami) gamemode
+gpasswd -a $(whoami) audio
+gpasswd -a $(whoami) realtime
+
+# Unmute ALSA
+amixer sset Master unmute
+amixer sset Speaker unmute
+amixer sset Headphone unmute

@@ -79,6 +79,7 @@ fonts=(
   noto-fonts-cjk
   noto-fonts-emoji
   ttf-firacode-nerd
+  ttf-liberation
 )
 
 programminglanguages=(
@@ -117,6 +118,7 @@ environment=(
   kitty
   lib32-gamemode
   linux-headers
+  lutris
   mako
   meson
   network-manager-applet
@@ -127,6 +129,7 @@ environment=(
   openssh
   polkit-kde-agent
   sshd
+  steam
   swayidle
   swaylock
   tree-sitter

@@ -1,0 +1,11 @@
+defaults.pcm.rate_converter "speexrate_medium"
+
+pcm.upmix71 {
+   type upmix
+   slave.pcm "surround71"
+   delay 15
+   channels 8
+}
+
+pcm.!default "plug:upmix71"
+

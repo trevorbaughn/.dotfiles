@@ -2,10 +2,10 @@
 ### TODO:
 - Replace Waybar with EWW
 - Everforest w/Kvantum
-- Floorp Addons
-- Move configs to allow for better multi-user support
-- Pro Audio support w/JACK
+- Add Floorp Addons to install script
+- Pro Audio support w/JACK (semi-there)
 - Baikal
+- Setup Gamescope
 
 ## Key Features
 - English / Japanese Keyboard input
