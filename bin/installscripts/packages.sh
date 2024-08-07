@@ -20,7 +20,12 @@ flatpaks=(
   org.inkscape.Inkscape
   org.kde.kdenlive
   org.kde.krita
-  org.kde.KStyle.Kvantum #install all runtimes how? figure out
+  runtime/org.kde.KStyle.Kvantum/x86_64/5.15-22.08
+  runtime/org.kde.KStyle.Kvantum/x86_64/5.15-23.08
+  runtime/org.kde.KStyle.Kvantum/x86_64/6.5
+  runtime/org.kde.KStyle.Kvantum/x86_64/6.6
+  runtime/org.kde.KStyle.Kvantum/x86_64/5.15
+  runtime/org.kde.KStyle.Kvantum/x86_64/5.15-21.08
   org.libreoffice.LibreOffice
   org.nomacs.ImageLounge
   org.videolan.VLC
@@ -32,6 +37,7 @@ clitools=(
   cmake
   curl
   fd
+  htop
   ripgrep
   slurp
   tar
@@ -82,6 +88,7 @@ audio=(
   pipewire-jack
   pipewire-jack-client
   qjackctl
+  sof-firmware
   wireplumber
 )
 
@@ -91,9 +98,11 @@ fonts=(
   noto-fonts-emoji
   ttf-firacode-nerd
   ttf-liberation
+  ttf-opensans
 )
 
 programminglanguages=(
+  composer
   dotnet-runtime
   dotnet-sdk
   go
@@ -114,11 +123,24 @@ programminglanguages=(
   sassc
 )
 
+minimal=(
+  base
+  base-devel
+  linux
+  linux-firmware
+  e2fsprogs
+  dhcpcd
+  networkmanager
+  git
+  neovim
+  man-db
+  man-pages
+  sudo
+  texinfo
+)
+
 environment=(
   aliases
-  base-devel
-  composer
-  dhcpcd
   flatpak
   gamemode
   gamescope
@@ -131,11 +153,9 @@ environment=(
   linux-headers
   mako
   meson
-  network-manager-applet
   neofetch
   npm
   ntp
-  nvim
   openssh
   pipewire-v4l2
   polkit-kde-agent
@@ -158,7 +178,7 @@ environment=(
 )
 
 for PKG1 in "${environment[@]}" "${programminglanguages[@]}" "${fonts[@]}" "${themes[@]}" "${audio[@]}" "${clitools[@]}" ${nemo[@]}"; do
-  sudo yay -S --noconfirm "$PKG1" | tee -a "$LOG"
+  sudo paru -S --noconfirm "$PKG1" | tee -a "$LOG"
   if [ $? -ne 0 ]; then
     echo -e "\e[1A\e[K${ERROR} - $PKG1 Package installation failed, Please check the installation logs"
     exit 1
