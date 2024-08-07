@@ -175,6 +175,9 @@ environment=(
   xdg-desktop-portal-hyprland
   xdg-user-dirs
   xdg-utils
+  xorg-xeyes
+  xorg-xwayland
+  xwaylandvideobridge-git
 )
 
 for PKG1 in "${environment[@]}" "${programminglanguages[@]}" "${fonts[@]}" "${themes[@]}" "${audio[@]}" "${clitools[@]}" ${nemo[@]}"; do
