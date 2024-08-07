@@ -42,6 +42,7 @@ clitools=(
   slurp
   tar
   unzip
+  usbutils
   wget
   wine
 )
@@ -123,6 +124,13 @@ programminglanguages=(
   sassc
 )
 
+printing=(
+  cups
+  foomatic-db-engine
+  foomatic-db-gutenprint-ppds
+  gutenprint
+)
+
 minimal=(
   base
   base-devel
@@ -180,7 +188,7 @@ environment=(
   xwaylandvideobridge-git
 )
 
-for PKG1 in "${environment[@]}" "${programminglanguages[@]}" "${fonts[@]}" "${themes[@]}" "${audio[@]}" "${clitools[@]}" ${nemo[@]}"; do
+for PKG1 in "${minimal[@]}" "${environment[@]}" "${programminglanguages[@]}" "${fonts[@]}" "${themes[@]}" "${audio[@]}" "${printing[@]}" "${clitools[@]}" ${nemo[@]}"; do
   sudo paru -S --noconfirm "$PKG1" | tee -a "$LOG"
   if [ $? -ne 0 ]; then
     echo -e "\e[1A\e[K${ERROR} - $PKG1 Package installation failed, Please check the installation logs"
