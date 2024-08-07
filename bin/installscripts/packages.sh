@@ -20,16 +20,42 @@ flatpaks=(
   org.inkscape.Inkscape
   org.kde.kdenlive
   org.kde.krita
+  org.libreoffice.LibreOffice
+  org.nomacs.ImageLounge
+  org.videolan.VLC
+  us.zoom.Zoom
+)
+
+flatpakruntimes=(
   runtime/org.kde.KStyle.Kvantum/x86_64/5.15-22.08
   runtime/org.kde.KStyle.Kvantum/x86_64/5.15-23.08
   runtime/org.kde.KStyle.Kvantum/x86_64/6.5
   runtime/org.kde.KStyle.Kvantum/x86_64/6.6
   runtime/org.kde.KStyle.Kvantum/x86_64/5.15
   runtime/org.kde.KStyle.Kvantum/x86_64/5.15-21.08
-  org.libreoffice.LibreOffice
-  org.nomacs.ImageLounge
-  org.videolan.VLC
-  us.zoom.Zoom
+  runtime/org.freedesktop.Platform/x86_64/22.08
+  runtime/org.freedesktop.Platform/x86_64/23.08
+  runtime/org.freedesktop.Platform.Compat.i386/x86_64/23.08
+  runtime/org.freedesktop.Platform.Compat.i386/x86_64/18.08
+  runtime/org.freedesktop.Platform.openh264/x86_64/2.2.0
+  runtime/org.freedesktop.Platform.openh264/x86_64/2.4.1
+  runtime/org.gnome.Platform/x86_64/45
+  runtime/org.gnome.Platform/x86_64/46
+  runtime/org.kde.Platform/x86_64/6.6
+  runtime/org.kde.Platform/x86_64/6.7
+  runtime/org.kde.Platform/x86_64/5.15-23.08
+  runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/23.08
+  runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/23.08
+  runtime/org.freedesktop.Platform.GL.default/x86_64/22.08
+  runtime/org.freedesktop.Platform.GL.default/x86_64/22.08-extra
+  runtime/org.freedesktop.Platform.GL.default/x86_64/23.08
+  runtime/org.freedesktop.Platform.GL.default/x86_64/23.08-extra
+  runtime/org.freedesktop.Platform.GL32.default/x86_64/23.08
+  runtime/org.freedesktop.LinuxAudio.Plugins.TAP/x86_64/23.08
+  runtime/org.freedesktop.LinuxAudio.Plugins.swh/x86_64/23.08
+  org.winehq.Wine.mono
+  org.winehq.Wine.gecko
+  org.winehq.Wine.DLLs.dxvk
 )
 
 clitools=(
@@ -196,7 +222,7 @@ for PKG1 in "${minimal[@]}" "${environment[@]}" "${programminglanguages[@]}" "${
   fi
 done
 
-for PGK1 in "${flatpaks[@]}"; do
+for PGK1 in "${flatpaks[@]}" "${flatpakruntimes[@]}"; do
   sudo flatpak install --noninteractive "$PKG1" | tee -a "$LOG"
   if [ $? -ne 0 ]; then
     echo -e "\e[1A\e[K${ERROR} - $PKG1 Package installation failed, Please check the installation logs"
