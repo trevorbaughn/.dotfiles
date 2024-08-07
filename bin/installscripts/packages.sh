@@ -120,6 +120,7 @@ audio=(
 )
 
 fonts=(
+  gnu-free-fonts
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
