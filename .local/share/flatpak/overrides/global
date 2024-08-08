@@ -1,5 +1,5 @@
 [Context]
-filesystems=xdg-config/.themes;xdg-config/gtk-4.0;xdg-config/.icons;xdg-config/Kvantum:ro;
+filesystems=/home/thego/.themes;xdg-config/gtk-4.0;/home/thego/.local/share/icons;xdg-config/Kvantum:ro;
 
 [Environment]
 GTK_THEME=Everforest-Green-Dark
