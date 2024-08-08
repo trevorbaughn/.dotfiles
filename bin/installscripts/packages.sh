@@ -124,7 +124,10 @@ fonts=(
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
+  otf-latin-modern
+  otf-latinmodern-math
   ttf-firacode-nerd
+  ttf-font-awesome
   ttf-liberation
   ttf-opensans
 )

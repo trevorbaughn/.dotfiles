@@ -85,7 +85,7 @@ amixer sset Headphone unmute
 systemctl enable sshd
 systemctl enable dhcpcd
 
-#Enable SSD Trim
+# Enable SSD Trim
 systemctl enable fstrim.timer
 
 # Enable Time Sync
@@ -98,3 +98,6 @@ echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
 
 # Delay after failed login
 echo "auth optional pam_faildelay.so delay=4000000" >>/etc/pam.d/system-login
+
+# Krita
+flatpak override --env=KRITA_NO_STYLE_OVERRIDE=1 org.kde.krita

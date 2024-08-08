@@ -1,10 +1,16 @@
 # Arch + Hyprland Dotfiles
-### TODO:
+### TODO: 
+- Baikal
 - Replace Waybar with EWW
-- Everforest w/Kvantum
+- Theming
+  - Everforest Kvantum theme
+  - Nemo font color override
+  - Krita Kvantum overrides
+  - Element Everforest
+  - Webcord consistent Everforest
+- Fix Japanese Keyboard
 - Add Floorp Addons to install script
 - Pro Audio support w/JACK (semi-there)
-- Baikal
 - Setup Gamescope
 
 ## Key Features
