@@ -1,2 +1,7 @@
 [Context]
-filesystems=/home/thego/.themes;xdg-config/gtk-4.0;/home/thego/.icons;
+filesystems=/home/thego/.themes;xdg-config/gtk-4.0;/home/thego/.icons;xdg-config/Kvantum:ro;
+
+[Environment]
+GTK_THEME=Everforest-Green-Dark
+ICON_THEME=oomox-Everforest-Dark
+QT_STYLE_OVERRIDE=kvantum
