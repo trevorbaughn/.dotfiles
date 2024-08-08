@@ -219,7 +219,7 @@ environment=(
 )
 
 for PKG1 in "${minimal[@]}" "${environment[@]}" "${programminglanguages[@]}" "${fonts[@]}" "${themes[@]}" "${audio[@]}" "${printing[@]}" "${clitools[@]}" ${nemo[@]}"; do
-  sudo paru -S --noconfirm "$PKG1" | tee -a "$LOG"
+  paru -S --noconfirm "$PKG1" | tee -a "$LOG"
   if [ $? -ne 0 ]; then
     echo -e "\e[1A\e[K${ERROR} - $PKG1 Package installation failed, Please check the installation logs"
     exit 1
