@@ -42,10 +42,11 @@ sudo flatpak override --user --filesystem=$HOME/.themes
 sudo flatpak override --user --filesystem=$HOME/.icons
 sudo flatpak override --user --filesystem=xdg-config/gtk-4.0
 # Set the GTK Theme and GTK Icons for non-Flatpaks (everforest-gtk-theme-git from AUR)
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme Everforest-Green-Dark
 gsettings set org.gnome.desktop.interface icon-theme Everforest-Dark
 # Set the same for Flatpaks
-sudo flatpak override --user --env=GTK_THEME=Everforest-Green-Dark
+sudo flatpak override --user --env=GTK_THEME=$("gsettings get org.gnome.desktop.interface gtk-theme")
 sudo flatpak override --user --env=ICON_THEME=oomox-Everforest-Dark
 # Set QT Flatpaks to use the currently active Kvantum theme
 sudo flatpak override --user --env=QT_STYLE_OVERRIDE=kvantum --filesystem=xdg-config/Kvantum:ro
@@ -98,6 +99,9 @@ sudo echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.co
 
 # Delay after failed login
 sudo echo "auth optional pam_faildelay.so delay=4000000" >>/etc/pam.d/system-login
+
+# File Chooser
+gsettings set org.gtk.Settings.FileChooser startup-mode cwd
 
 # Krita
 sudo flatpak override --user --env=KRITA_NO_STYLE_OVERRIDE=1 org.kde.krita
