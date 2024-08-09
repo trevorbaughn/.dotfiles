@@ -44,6 +44,7 @@ For the rest of the installation, an internet connection is needed to install pa
 
 ### (OPTIONAL) Select Package Mirrors
 > [!NOTE] This step is not required, but could speed up package installation on the system.
+
 Instructions [here on the Arch Installation Guide](https://wiki.archlinux.org/title/Installation_guide#Select_the_mirrors).
 
 ### (TEMP) Pacman config
