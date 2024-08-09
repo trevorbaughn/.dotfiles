@@ -1,2 +1,3 @@
 [Environment]
 KRITA_NO_STYLE_OVERRIDE=1
+QT_STYLE_OVERRIDE=kvantum

@@ -54,10 +54,13 @@ To install these dotfiles should be mostly as simple as cloning this repository 
 
 ### Install Arch Linux
 Please start from a fresh installation of Arch Linux.  A fresh installation can be attained by following the [Arch Installation Guide on the Arch Wiki](https://wiki.archlinux.org/title/Installation_guide) to the very end.
+
 ### ~/bin/installscripts/sysinstall.sh
 Run `chmod +x ~/bin/installscripts/sysinstall.sh` followed by `~/bin/installscripts/sysinstall.sh`.  This should kick off the main installation script, which may take a while.
+
 ### Configure Hardware & Workspaces
-Create `~/.config/hypr/hardware.conf`.  Configure monitors according to [the Hyprland Wiki](https://wiki.hyprland.org/Configuring/Monitors/). Next, create `~/.config/hypr/workspaces.conf` and make workspaces via [workspace rules](https://wiki.hyprland.org/Configuring/Workspace-Rules/).
+Create `~/.config/hypr/hardware.conf`.  Configure monitors according to [the Hyprland Wiki](https://wiki.hyprland.org/Configuring/Monitors/). Next, create `~/.config/hypr/workspaces.conf` and make workspaces via [workspace rules](https://wiki.hyprland.org/Configuring/Workspace-Rules/).  If not using AMD, adjust the HARDWARE section of `~/.bashrc` accordingly.
+
 ### For weather on the status bar - 
 Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
 

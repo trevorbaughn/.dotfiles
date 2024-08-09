@@ -1,0 +1,14 @@
+base
+base-devel
+linux
+linux-firmware
+e2fsprogs
+dhcpcd
+networkmanager
+git
+neovim
+man-db
+man-pages
+sudo
+texinfo
+util-linux

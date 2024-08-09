@@ -1,0 +1,12 @@
+cargo
+cmake
+curl
+fd
+htop
+ripgrep
+slurp
+tar
+unzip
+usbutils
+wget
+wine
