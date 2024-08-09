@@ -1,4 +1,5 @@
 # Arch + Hyprland Dotfiles
+# WARNING - INSTALLATION SCRIPT HAS NOT BEEN TESTED YET, USE AT YOUR OWN RISK
 
 ## The System
 
