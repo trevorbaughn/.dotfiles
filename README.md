@@ -1,6 +1,6 @@
 # Arch + Hyprland Dotfiles
 
-## Key Features
+## The System
 
 > A full list of packages can be found in [`/bin/installscripts/packages/`](/bin/installscripts/packages).
 
