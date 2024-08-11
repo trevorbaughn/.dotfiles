@@ -22,7 +22,7 @@
 |||[*]| - Darktable | (Photo Editing) |
 |||[*]| - ImageLounge | (Image Viewer) |
 |||[*]| - Steam, Lutris | (Gaming) |
-|||[*]| - Webcord, Element, Slack, Zoom | (Message Clients) |
+|||[*]| - Vesktop, Element, Slack, Zoom | (Message Clients) |
 
 
 ## Pre-Installation
