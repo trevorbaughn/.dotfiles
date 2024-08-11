@@ -169,14 +169,10 @@ paru -Syu
 
 echo -e "[${Cyan}*${White}] Installing Theme, Icons, and Font..."
 
-# Make directories for GTK themes and icons where the defaults are if they don't exist.
-sudo mkdir -v 777 /usr/share/themes/
-sudo mkdir -v 777 /usr/share/icons/
-
 # Move those directories, whether they existed or not, to $HOME equivalent directores.
-sudo mv -f /usr/share/themes/ $HOME/.themes/
-sudo mv -f /usr/share/icons/ $HOME/.icons/
-sudo mv -f $HOME/.icons/ $HOME/.local/share/icons/
+sudo mv -f /usr/share/themes $HOME/.themes
+sudo mv -f /usr/share/icons $HOME/.icons
+sudo mv -f $HOME/.icons $HOME/.local/share/icons
 
 # Create a symlink between the new paths and old paths
 sudo ln -s $HOME/.themes /usr/share/themes
