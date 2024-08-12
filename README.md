@@ -105,16 +105,19 @@ If you don't want to use this file, then you must remove the source from SOURCES
 
 #### 1.0
 - Baikal
-- Replace Waybar with EWW
 - Theming
-  - Everforest Kvantum theme
-  - Nemo font color override
+  - Create Everforest Kvantum Themes
+  - Tweak Nemo Everforest
+    - Font color
+  - Consider Thunar
   - Krita Kvantum overrides
   - Element Everforest
-  - Webcord consistent Everforest
+  - Tweak Vencord Everforest
+    - Message prompt font color
+    - Right Side-bar color
 - Fix Japanese Keyboard
-- Additions to Install Script
-  - Add Floorp Addons to install script
+- Additional Additions to Install Script/Settings
+  - Floorp Addons
   - Enable multilib
   - Font config
   - Partitioning
@@ -122,11 +125,17 @@ If you don't want to use this file, then you must remove the source from SOURCES
   - More options
   - Add and configure TMUX
   - Check for issues
-    - AMD microcode
-    - accelerated video decoding
+    - AMD microcode?
+    - accelerated video decoding?
     - dhcpcd or NetworkManager on here???
+    - nvim w/Unity/Unreal?
+  - Optimize/Clean up
 
-#### 1.1
-- Pro Audio support w/JACK (semi-there)
-- Setup Gamescope
+#### 2.0
+- Performance Mode Switcher
+  - Pro Audio support w/JACK (semi-there)
+  - Setup Gamescope & Better Gaming Optimization
+- Modular Theme Switcher
+  - Everforest default
+  - Add Gruvbox
 

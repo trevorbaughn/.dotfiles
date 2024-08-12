@@ -44,6 +44,24 @@ echo -e "What will the default user's username be?"
 echo -n "username: "
 read -r user_username
 
+echo -e "Would you like to install Unreal Engine 5? \
+-- NOTE: It is recommended to ensure the root partition has enough space. \
+~40GB per engine version should be adequate."
+echo -n "y/n: "
+read -r unreal_install
+
+echo -e "Would you like to install the Unity Game Engine?"
+echo -n "y/n: "
+read -r unity_install
+
+echo -e "Would you like to install the Godot 4 Game Engine?"
+echo -n "y/n/y-mono: "
+read -r godot_install
+
+echo -e "Would you like to install Davinci Resolve?"
+echo -n "y/n/y-studio: "
+read -r davinci_install
+
 #TODO:###################################
 ### Partition, Format, & Mount Drives ###
 #########################################
@@ -86,14 +104,12 @@ systemctl enable NetworkManager
 
 # Add hardware packages to install list
 echo -e "[${Cyan}*${White}] Adding hardware-specific packages to the install list"
-echo "# Hardware-specific packages" >>./packages/minimal
 amd_cpu_packages=(amd-ucode)
-amd_gpu_packages=(mesa lib32-mesa vulkan-radeon amdvlk lib32-vulkan-radeon lib32-amdvlk)
+amd_gpu_packages=(rocm-opencl-runtime mesa lib32-mesa vulkan-radeon amdvlk lib32-vulkan-radeon lib32-amdvlk)
 intel_cpu_packages=(intel-ucode)
-intel_gpu_packages=()
+intel_gpu_packages=(mesa)
 nvidia_cpu_packages=()
-nvidia_gpu_packages=(mesa lib32-mesa vulkan-nouveau lib32-vulkan-nouveau)
-echo "# CPU -" >>./packages/minimal
+nvidia_gpu_packages=(opencl-nvidia mesa lib32-mesa nvidia-utils vulkan-nouveau lib32-vulkan-nouveau)
 if [ $system_cpu = amd ]; then
   echo "[${Cyan}*${White}] Detected AMD CPU"
   cpu_pkgs=("${amd_cpu_packages[@]}")
@@ -106,13 +122,13 @@ elif [ $system_cpu = nvidia ]; then
 else
   echo "[$Red*$White]$Red WARNING - CPU install setting not correctly set, not optimizing for CPU.$White"
 fi
-if [ $system_gpu -eq amd ]; then
+if [ $system_gpu = amd ]; then
   echo "[${Cyan}*${White}] Detected AMD GPU"
   gpu_pkgs=("${amd_gpu_packages[@]}")
-elif [ $system_gpu -eq intel ]; then
+elif [ $system_gpu = intel ]; then
   echo "[${Cyan}*${White}] Detected Intel GPU"
   gpu_pkgs=("${intel_gpu_packages[@]}")
-elif [ $system_gpu -eq nvidia ]; then
+elif [ $system_gpu = nvidia ]; then
   echo "[${Cyan}*${White}] Detected NVidia GPU"
   gpu_pkgs=("${nvidia_gpu_packages[@]}")
 else
@@ -121,6 +137,26 @@ fi
 for pkg in "${cpu_pkgs[@]}" "${gpu_pkgs[@]}"; do
   echo "$pkg" >>./packages/minimal
 done
+
+# Add options to install lists
+if [ unity_install = y ]; then
+  echo "unityhub" >>./packages/miscellanious
+fi
+if [ unreal_install = y ]; then
+  echo "unreal-engine" >>./packages/miscellanious
+fi
+if [ godot_install = y ]; then
+  echo "godot" >>./packages/miscellanious
+fi
+if [ godot_install = y-mono ]; then
+  echo "godot-mono-bin" >>./packages/miscellanious
+fi
+if [ davinci_install = y ]; then
+  echo "davinci-resolve" >>./packages/miscellanious
+fi
+if [ davinci_install = y-studio ]; then
+  echo "davinci_resolve-studio" >>./packages/miscellanious
+fi
 
 # Install AUR package manager
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
@@ -304,6 +340,11 @@ gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 
 # Krita
 flatpak override --user --env=KRITA_NO_STYLE_OVERRIDE=1 org.kde.krita
+
+# Unreal Engine
+if [ unreal_install = y ]; then
+  chmod -R a+rwX /opt/unreal-engine/Engine
+fi
 
 echo -e "$Green[*] Installation Complete!$White"
 echo -e "[${Cyan}*${White}] Please reboot the system..."
