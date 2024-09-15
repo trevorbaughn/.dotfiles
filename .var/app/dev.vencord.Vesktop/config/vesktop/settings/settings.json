@@ -467,9 +467,6 @@
         "ShowAllMessageButtons": {
             "enabled": false
         },
-        "ShowAllRoles": {
-            "enabled": false
-        },
         "ShowConnections": {
             "enabled": false
         },
@@ -617,6 +614,9 @@
         },
         "SupportHelper": {
             "enabled": true
+        },
+        "AlwaysExpandRoles": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -629,6 +629,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1723404910214
+        "settingsSyncVersion": 1725382442718
     }
 }
