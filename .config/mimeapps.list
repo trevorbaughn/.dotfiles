@@ -2,6 +2,7 @@
 image/png=org.nomacs.ImageLounge.desktop;
 application/x-shellscript=nvim.desktop;vim.desktop;kitty-open.desktop;
 application/x-zerosize=nvim.desktop;
+image/tiff=org.gimp.GIMP.desktop;
 
 [Default Applications]
 image/png=org.nomacs.ImageLounge.desktop;
