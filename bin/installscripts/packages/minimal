@@ -3,7 +3,6 @@ base-devel
 linux
 linux-firmware
 e2fsprogs
-dhcpcd
 networkmanager
 git
 neovim

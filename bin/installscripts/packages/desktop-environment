@@ -1,4 +1,5 @@
 aliases
+fuzzel
 flatpak
 gamemode
 gamescope
@@ -35,7 +36,6 @@ wget
 wine
 wl-clipboard
 wlogout
-wofi
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 xdg-user-dirs
