@@ -18,47 +18,57 @@ pacman_lists=(minimal cli-tools audio fonts themes programming-languages desktop
 ### Questions ###
 #################
 
-echo -e 'What keymap will this system default to? (ex. "us" for USA)'
+echo -e "[${Cyan}*${White}] What keymap will this system default to? (ex. 'us' for USA)"
 echo -n "keymap: "
 read -r system_keymap
 
-echo -e "What should the system network hostname be? -- NOTE: This is NOT the user."
+echo -e "[${Cyan}*${White}] What should the system network hostname be? -- NOTE: This is NOT the user."
 echo -n "hostname: "
 read -r system_hostname
 
-echo -e "What time zone Region do you wish to set the system clock to? (City is next)"
+echo -e "[${Cyan}*${White}] What time zone Region do you wish to set the system clock to? (City is next)"
 echo -n "region: "
 read -r system_clock_region
-echo -e "What time zone City do you wish to set the system clock to?"
+echo -e "[${Cyan}*${White}] What time zone City do you wish to set the system clock to?"
 echo -n "city: "
 read -r system_clock_city
 
-echo -e 'Is the system CPU; "amd", "nvidia", or "intel"?'
+echo -e '[${Cyan}*${White}] Is the system CPU; "amd", "nvidia", or "intel"?'
 echo -n "cpu: "
 read -r system_cpu
-echo -e 'Is the system GPU; "amd", "nvidia", or "intel"?'
+echo -e '[${Cyan}*${White}] Is the system GPU; "amd", "nvidia", or "intel"?'
 echo -n "gpu: "
 read -r system_gpu
 
-echo -e "What will the default user's username be?"
+echo -e "[${Cyan}*${White}] What will the default user's username be?"
 echo -n "username: "
 read -r user_username
 
-echo -e "Would you like to install Unreal Engine 5? \
+echo -e "[${Cyan}*${White}] What drive would you like to install on? WARNING: ALL ORIGINAL DATA WILL BE LOST"
+echo -n "/dev/"
+read -r device
+
+echo -e "[${Cyan}*${White}] How much SWAP memory do you wish to have? Leave blank for none. \
+-- ex. '+8GiB' for 8 gigabytes \
+[${Cyan}NOTE${White}] It is recommended to use an equal amount of SWAP as you have RAM for the hibernation feature."
+echo -n "SWAP: "
+read -r swap
+
+echo -e "[${Cyan}*${White}] Would you like to install Unreal Engine 5? \
 -- NOTE: It is recommended to ensure the root partition has enough space. \
 ~40GB per engine version should be adequate."
 echo -n "y/n: "
 read -r unreal_install
 
-echo -e "Would you like to install the Unity Game Engine?"
+echo -e "[${Cyan}*${White}] Would you like to install the Unity Game Engine?"
 echo -n "y/n: "
 read -r unity_install
 
-echo -e "Would you like to install the Godot 4 Game Engine?"
+echo -e "[${Cyan}*${White}] Would you like to install the Godot 4 Game Engine?"
 echo -n "y/n/y-mono: "
 read -r godot_install
 
-echo -e "Would you like to install Davinci Resolve?"
+echo -e "[${Cyan}*${White}] Would you like to install Davinci Resolve?"
 echo -n "y/n/y-studio: "
 read -r davinci_install
 
@@ -66,12 +76,73 @@ read -r davinci_install
 ### Partition, Format, & Mount Drives ###
 #########################################
 
+sgdisk -Z /dev/$device
+
 if [ $(cat /sys/firmware/efi/fw_platform_size) -eq 64 ]; then
   echo -e "[${Cyan}*${White}] Detected ${Green}64-bit x64 UEFI${White} mode"
+  echo -e "[${Cyan}*${White}] Creating boot partition"
+  sgdisk -n 0:0:+512MiB -t 0:ef00 -c 0:boot /dev/$device # boot partition
 elif [ $(cat /sys/firmware/efi/fw_platform_size) -eq 32 ]; then
   echo -e "[${Cyan}*${White}] Detected ${Green}32-bit IA32 UEFI${White} mode"
+  exit #TODO:MOUNT THIS
 else
   echo -e "[${Cyan}*${White}] Detected ${Green}BIOS${White} mode"
+  exit # TODO: MOUNT THIS AND DO GRUB STUFF
+  echo -e "[${Cyan}*${White}] Creating GRUB and boot partition"
+  sgdisk -n 0:0:+1MiB -t 0:ef02 -c 0:grub /dev/$device # grub partition
+  sgdisk -n 0:0:+1GiB -t 0:ea00 -c 0:boot /dev/$device # boot partition
+fi
+
+if [ -z "$swap" ]; then
+  echo -e "[${Cyan}*${White}] Not creating a SWAP partition"
+else
+  echo -e "[${Cyan}*${White}] Creating SWAP partion: $swap"
+  sgdisk -n 0:0:$swap -t 0:8200 -c 0:swap /dev/$device # swap partition
+fi
+
+echo -e "[${Cyan}*${White}] Creating Root Partition"
+sgdisk -n 0:0:0 -t 0:8300 -c 0:root /dev/$device # root partition
+
+# grabbing partition variables
+for i in $(seq 1 10); do
+  if [ $(lsblk -dno PARTLABEL /dev/$device$i) = boot ]; then
+    boot_partition=$device$i
+  elif [ $(lsblk -dno PARTLABEL /dev/$device$i) = swap ]; then
+    swap_partition=$device$i
+  elif [ $(lsblk -dno PARTLABEL /dev/$device$i) = root ]; then
+    root_partition=$device$i
+  fi
+done
+
+echo -e "[${Cyan}*${White}] Creating FAT32 filesystem for boot"
+mkfs.fat -F 32 /dev/$boot_partition
+
+echo -e "[${Cyan}*${White}] Creating BTRFS filesystem for root"
+mkfs.btrfs /dev/$root_partition
+
+if [ -z "$swap" ]; then
+  echo -e "[${Cyan}*${White}] Not creating a SWAP partition, no need to mkswap"
+else
+  echo -e "[${Cyan}*${White}] Activating SWAP"
+  mkswap /dev/$swap_partition
+fi
+
+echo -e "[${Cyan}*${White}] Mounting file system"
+mount /dev/$root_partition /mnt
+
+if [ -z "$swap" ]; then
+  echo -e "[${Cyan}*${White}] Not creating a SWAP partition, no need to swapon"
+else
+  echo -e "[${Cyan}*${White}] Activating SWAP"
+  swapon /dev/$swap_partition
+fi
+
+if [ $(cat /sys/firmware/efi/fw_platform_size) -eq 64 ]; then
+  mount --mkdir /dev/$boot_partition /mnt/boot
+elif [ $(cat /sys/firmware/efi/fw_platform_size) -eq 32 ]; then
+  exit #TODO: 32 bit UEFI
+else
+  exit #TODO: BIOS + GRUB
 fi
 
 #################################
