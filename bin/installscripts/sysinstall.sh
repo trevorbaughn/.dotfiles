@@ -166,8 +166,8 @@ arch-chroot /mnt
 
 # Start & Enable NetworkManager for internet
 echo -e "[${Cyan}*${White}] Starting & Enabling NetworkManager Daemon"
-systemctl start NetworkManager
-systemctl enable NetworkManager
+systemctl start NetworkManager.service
+systemctl enable NetworkManager.service
 
 ########################
 ### Install Packages ###
@@ -364,12 +364,14 @@ echo -e "[${Cyan}*${White}] Configuring MIMEs..."
 xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
 # Enable Misc. Daemons
-echo -e "[${Cyan}*${White}] Enabling miscellanious daemons (sshd, dhcpcd, ntpd, fstrim.timer)..."
-systemctl enable sshd         #SSH
-systemctl enable dhcpcd       #DHCP
-systemctl enable fstrim.timer #SSD Periodic (weekly) Trim
-systemctl enable ntpd         #time syncing
-timedatectl set-ntp true      #set ntp for time syncing
+echo -e "[${Cyan}*${White}] Start/Enabling miscellanious daemons (sshd, dhcpcd, ntpd, fstrim.timer)..."
+systemctl start sshd #SSH
+systemctl enable sshd
+systemctl start fstrim.timer #SSD Periodic (weekly) Trim
+systemctl enable fstrim.timer
+systemctl start ntpd #time syncing
+systemctl enable ntpd
+timedatectl set-ntp true #set ntp for time syncing
 
 # Unmute ALSA
 echo -e "[${Cyan}*${White}] Unmuting ALSA"
