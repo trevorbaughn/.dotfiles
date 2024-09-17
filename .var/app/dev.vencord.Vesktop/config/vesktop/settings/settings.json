@@ -7,7 +7,8 @@
     ],
     "enabledThemes": [
         "gruvbox-material.css",
-        "gruvbox-material (copy).css"
+        "gruvbox-material (copy).css",
+        "rounded.css"
     ],
     "enableReactDevtools": false,
     "frameless": false,
@@ -648,6 +649,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1726541078246
+        "settingsSyncVersion": 1726541526717
     }
 }
