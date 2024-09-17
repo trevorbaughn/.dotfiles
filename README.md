@@ -106,28 +106,19 @@ If you don't want to use this file, then you must remove the source from SOURCES
 #### 1.0
 - Baikal
 - Theming
-  - Create Everforest Kvantum Themes
-  - Tweak Nemo Everforest
-    - Font color
-  - Consider Thunar
+  - Gruvbox GTK & Kvantum Themes
   - Krita Kvantum overrides
-  - Element Everforest
-  - Tweak Vencord Everforest
-    - Message prompt font color
-    - Right Side-bar color
+  - Element Gruvbox
 - Fix Japanese Keyboard
 - Additional Additions to Install Script/Settings
   - Floorp Addons
   - Enable multilib
   - Font config
-  - Partitioning
   - More aliases
-  - More options
   - Add and configure TMUX
   - Check for issues
     - AMD microcode?
     - accelerated video decoding?
-    - dhcpcd or NetworkManager on here???
     - nvim w/Unity/Unreal?
   - Optimize/Clean up
 
@@ -136,6 +127,6 @@ If you don't want to use this file, then you must remove the source from SOURCES
   - Pro Audio support w/JACK (semi-there)
   - Setup Gamescope & Better Gaming Optimization
 - Modular Theme Switcher
-  - Everforest default
-  - Add Gruvbox
+  - Gruvbox default
+  - Add Everforest?
 
