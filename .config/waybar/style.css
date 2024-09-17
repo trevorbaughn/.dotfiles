@@ -7,27 +7,27 @@
   }
 }
 
-/* Colors (everforest) */
-@define-color bg_dim #232A2E;
-@define-color bg0 #2D353B;
-@define-color bg1 #343F44;
-@define-color bg2 #475258;
-@define-color bg3 #475258;
-@define-color bg4 #4F585E;
+/* Colors (everforest/gruvbox scuffed) */
+@define-color bg_dim #1d2021;
+@define-color bg0 #d4be98;
+@define-color bg1 #1d2021;
+@define-color bg2 #1d2021;
+@define-color bg3 #1d2021;
+@define-color bg4 #1d2021;
 @define-color bg5 #56635F;
-@define-color bg_red #543A48;
+@define-color bg_red #ea6962;
 @define-color bg_visual #514045;
 @define-color bg_yellow #4D4C43;
 @define-color bg_green #425047;
-@define-color bg_blue #3A515D;
-@define-color red #E67E80;
+@define-color bg_blue #665c54;
+@define-color red #ea6962;
 @define-color orange #E69875;
-@define-color yellow #DBBC7F;
-@define-color green #A7C080;
-@define-color blue #7FBBB3;
+@define-color yellow #e78a4e;
+@define-color green #a9b665;
+@define-color blue #928374;
 @define-color aqua #83C092;
-@define-color purple #D699B6;
-@define-color fg #D3C6AA;
+@define-color purple #d3869b;
+@define-color fg #d4be98;
 @define-color statusline1 #A7C080;
 @define-color statusline2 #D3C6AA;
 @define-color statusline3 #E67E80;
@@ -43,7 +43,7 @@
 @define-color inactive @purple;
 
 * {
-  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-family: FontAwesome, FireCode, Roboto, Helvetica, Arial, sans-serif;
   font-size: 13px;
   border-radius: 20px;
 }
@@ -187,7 +187,6 @@ button {
 
 #idle_inhibitor.activated {
   background-color: @blue;
-  color: @bg2;
 }
 
 #language {
