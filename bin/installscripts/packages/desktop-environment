@@ -1,4 +1,5 @@
 aliases
+ardour
 fuzzel
 flatpak
 gamemode
@@ -19,12 +20,13 @@ nemo-preview
 nemo-image-converter
 neofetch
 npm
-ntp
 openssh
 pipewire-v4l2
 polkit-kde-agent
+realtime-privileges
 sshd
 steam
+strawberry
 swayidle
 swaylock
 tree-sitter

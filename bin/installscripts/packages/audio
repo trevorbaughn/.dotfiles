@@ -2,8 +2,8 @@ alsa-firmware
 alsa-oss
 alsa-plugins
 alsa-utils
-alsamixer
 apulse
+carla
 jack_mixer
 lib32-pipewire-jack
 pamixer
@@ -11,8 +11,9 @@ pavucontrol
 pipewire
 pipewire-alsa
 pipewire-jack
-pipewire-jack-client
-qjackctl
+pipewire-pulse
 sof-firmware
 wireplumber
+yabridge
+yabridge-ctl
 

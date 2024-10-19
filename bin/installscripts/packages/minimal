@@ -4,6 +4,7 @@ linux
 linux-firmware
 e2fsprogs
 networkmanager
+ntp
 git
 neovim
 man-db
@@ -11,3 +12,4 @@ man-pages
 sudo
 texinfo
 util-linux
+vim

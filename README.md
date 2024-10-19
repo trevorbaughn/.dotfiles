@@ -1,5 +1,5 @@
 # Arch + Hyprland Dotfiles
-# WARNING - INSTALLATION SCRIPT HAS NOT BEEN TESTED YET, USE AT YOUR OWN RISK
+# WARNING - INSTALLATION SCRIPT HAS BEEN TESTED AND CURRENTLY DOES NOT FULLY WORK, USE AT YOUR OWN RISK
 
 ## The System
 
@@ -9,13 +9,13 @@
 | --- | --- | --- | --- | --- |
 | - English/Japanese Input ||[*]| - Kitty | (Terminal Emulator) |
 | - Timeshift + Rsync | Automatic Btrfs Backups |[*]| - Evolution | (Mail/Calendar/Contacts) |
-| - Everforest Themes | Via GTK + QT/KVantum |[*]| - Floorp | (Web Browser) |
+| - Gruvbox Themes | Via GTK + QT/KVantum |[*]| - Floorp | (Web Browser) |
 | - Hyprpaper | (Wallpaper Daemon) |[*]| - Neovim w/LazyVim | (IDE) |
 | - Swaylock/Swayidle | (Lock Screen) |[*]| - Unity3D, Unreal Engine 5, Godot | (Game Engines) |
 | - Waybar | (Status Bar) |[*]| - Krita, GIMP, Inkscape | (Art) |
 | - wlogout | (Shutdown GUI) |[*]| - OBS Studio | (Recording) |
 | - Mako | (Notification Daemon) |[*]| - Davinci Resolve | (Video Editing) |
-| - Wofi | (Application Launcher) |[*]| - LMMS | (Digital Audio Workstation) |
+| - Fuzzel | (Application Launcher) |[*]| - LMMS | (Digital Audio Workstation) |
 | - Hyprshot | (Screenshot Tool) |[*]| - Audacity | (Light Audio Editing) |
 | - Wine, Bottles, Proton | (Compatibility Layers) |[*]| - Obsidian | (Notes) |
 |||[*]| - VLC | (Media Player) |
@@ -104,29 +104,30 @@ If you don't want to use this file, then you must remove the source from SOURCES
 # TODO:
 
 #### 1.0
-- Baikal
 - Theming
   - Gruvbox GTK & Kvantum Themes
   - Krita Kvantum overrides
   - Element Gruvbox
 - Fix Japanese Keyboard
+- Add Hotkeys
+  - Open terminal in directory of current terminal
+- Add CUPS start when necessary, and to waybar
 - Additional Additions to Install Script/Settings
-  - Floorp Addons
-  - Enable multilib
-  - Font config
-  - More aliases
-  - Add and configure TMUX
-  - Check for issues
-    - AMD microcode?
-    - accelerated video decoding?
-    - nvim w/Unity/Unreal?
+  - Add Error Logging
+  - Check nvim w/Unity/Unreal?
   - Optimize/Clean up
+    - check subscripts
+    - check package lists
+    - check rsync config with btrfs subvolume
+    - remove autostart for secondary script in secondary script
 
 #### 2.0
+- Add Floorp Addons to installscript
+- Add and configure TMUX
+- Add accelerated video decoding
 - Performance Mode Switcher
   - Pro Audio support w/JACK (semi-there)
   - Setup Gamescope & Better Gaming Optimization
 - Modular Theme Switcher
-  - Gruvbox default
   - Add Everforest?
 
