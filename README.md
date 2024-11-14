@@ -115,11 +115,6 @@ If you don't want to use this file, then you must remove the source from SOURCES
 - Additional Additions to Install Script/Settings
   - Add Error Logging
   - Check nvim w/Unity/Unreal?
-  - Optimize/Clean up
-    - check subscripts
-    - check package lists
-    - check rsync config with btrfs subvolume
-    - remove autostart for secondary script in secondary script
 
 #### 2.0
 - Add Floorp Addons to installscript
