@@ -188,7 +188,7 @@ echo -e "[${Cyan}*${White}] Generating new initramfs..."
 mkinitcpio -P
 
 echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after reboot..."
-echo "$HOME/bin/installscripts/sysinstall-part2.sh" >>$HOME/.bashrc
+echo "chmod +x $HOME/bin/installscripts/sysinstall-part2.sh && bash $HOME/bin/installscripts/sysinstall-part2.sh" >>$HOME/.bashrc
 
 echo "[${Cyan}*${White}] Printing Install Log -"
 echo "$LOG" > 
