@@ -1,5 +1,6 @@
 #!/bin/bash
-#https://github.com/trevorbaughn/.dotfiles
+# https://github.com/trevorbaughn/.dotfiles
+# Execute curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/sysinstall.sh > sysinstall.sh && chmod +x sysinstall.sh && ./sysinstall.sh
 
 # Script Colors
 Red='\e[0;31m'
@@ -187,7 +188,7 @@ echo -e "[${Cyan}*${White}] Generating new initramfs..."
 mkinitcpio -P
 
 echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after reboot..."
-echo "./sysinstall-part2.sh" >>$HOME/.bashrc
+echo "$HOME/bin/installscripts/sysinstall-part2.sh" >>$HOME/.bashrc
 
 echo "[${Cyan}*${White}] Printing Install Log -"
 echo "$LOG" > 
