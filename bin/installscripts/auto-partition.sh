@@ -51,7 +51,7 @@ echo -e "[${Cyan}*${White}] Creating FAT32 filesystem for boot"
 mkfs.fat -F32 /dev/$boot_partition
 
 echo -e "[${Cyan}*${White}] Creating BTRFS filesystem for root"
-mkfs.btrfs /dev/$root_partition
+mkfs.btrfs -f /dev/$root_partition
 
 if [ -z "$swap" ]; then
   echo -e "[${Cyan}*${White}] Not creating a SWAP partition, no need to mkswap"
