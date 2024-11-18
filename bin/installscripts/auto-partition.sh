@@ -7,8 +7,9 @@ Green=$5
 device=$6
 swap=$7
 
-# Format drive
+# Format drive and wipe filesystems
 sgdisk -Z /dev/$device
+wipefs -a /dev/$device*
 
 # Create Partitions
 if [ $(cat /sys/firmware/efi/fw_platform_size) -eq 64 ]; then
@@ -62,14 +63,14 @@ fi
 
 echo -e "[${Cyan}*${White}] Mounting root file system and creating btrfs subvolumes"
 mount /dev/$root_partition /mnt
-btrfs su cr /mnt/@
-btrfs su cr /mnt/@home
-btrfs su cr /mnt/@snapshots
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@snapshots
 
 echo -e "[${Cyan}*${White}] Unmounting root and remounting as btrfs subvolumes"
 umount /mnt
-mount -o noatime,space_cache,compress=zstd,subvol=@ /dev/$root_partition /mnt
 mkdir -p /mnt/{boot,home,.snapshots}
+mount -o noatime,space_cache,compress=zstd,subvol=@ /dev/$root_partition /mnt
 mount -o noatime,space_cache,compress=zstd,subvol=@home /dev/$root_partition /mnt/home
 mount -o noatime,space_cache,compress=zstd,subvol=@snapshots /dev/$root_partition /mnt/.snapshots
 
@@ -81,7 +82,7 @@ else
 fi
 
 if [ $(cat /sys/firmware/efi/fw_platform_size) -eq 64 ]; then
-  mount --mkdir /dev/$boot_partition /mnt/boot
+  mount --mkdir /dev/$boot_partition /mnt/efi
 elif [ $(cat /sys/firmware/efi/fw_platform_size) -eq 32 ]; then
   exit 1 #TODO: 32 bit UEFI
 else
