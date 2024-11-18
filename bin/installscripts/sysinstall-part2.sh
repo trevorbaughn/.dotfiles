@@ -13,9 +13,11 @@ davinci_install="$(sed -n 9p ${HOME}/bin/installscripts/install-variables)"
 cd $HOME/bin/installscripts
 
 # Install packages
+chmod +x install-packages.sh
 ./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install}
 
 # Install theme
+chmod +x theme-installer.sh
 ./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
 
 #############################
