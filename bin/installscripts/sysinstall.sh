@@ -84,6 +84,8 @@ read -r davinci_install
 #######################
 
 # Partition, Format, & Mount drives
+curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/auto-partition.sh > auto-partition.sh
+chmod +x auto-partition.sh
 ./auto-partition.sh ${LOG} ${Cyan} ${White} ${Red} ${Green} ${device} ${swap}
 
 # Pacstrap with minimal install packages
