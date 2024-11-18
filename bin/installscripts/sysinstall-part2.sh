@@ -9,6 +9,9 @@ unreal_install="$(sed -n 7p ${HOME}/bin/installscripts/install-variables)"
 godot_install="$(sed -n 8p ${HOME}/bin/installscripts/install-variables)"
 davinci_install="$(sed -n 9p ${HOME}/bin/installscripts/install-variables)"
 
+# Switch to installscript directory
+cd $HOME/bin/installscripts
+
 # Install packages
 ./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install}
 
@@ -27,7 +30,7 @@ mkdir -vm 776 $HOME/Projects/
 mkdir -vm 776 $HOME/Applications/
 
 # Wine TKG
-cd $Home/Applications
+cd $HOME/Applications
 git clone https://github.com/Frogging-Family/wine-tkg-git.git
 cd wine-tkg-git
 makepkg -si
