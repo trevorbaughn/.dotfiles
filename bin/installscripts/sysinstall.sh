@@ -217,15 +217,13 @@ fi
 
 hooks+=" modconf kms keyboard keymap consolefont numlock block filesystems fsck"
 
-pacman -S sed
-
 echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf modules"
 sed -i "/^MODULES=/ c\MODULES=($modules)" /etc/mkinitcpio.conf
 
 echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf hooks"
 sed -i "/^HOOKS=/ c\HOOKS=($hooks)" /etc/mkinitcpio.conf
 
-cat /etc/mkinitcpio.conf
+#cat /etc/mkinitcpio.conf
 echo $hooks
 
 echo -e "[${Cyan}*${White}] Generating new initramfs..."
