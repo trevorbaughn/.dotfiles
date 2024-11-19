@@ -1,5 +1,8 @@
 base
 base-devel
+btrfs-progs
+efibootmgr
+inotify-tools
 linux
 linux-firmware
 e2fsprogs
@@ -7,11 +10,14 @@ networkmanager
 ntp
 gamemode
 git
+grub
+grub-btrfs
 neovim
 man-db
 man-pages
 realtime-privileges
 sudo
 texinfo
+timeshift
 util-linux
 vim
