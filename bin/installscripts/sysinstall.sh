@@ -79,6 +79,9 @@ echo -e "[${Cyan}*${White}] Would you like to install Davinci Resolve?"
 echo -n "y/n/y-studio: "
 read -r davinci_install
 
+echo -e "[${Cyan}*${White}] Press Enter to Start Installation..."
+read -r dummy
+
 #######################
 ### GENERAL INSTALL ###
 #######################
@@ -232,6 +235,9 @@ echo "${godot_install}" >"${HOME}/bin/installscripts/install-variables"
 echo "${davinci_install}" >"${HOME}/bin/installscripts/install-variables"
 
 EOF
+
+echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
+read -r dummy
 
 # Unmount all partitions and reboot
 umount -R /mnt
