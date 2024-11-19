@@ -20,6 +20,49 @@ chmod +x install-packages.sh
 chmod +x theme-installer.sh
 ./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
 
+##########################
+### Generate initramfs ###
+##########################
+
+modules=""
+hooks="base udev autodetect"
+
+# microcode or no?
+if [ "$system_cpu" = "amd" ]; then
+  hooks+=" microcode"
+elif [ "$system_cpu" = "intel" ]; then
+  hooks+=" microcode"
+elif [ "$system_cpu" = "nvidia" ]; then
+  echo ""
+else
+  echo "[${Red}WARNING${White}]${Red} CPU install setting not correctly set, not optimizing microcode for CPU.$White"
+fi
+
+# GPU-specific
+if [ "$system_gpu" = "amd" ]; then
+  modules+="amdgpu"
+elif [ "$system_gpu" = "intel" ]; then
+  modules+="i915"
+elif [ "$system_gpu" = "nvidia" ]; then
+  modules+="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
+else
+  echo "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing initramfs for GPU.$White"
+fi
+
+hooks+=" modconf kms keyboard keymap consolefont numlock block filesystems fsck"
+
+echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf modules"
+sed -i "/^MODULES=/ c\MODULES=($modules)" /etc/mkinitcpio.conf
+
+echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf hooks"
+sed -i "/^HOOKS=/ c\HOOKS=($hooks)" /etc/mkinitcpio.conf
+
+#cat /etc/mkinitcpio.conf
+echo $hooks
+
+echo -e "[${Cyan}*${White}] Generating new initramfs..."
+mkinitcpio -P
+
 #############################
 ### General System Config ###
 #############################
