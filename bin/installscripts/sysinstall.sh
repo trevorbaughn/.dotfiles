@@ -160,22 +160,22 @@ modules=""
 hooks="base udev autodetect"
 
 # microcode or no?
-if [ $system_cpu = amd ]; then
+if [ "$system_cpu" = "amd" ]; then
   hooks+=" microcode"
-elif [ $system_cpu = intel ]; then
+elif [ "$system_cpu" = "intel" ]; then
   hooks+=" microcode"
-elif [ $system_cpu = nvidia ]; then
+elif [ "$system_cpu" = "nvidia" ]; then
   echo ""
 else
   echo "[${Red}WARNING${White}]${Red} CPU install setting not correctly set, not optimizing microcode for CPU.$White"
 fi
 
 # GPU-specific
-if [ $system_ppu = amd ]; then
+if [ "$system_ppu" = "amd" ]; then
   modules+="amdgpu"
-elif [ $system_gpu = intel ]; then
+elif [ "$system_gpu" = "intel" ]; then
   modules+="i915"
-elif [ $system_gpu = nvidia ]; then
+elif [ "$system_gpu" = "nvidia" ]; then
   modules+="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 else
   echo "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing initramfs for GPU.$White"
