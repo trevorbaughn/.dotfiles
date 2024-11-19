@@ -142,6 +142,10 @@ localectl set-keymap --no-convert ${system_keymap}
 echo "${system_keymap}" >/etc/vconsole.conf
 echo LANG=en_US.UTF-8 >>/etc/locale.conf
 
+# Set console font
+echo -e "[${Cyan}*${White}] Setting Persistent Console Font"
+echo "FONT=${font}" >>/etc/vconsole.conf
+
 # Set Root Password
 echo -e "[${Cyan}*${White}] Setting Root Password"
 echo "root:${root_password}" | chpasswd -e
