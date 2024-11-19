@@ -152,6 +152,23 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo -e "[${Cyan}*${White}] Setting system's network hostname"
 echo ${system_hostname} >/etc/hostname
 
+# Clone repo
+# Bare repo method: https://www.atlassian.com/git/tutorials/dotfiles
+git clone --bare https://github.com/trevorbaughn/.dotfiles.git $HOME/.dotfiles
+function dotfiles {
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+}
+mkdir -p .dotfiles-backup
+dotfiles checkout
+if [ $? = 0 ]; then
+  echo "Checked out dotfiles.";
+  else
+    echo "Backing up pre-existing dotfiles.";
+    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+fi;
+dotfiles checkout
+dotfiles config status.showUntrackedFiles no
+
 ##########################
 ### Generate initramfs ###
 ##########################
