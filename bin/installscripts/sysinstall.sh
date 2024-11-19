@@ -164,7 +164,7 @@ echo -e "[${Cyan}*${White}] Setting system's network hostname"
 echo ${system_hostname} >/etc/hostname
 
 echo -e "[${Cyan}*${White}] Press Enter to Continue..."
-read -r dummy
+read -r dummyagain
 
 # Clone repo
 # Bare repo method: https://www.atlassian.com/git/tutorials/dotfiles
@@ -184,7 +184,7 @@ dotfiles checkout
 dotfiles config status.showUntrackedFiles no
 
 echo -e "[${Cyan}*${White}] Press Enter to Continue..."
-read -r dummy
+read -r anddummyyetagain
 
 ##########################
 ### Generate initramfs ###
