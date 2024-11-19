@@ -11,6 +11,7 @@ neovim
 man-db
 man-pages
 realtime-privileges
+sed
 sudo
 texinfo
 util-linux
