@@ -135,7 +135,8 @@ echo "root:${root_password}" | chpasswd -e
 
 # Create a user and set their password
 echo -e "[${Cyan}*${White}] Creating starting admin user"
-useradd -m -G wheel,gamemode,audio,realtime -s /bin/bash $user_usernameecho "${user_username}:${user_password}" | chpasswd -e
+useradd -m -G wheel,gamemode,audio,realtime -s /bin/bash $user_username
+echo "${user_username}:${user_password}" | chpasswd -e
 
 # Delay after failed login
 echo -e "[${Cyan}*${White}] Adding delay to failed login"
