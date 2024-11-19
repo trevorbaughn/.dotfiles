@@ -21,7 +21,7 @@ elif [ $(cat /sys/firmware/efi/fw_platform_size) -eq 32 ]; then
   exit #TODO:MOUNT THIS
 else
   echo -e "[${Cyan}*${White}] Detected ${Green}BIOS${White} mode"
-  exit # TODO: MOUNT THIS AND DO GRUB STUFF
+  exit # TODO: MOUNT THIS
   echo -e "[${Cyan}*${White}] Creating GRUB and boot partition"
   sgdisk -n 0:0:+1MiB -t 0:ef02 -c 0:grub /dev/$device # grub partition
   sgdisk -n 0:0:+1GiB -t 0:ea00 -c 0:boot /dev/$device # boot partition
@@ -88,5 +88,7 @@ if [ $(cat /sys/firmware/efi/fw_platform_size) -eq 64 ]; then
 elif [ $(cat /sys/firmware/efi/fw_platform_size) -eq 32 ]; then
   exit 1 #TODO: 32 bit UEFI
 else
-  exit 1 #TODO: BIOS + GRUB
+  exit 1 #TODO: BIOS
 fi
+
+
