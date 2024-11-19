@@ -57,7 +57,8 @@ mkfs.btrfs -f /dev/$root_partition
 if [ -z "$swap" ]; then
   echo -e "[${Cyan}*${White}] Not creating a SWAP partition, no need to mkswap"
 else
-  echo -e "[${Cyan}*${White}] Activating SWAP"
+  echo -e "[${Cyan}*${White}] Ceeating SWAP"
+  swapoff /dev/$swap_partition
   mkswap /dev/$swap_partition
   sync
 fi
