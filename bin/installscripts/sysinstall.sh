@@ -186,7 +186,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable grub-btrfsd
 
 echo -e "[${Cyan}*${White}] Enabling SDDM"
-systemctl enable sddm
+#systemctl enable sddm
+echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
+echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
 
 echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after reboot..."
 echo "chmod +x $HOME/bin/installscripts/sysinstall-part2.sh && bash $HOME/bin/installscripts/sysinstall-part2.sh" >>$HOME/.bashrc
