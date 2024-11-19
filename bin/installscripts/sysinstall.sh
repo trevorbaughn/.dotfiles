@@ -243,15 +243,15 @@ echo "$LOG" > "sysinstall-part1-$(date +%d-%H%M%S).log"
 
 
 #echo variables to be picked up later
-echo "${Cyan}" >"${HOME}/bin/installscripts/install-variables"
-echo "${White}" >"${HOME}/bin/installscripts/install-variables"
-echo "${Red}" >"${HOME}/bin/installscripts/install-variables"
-echo "${system_cpu}" >"${HOME}/bin/installscripts/install-variables"
-echo "${system_gpu}" >"${HOME}/bin/installscripts/install-variables"
-echo "${unity_install}" >"${HOME}/bin/installscripts/install-variables"
-echo "${unreal_install}" >"${HOME}/bin/installscripts/install-variables"
-echo "${godot_install}" >"${HOME}/bin/installscripts/install-variables"
-echo "${davinci_install}" >"${HOME}/bin/installscripts/install-variables"
+echo "${Cyan}" >"install-variables"
+echo "${White}" >"install-variables"
+echo "${Red}" >"install-variables"
+echo "${system_cpu}" >"install-variables"
+echo "${system_gpu}" >"install-variables"
+echo "${unity_install}" >"install-variables"
+echo "${unreal_install}" >"install-variables"
+echo "${godot_install}" >"install-variables"
+echo "${davinci_install}" >"install-variables"
 
 EOF
 
