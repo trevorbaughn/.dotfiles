@@ -59,6 +59,7 @@ if [ -z "$swap" ]; then
 else
   echo -e "[${Cyan}*${White}] Activating SWAP"
   mkswap /dev/$swap_partition
+  sync
 fi
 
 echo -e "[${Cyan}*${White}] Mounting root file system and creating btrfs subvolumes"
