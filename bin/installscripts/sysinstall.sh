@@ -148,12 +148,12 @@ echo "FONT=${font}" >>/etc/vconsole.conf
 
 # Set Root Password
 echo -e "[${Cyan}*${White}] Setting Root Password"
-echo "root:${root_password}" | chpasswd -e
+echo "root:${root_password}" | chpasswd
 
 # Create a user and set their password
 echo -e "[${Cyan}*${White}] Creating starting admin user"
 useradd -m -G wheel,gamemode,audio,realtime -s /bin/bash $user_username
-echo "${user_username}:${user_password}" | chpasswd -e
+echo "${user_username}:${user_password}" | chpasswd
 
 passwd -a
 
