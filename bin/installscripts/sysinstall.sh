@@ -163,9 +163,6 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo -e "[${Cyan}*${White}] Setting system's network hostname"
 echo ${system_hostname} >/etc/hostname
 
-echo -e "[${Cyan}*${White}] Press Enter to Continue..."
-read -r dummyagain
-
 # Clone repo
 # Bare repo method: https://www.atlassian.com/git/tutorials/dotfiles
 #git clone --bare https://github.com/trevorbaughn/.dotfiles.git $HOME/.dotfiles
@@ -183,56 +180,12 @@ read -r dummyagain
 #dotfiles checkout
 #dotfiles config status.showUntrackedFiles no
 
-echo -e "[${Cyan}*${White}] Press Enter to Continue..."
-read -r anddummyyetagain
-
-##########################
-### Generate initramfs ###
-##########################
-
-modules=""
-hooks="base udev autodetect"
-
-# microcode or no?
-if [ "$system_cpu" = "amd" ]; then
-  hooks+=" microcode"
-elif [ "$system_cpu" = "intel" ]; then
-  hooks+=" microcode"
-elif [ "$system_cpu" = "nvidia" ]; then
-  echo ""
-else
-  echo "[${Red}WARNING${White}]${Red} CPU install setting not correctly set, not optimizing microcode for CPU.$White"
-fi
-
-# GPU-specific
-if [ "$system_gpu" = "amd" ]; then
-  modules+="amdgpu"
-elif [ "$system_gpu" = "intel" ]; then
-  modules+="i915"
-elif [ "$system_gpu" = "nvidia" ]; then
-  modules+="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
-else
-  echo "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing initramfs for GPU.$White"
-fi
-
-hooks+=" modconf kms keyboard keymap consolefont numlock block filesystems fsck"
-
-echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf modules"
-sed -i "/^MODULES=/ c\MODULES=($modules)" /etc/mkinitcpio.conf
-
-echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf hooks"
-sed -i "/^HOOKS=/ c\HOOKS=($hooks)" /etc/mkinitcpio.conf
-
-#cat /etc/mkinitcpio.conf
-echo $hooks
-
-echo -e "[${Cyan}*${White}] Generating new initramfs..."
-mkinitcpio -P
-
+echo -e "[${Cyan}*${White}] Installing Grub..."
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB  
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable grub-btrfsd
 
+echo -e "[${Cyan}*${White}] Enabling SDDM"
 systemctl enable sddm
 
 echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after reboot..."
