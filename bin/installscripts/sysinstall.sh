@@ -148,12 +148,14 @@ echo "FONT=${font}" >>/etc/vconsole.conf
 
 # Set Root Password
 echo -e "[${Cyan}*${White}] Setting Root Password"
-echo "root:${root_password}" | passwd -c SHA512
+echo "root:${root_password}" | chpasswd -e
 
 # Create a user and set their password
 echo -e "[${Cyan}*${White}] Creating starting admin user"
 useradd -m -G wheel,gamemode,audio,realtime -s /bin/bash $user_username
-echo "${user_username}:${user_password}" | passwd -c SHA512
+echo "${user_username}:${user_password}" | chpasswd -e
+
+passwd -a
 
 # Delay after failed login
 echo -e "[${Cyan}*${White}] Adding delay to failed login"
