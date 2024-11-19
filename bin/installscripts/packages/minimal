@@ -10,7 +10,6 @@ git
 neovim
 man-db
 man-pages
-mkinitcpio
 realtime-privileges
 sudo
 texinfo
