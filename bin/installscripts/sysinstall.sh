@@ -61,6 +61,11 @@ echo -e "[${Cyan}*${White}] How much SWAP memory do you wish to have? Leave blan
 echo -n "SWAP: "
 read -r swap
 
+ls /usr/share/kbd/consolefonts/
+echo -e "[${Cyan}*${White}] What would you like to set the console font to?"
+echo -n "Font: "
+read -r font
+
 echo -e "[${Cyan}*${White}] Would you like to install Unreal Engine 5? \
 [${Cyan}NOTE${White}] It is recommended to ensure the root partition has enough space. \
 ~40GB per engine version should be adequate."
@@ -85,6 +90,9 @@ read -r dummy
 #######################
 ### GENERAL INSTALL ###
 #######################
+
+# Set Font
+setfont $font
 
 # Partition, Format, & Mount drives
 curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/auto-partition.sh > auto-partition.sh
@@ -191,7 +199,7 @@ else
 fi
 
 # GPU-specific
-if [ "$system_ppu" = "amd" ]; then
+if [ "$system_gpu" = "amd" ]; then
   modules+="amdgpu"
 elif [ "$system_gpu" = "intel" ]; then
   modules+="i915"
