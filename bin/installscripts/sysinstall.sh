@@ -192,7 +192,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable grub-btrfsd
 
 echo -e "[${Cyan}*${White}] Enabling SDDM"
-#systemctl enable sddm
+systemctl enable sddm
 touch /etc/sddm.conf.d/rootless-wayland.conf
 echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
 echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
