@@ -223,6 +223,8 @@ sed -i "/^MODULES=/ c\MODULES=($modules)" /etc/mkinitcpio.conf
 echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf hooks"
 sed -i "/^HOOKS=/ c\HOOKS=($hooks)" /etc/mkinitcpio.conf
 
+cat /etc/mkinitcpio.conf
+
 echo -e "[${Cyan}*${White}] Generating new initramfs..."
 mkinitcpio -P
 
@@ -230,14 +232,10 @@ echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after r
 echo "chmod +x $HOME/bin/installscripts/sysinstall-part2.sh && bash $HOME/bin/installscripts/sysinstall-part2.sh" >>$HOME/.bashrc
 
 echo "[${Cyan}*${White}] Printing Install Log -"
-echo "$LOG" > 
-echo -e "$Green[*] Installation Part 1 Complete!$White"
-echo -e "[${Cyan}*${White}] Please reboot the system..."
-echo -n "[${Cyan}NOTE${White}] Press 'Enter' to reboot"
-read -r dummy
+echo "$LOG" > "sysinstall-part1-$(date +%d-%H%M%S).log"
+
 
 #echo variables to be picked up later
-echo "${LOG}" >"sysinstall-part1-$(date +%d-%H%M%S).log"
 echo "${Cyan}" >"${HOME}/bin/installscripts/install-variables"
 echo "${White}" >"${HOME}/bin/installscripts/install-variables"
 echo "${Red}" >"${HOME}/bin/installscripts/install-variables"
@@ -250,6 +248,8 @@ echo "${davinci_install}" >"${HOME}/bin/installscripts/install-variables"
 
 EOF
 
+echo -e "$Green[*] Installation Part 1 Complete!$White"
+echo -e "[${Cyan}*${White}] Please reboot the system..."
 echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
 read -r dummy
 
