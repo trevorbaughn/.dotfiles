@@ -163,6 +163,9 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo -e "[${Cyan}*${White}] Setting system's network hostname"
 echo ${system_hostname} >/etc/hostname
 
+echo -e "[${Cyan}*${White}] Press Enter to Continue..."
+read -r dummy
+
 # Clone repo
 # Bare repo method: https://www.atlassian.com/git/tutorials/dotfiles
 git clone --bare https://github.com/trevorbaughn/.dotfiles.git $HOME/.dotfiles
@@ -179,6 +182,9 @@ if [ $? = 0 ]; then
 fi;
 dotfiles checkout
 dotfiles config status.showUntrackedFiles no
+
+echo -e "[${Cyan}*${White}] Press Enter to Continue..."
+read -r dummy
 
 ##########################
 ### Generate initramfs ###
