@@ -89,8 +89,10 @@ chmod +x auto-partition.sh
 ./auto-partition.sh ${LOG} ${Cyan} ${White} ${Red} ${Green} ${device} ${swap}
 
 # Pacstrap with minimal install packages
+curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/packages/minimal > minimal
+chmod +r minimal
 echo -e "[${Cyan}*${White}] Invoking pacstrap with minimal installation packages..."
-for pkg in $(cat $package_lists_path"minimal"); do
+for pkg in $(cat "minimal"); do
   base_pkgs="$base_pkgs $pkg"
 done
 pacstrap -K /mnt $base_pkgs
