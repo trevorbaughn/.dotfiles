@@ -16,6 +16,7 @@ neovim
 man-db
 man-pages
 realtime-privileges
+sddm
 sudo
 texinfo
 timeshift
