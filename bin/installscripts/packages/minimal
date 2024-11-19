@@ -5,10 +5,12 @@ linux-firmware
 e2fsprogs
 networkmanager
 ntp
+gamemode
 git
 neovim
 man-db
 man-pages
+realtime-privileges
 sudo
 texinfo
 util-linux
