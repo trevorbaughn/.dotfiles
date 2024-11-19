@@ -24,25 +24,25 @@ intel_gpu_packages=(mesa)
 nvidia_cpu_packages=()
 nvidia_gpu_packages=(opencl-nvidia mesa lib32-mesa nvidia-utils vulkan-nouveau lib32-vulkan-nouveau)
 
-if [ $system_cpu = amd ]; then
+if [ "$system_cpu" = "amd" ]; then
   echo "[${Cyan}*${White}] Adding AMD CPU Packages to install list"
   cpu_pkgs=("${amd_cpu_packages[@]}")
-elif [ $system_cpu = intel ]; then
+elif [ "$system_cpu" = "intel" ]; then
   echo "[${Cyan}*${White}] Adding Intel CPU Packages to install list"
   cpu_pkgs=("${intel_cpu_packages[@]}")
-elif [ $system_cpu = nvidia ]; then
+elif [ "$system_cpu" = "nvidia" ]; then
   echo "[${Cyan}*${White}] Adding NVidia CPU Packages to install list"
   cpu_pkgs=("${nvidia_cpu_packages[@]}")
 else
   echo "[${Red}WARNING${White}]${Red} CPU install setting not correctly set, not optimizing for CPU.${White}"
 fi
-if [ $system_gpu = amd ]; then
+if [ "$system_gpu" = "amd" ]; then
   echo "[${Cyan}*${White}] Adding AMD GPU Packages to install list"
   gpu_pkgs=("${amd_gpu_packages[@]}")
-elif [ $system_gpu = intel ]; then
+elif [ "$system_gpu" = "intel" ]; then
   echo "[${Cyan}*${White} Adding Intel GPU Packages to install list"
   gpu_pkgs=("${intel_gpu_packages[@]}")
-elif [ $system_gpu = nvidia ]; then
+elif [ "$system_gpu" = "nvidia" ]; then
   echo "[${Cyan}*${White}] Adding NVidia GPU Packages to install list"
   gpu_pkgs=("${nvidia_gpu_packages[@]}")
 else
