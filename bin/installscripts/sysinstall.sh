@@ -231,10 +231,16 @@ echo $hooks
 echo -e "[${Cyan}*${White}] Generating new initramfs..."
 mkinitcpio -P
 
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB  
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable grub-btrfsd
+
+systemctl enable sddm
+
 echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after reboot..."
 echo "chmod +x $HOME/bin/installscripts/sysinstall-part2.sh && bash $HOME/bin/installscripts/sysinstall-part2.sh" >>$HOME/.bashrc
 
-echo "[${Cyan}*${White}] Printing Install Log -"
+echo "[$Cyan*$White] Printing Install Log -"
 echo "$LOG" > "sysinstall-part1-$(date +%d-%H%M%S).log"
 
 
