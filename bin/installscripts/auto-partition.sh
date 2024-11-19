@@ -69,7 +69,9 @@ btrfs subvolume create /mnt/@snapshots
 
 echo -e "[${Cyan}*${White}] Unmounting root and remounting as btrfs subvolumes"
 umount /mnt
-mkdir -p /mnt/{boot,home,.snapshots}
+mkdir -p /mnt/efi
+mkdir -p /mnt/home
+mkdir -p /mnt/.snapshots
 mount -o noatime,space_cache=v2,compress=zstd,subvol=@ /dev/$root_partition /mnt
 mount -o noatime,space_cache=v2,compress=zstd,subvol=@home /dev/$root_partition /mnt/home
 mount -o noatime,space_cache=v2,compress=zstd,subvol=@snapshots /dev/$root_partition /mnt/.snapshots
