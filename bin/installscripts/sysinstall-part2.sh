@@ -9,38 +9,6 @@ unreal_install="$(sed -n 7p /install-variables)"
 godot_install="$(sed -n 8p /install-variables)"
 davinci_install="$(sed -n 9p /install-variables)"
 
-# Install dotfiles
-sudo -s <<EOF
-cd $HOME
-cd ..
-git clone https://github.com/trevorbaughn/.dotfiles.git
-shopt -s dotglob
-cp -R .dotfiles/* $HOME
-mv $HOME/.git $HOME/.dotfiles
-rm -rf .dotfiles
-cd $HOME
-EOF
-
-# Switch to installscript directory
-cd $HOME/bin/installscripts
-
-# Install packages
-echo -e "[${Cyan}*${White}] Installing Packages..."
-chmod +x install-packages.sh
-./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install}
-
-# Install theme
-echo -e "[${Cyan}*${White}] Installing Theme"
-chmod +x theme-installer.sh
-./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
-
-# Enable SDDM
-echo -e "[${Cyan}*${White}] Enabling SDDM"
-systemctl enable sddm
-touch /etc/sddm.conf.d/rootless-wayland.conf
-echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
-echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
-
 ##########################
 ### Generate initramfs ###
 ##########################
@@ -83,6 +51,43 @@ echo $hooks
 
 echo -e "[${Cyan}*${White}] Generating new initramfs..."
 mkinitcpio -P
+
+#######################
+### Dots & Packages ###
+#######################
+
+# Install dotfiles
+sudo -s <<EOF
+cd $HOME
+cd ..
+git clone https://github.com/trevorbaughn/.dotfiles.git
+shopt -s dotglob
+cp -R .dotfiles/* $HOME
+mv $HOME/.git $HOME/.dotfiles
+rm -rf .dotfiles
+EOF
+
+# Switch to installscript directory
+cd $HOME/bin/installscripts
+
+# Install packages
+echo -e "[${Cyan}*${White}] Installing Packages..."
+chmod +x install-packages.sh
+./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install}
+
+# Install theme
+echo -e "[${Cyan}*${White}] Installing Theme"
+chmod +x theme-installer.sh
+#./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
+
+# Enable SDDM
+echo -e "[${Cyan}*${White}] Enabling SDDM"
+systemctl enable sddm
+touch /etc/sddm.conf.d/rootless-wayland.conf
+echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
+echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
+
+
 
 #############################
 ### General System Config ###
