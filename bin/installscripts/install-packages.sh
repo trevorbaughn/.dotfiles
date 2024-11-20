@@ -92,18 +92,16 @@ makepkg -si
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
-sudo -i << EOF
 for pkglist in "${pacman_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
     echo -e "[${Red}*${White}] Installing $pkg..."
-    sudo paru -S --noconfirm "$pkg" | tee -a "$LOG"
+    sudo -i paru -S --noconfirm "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Package installation failed, Please check the installation logs${White}"
       exit 1
     fi
   done
 done
-EOF
 echo -e "[${Cyan}*${White}] Installing Flatpak Packages..."
 for pkglist in "${flatpak_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
