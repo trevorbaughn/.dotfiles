@@ -73,6 +73,7 @@ if [ davinci_install = y-studio ]; then
 fi
 
 # Enable multilib for 32-bit support
+echo -e "[${Cyan}*${White}] Enabling multilib for 32-bit support"
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 # Update System before mass package-install
