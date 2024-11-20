@@ -10,13 +10,16 @@ godot_install="$(sed -n 8p /install-variables)"
 davinci_install="$(sed -n 9p /install-variables)"
 
 # Install dotfiles
+sudo -s <<EOF
 cd $HOME
 cd ..
 git clone https://github.com/trevorbaughn/.dotfiles.git
 shopt -s dotglob
-mv .dotfiles/* $HOME
+cp -R .dotfiles/* $HOME
 mv $HOME/.git $HOME/.dotfiles
+rm -rf .dotfiles
 cd $HOME
+EOF
 
 # Switch to installscript directory
 cd $HOME/bin/installscripts
