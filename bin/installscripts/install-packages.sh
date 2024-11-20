@@ -97,7 +97,7 @@ for pkglist in "${pacman_lists[@]}"; do
     paru -S --noconfirm "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Package installation failed, Please check the installation logs${White}"
-      exit 1
+      #exit 1
     fi
   done
 done
