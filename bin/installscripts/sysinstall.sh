@@ -177,10 +177,11 @@ curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/mast
 chmod +x /sysinstall-part2.sh
 echo "bash /sysinstall-part2.sh" >>$homedir/.bashrc
 
-echo "[$Cyan*$White] Printing Install Log -"
-echo "$LOG" > "sysinstall-part1-$(date +%d-%H%M%S).log"
+#echo "[$Cyan*$White] Printing Install Log -"
+#echo "$LOG" > "sysinstall-part1-$(date +%d-%H%M%S).log"
 
 #echo variables to be picked up later
+echo "[$Cyan*$White] Saving Variables for Part 2"
 echo "${Cyan}" >"/install-variables"
 echo "${White}" >"/install-variables"
 echo "${Red}" >"/install-variables"
