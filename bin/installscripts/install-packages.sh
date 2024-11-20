@@ -72,19 +72,18 @@ if [ davinci_install = y-studio ]; then
   echo "davinci_resolve-studio" >>./packages/miscellanious
 fi
 
+# Update System before mass package-install
+echo -e "[${Cyan}*${White}] Updating system..."
+sudo pacman -Syu
+
 # Install AUR package manager
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
-
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
 pacman -S --needed base-devel
 sudo -i git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
-
-# Update System before mass package-install
-echo -e "[${Cyan}*${White}] Updating system..."
-sudo paru -Syu
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
