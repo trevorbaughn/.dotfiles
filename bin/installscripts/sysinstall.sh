@@ -56,8 +56,7 @@ echo -e "[${Red}WARNING${White}] ALL ORIGINAL DATA ON THE SELECTED DRIVE WILL BE
 echo -n "/dev/"
 read -r device
 
-echo -e "[${Cyan}*${White}] How much SWAP memory do you wish to have? Leave blank for none."
-echo -e "ex. '+8GiB' for 8 gigabytes"
+echo -e "[${Cyan}*${White}] How much SWAP memory do you wish to have? Leave blank for none. (ex. '+8GiB' for 8 gigabytes)"
 echo -e "[${Cyan}NOTE${White}] It is recommended to use an equal amount of SWAP as you have RAM for the hibernation feature."
 echo -n "SWAP: "
 read -r swap
@@ -68,8 +67,7 @@ echo -n "Font: "
 read -r font
 
 echo -e "[${Cyan}*${White}] Would you like to install Unreal Engine 5?"
-echo -e "[${Cyan}NOTE${White}] It is recommended to ensure the root partition has enough space."
-echo -e "~40GB per engine version should be adequate."
+echo -e "[${Cyan}NOTE${White}] It is recommended to ensure the root partition has enough space. ~40GB per engine version should be adequate."
 echo -n "y/n: "
 read -r unreal_install
 
