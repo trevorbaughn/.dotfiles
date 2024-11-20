@@ -41,10 +41,10 @@ fi
 hooks+=" modconf kms keyboard keymap consolefont numlock block filesystems fsck"
 
 echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf modules - ($modules)"
-sed -i "/^MODULES=/ c\MODULES=($modules)" /etc/mkinitcpio.conf
+sudo -i sed -i "/^MODULES=/ c\MODULES=($modules)" /etc/mkinitcpio.conf
 
 echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf hooks - ($hooks)"
-sed -i "/^HOOKS=/ c\HOOKS=($hooks)" /etc/mkinitcpio.conf
+sudo -i sed -i "/^HOOKS=/ c\HOOKS=($hooks)" /etc/mkinitcpio.conf
 
 #cat /etc/mkinitcpio.conf
 
@@ -129,7 +129,7 @@ amixer sset Headphone unmute
 # Increase vm.max_map_count (Game Compatibility)
 # https://wiki.archlinux.org/title/Gaming#Increase_vm.max_map_count
 echo -e "[${Cyan}*${White}] Increasing vm.max_map_count to 2147483642 for game compatibility"
-echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
+sudo -i echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
 
 # File Chooser
 echo -e "[${Cyan}*${White}] Setting file chooser startup-mode to cwd"
@@ -145,7 +145,7 @@ flatpak override --env=KRITA_NO_STYLE_OVERRIDE=1 org.kde.krita
 
 # Unreal Engine
 if [ unreal_install = y ]; then
-  chmod -R a+rwX /opt/unreal-engine/Engine
+  sudo -i chmod -R a+rwX /opt/unreal-engine/Engine
 fi
 
 cd $HOME
