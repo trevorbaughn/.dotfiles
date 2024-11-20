@@ -155,8 +155,6 @@ echo -e "[${Cyan}*${White}] Creating starting admin user"
 useradd -m -G wheel,gamemode,audio,realtime -s /bin/bash $user_username
 echo "${user_username}:${user_password}" | chpasswd
 
-passwd -a
-
 # Delay after failed login
 echo -e "[${Cyan}*${White}] Adding delay to failed login"
 sudo echo "auth optional pam_faildelay.so delay=4000000" >>/etc/pam.d/system-login
