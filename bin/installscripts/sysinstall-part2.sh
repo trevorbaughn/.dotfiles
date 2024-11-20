@@ -68,21 +68,20 @@ EOF
 
 # Switch to installscript directory
 cd $HOME/bin/installscripts
-ls
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Packages..."
-sudo -i chmod +x install-packages.sh
+sudo -s chmod +x install-packages.sh
 ./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install}
 
 # Install theme
 echo -e "[${Cyan}*${White}] Installing Theme"
-sudo -i chmod +x theme-installer.sh
+sudo -s chmod +x theme-installer.sh
 #./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
 
 # Enable SDDM
 echo -e "[${Cyan}*${White}] Enabling SDDM"
-sudo -i <<EOF
+sudo -s <<EOF
 systemctl enable sddm
 touch /etc/sddm.conf.d/rootless-wayland.conf
 echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
@@ -105,7 +104,7 @@ mkdir -vm 776 $HOME/Applications/
 # Wine TKG
 echo -e "[${Cyan}*${White}] Installing Wine TKG"
 cd $HOME/Applications
-sudo -i git clone https://github.com/Frogging-Family/wine-tkg-git.git
+git clone https://github.com/Frogging-Family/wine-tkg-git.git
 cd wine-tkg-git
 makepkg -si
 
@@ -129,7 +128,7 @@ amixer sset Headphone unmute
 # Increase vm.max_map_count (Game Compatibility)
 # https://wiki.archlinux.org/title/Gaming#Increase_vm.max_map_count
 echo -e "[${Cyan}*${White}] Increasing vm.max_map_count to 2147483642 for game compatibility"
-sudo -i echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
+sudo -s echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
 
 # File Chooser
 echo -e "[${Cyan}*${White}] Setting file chooser startup-mode to cwd"
@@ -137,7 +136,7 @@ gsettings set org.gtk.Settings.FileChooser startup-mode cwd
 
 # Kitty fix for gnome & cinnamon applications
 echo -e "[${Cyan}*${White}] Fixing kitty terminal gnome & cinnamon associations"
-sudo -i ln -s /usr/bin/kitty /usr/bin/gnome-terminal
+sudo -s ln -s /usr/bin/kitty /usr/bin/gnome-terminal
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 
 # Krita
@@ -145,7 +144,7 @@ flatpak override --env=KRITA_NO_STYLE_OVERRIDE=1 org.kde.krita
 
 # Unreal Engine
 if [ unreal_install = y ]; then
-  sudo -i chmod -R a+rwX /opt/unreal-engine/Engine
+  sudo -s chmod -R a+rwX /opt/unreal-engine/Engine
 fi
 
 cd $HOME
