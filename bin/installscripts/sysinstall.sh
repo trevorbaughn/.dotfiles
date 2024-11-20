@@ -121,9 +121,6 @@ echo -e "[${Cyan}*${White}] Starting & Enabling NetworkManager Daemon"
 systemctl start NetworkManager
 systemctl enable NetworkManager
 
-# Enable multilib for 32-bit support
-sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-
 # Set the system time zone and clock
 echo -e "[${Cyan}*${White}] Setting System Time Zone and Clock"
 ln -sf /usr/share/zoneinfo/${system_clock_region}/${system_clock_city} /etc/localtime
