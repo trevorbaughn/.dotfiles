@@ -77,7 +77,7 @@ echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
 sudo -s << EOF
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
-sudo pacman -S --needed base-devel
+pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 EOF
 cd paru
