@@ -17,7 +17,7 @@ pacman_lists=(minimal cli-tools audio fonts themes programming-languages desktop
 
 #Ignore history for commands that need password piped in
 export HISTIGNORE='*sudo -S*'
-sudopass="echo "$root_password" | sudo -S -v"
+sudopass="echo '$root_password' | sudo -S -v"
 
 # Add hardware packages to install list
 echo -e "[${Cyan}*${White}] Adding hardware-specific packages to the install list"
@@ -29,28 +29,28 @@ nvidia_cpu_packages=()
 nvidia_gpu_packages=(opencl-nvidia mesa lib32-mesa nvidia-utils vulkan-nouveau lib32-vulkan-nouveau)
 
 if [ "$system_cpu" = "amd" ]; then
-  echo "[${Cyan}*${White}] Adding AMD CPU Packages to install list"
+  echo -e "[${Cyan}*${White}] Adding AMD CPU Packages to install list"
   cpu_pkgs=("${amd_cpu_packages[@]}")
 elif [ "$system_cpu" = "intel" ]; then
-  echo "[${Cyan}*${White}] Adding Intel CPU Packages to install list"
+  echo -e "[${Cyan}*${White}] Adding Intel CPU Packages to install list"
   cpu_pkgs=("${intel_cpu_packages[@]}")
 elif [ "$system_cpu" = "nvidia" ]; then
-  echo "[${Cyan}*${White}] Adding NVidia CPU Packages to install list"
+  echo -e "[${Cyan}*${White}] Adding NVidia CPU Packages to install list"
   cpu_pkgs=("${nvidia_cpu_packages[@]}")
 else
-  echo "[${Red}WARNING${White}]${Red} CPU install setting not correctly set, not optimizing for CPU.${White}"
+  echo -e "[${Red}WARNING${White}]${Red} CPU install setting not correctly set, not optimizing for CPU.${White}"
 fi
 if [ "$system_gpu" = "amd" ]; then
-  echo "[${Cyan}*${White}] Adding AMD GPU Packages to install list"
+  echo -e "[${Cyan}*${White}] Adding AMD GPU Packages to install list"
   gpu_pkgs=("${amd_gpu_packages[@]}")
 elif [ "$system_gpu" = "intel" ]; then
-  echo "[${Cyan}*${White} Adding Intel GPU Packages to install list"
+  echo -e "[${Cyan}*${White} Adding Intel GPU Packages to install list"
   gpu_pkgs=("${intel_gpu_packages[@]}")
 elif [ "$system_gpu" = "nvidia" ]; then
-  echo "[${Cyan}*${White}] Adding NVidia GPU Packages to install list"
+  echo -e "[${Cyan}*${White}] Adding NVidia GPU Packages to install list"
   gpu_pkgs=("${nvidia_gpu_packages[@]}")
 else
-  echo "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing for GPU.${White}"
+  echo -e "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing for GPU.${White}"
 fi
 for pkg in "${cpu_pkgs[@]}" "${gpu_pkgs[@]}"; do
   echo "$pkg" >>./packages/hardware-specific
@@ -78,7 +78,7 @@ fi
 
 # Enable multilib for 32-bit support
 echo -e "[${Cyan}*${White}] Enabling multilib for 32-bit support"
-sudopass -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+$($sudopass -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf)
 
 # Update System before mass package-install
 echo -e "[${Cyan}*${White}] Updating system..."
