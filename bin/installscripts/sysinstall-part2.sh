@@ -68,6 +68,7 @@ EOF
 
 # Switch to installscript directory
 cd $HOME/bin/installscripts
+ls
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Packages..."
@@ -114,8 +115,10 @@ xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
 # Enable Misc. Daemons
 echo -e "[${Cyan}*${White}] Start/Enabling sshd and fstrim.timer daemons..."
+sudo -i <<EOF
 systemctl enable sshd         #SSH
 systemctl enable fstrim.timer #SSD Periodic (weekly) Trim
+EOF
 
 # Unmute ALSA
 echo -e "[${Cyan}*${White}] Unmuting ALSA"
@@ -134,7 +137,7 @@ gsettings set org.gtk.Settings.FileChooser startup-mode cwd
 
 # Kitty fix for gnome & cinnamon applications
 echo -e "[${Cyan}*${White}] Fixing kitty terminal gnome & cinnamon associations"
-ln -s /usr/bin/kitty /usr/bin/gnome-terminal
+sudo -i ln -s /usr/bin/kitty /usr/bin/gnome-terminal
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 
 # Krita
