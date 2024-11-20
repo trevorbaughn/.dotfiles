@@ -78,7 +78,7 @@ echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
 pacman -S --needed base-devel
-sudo git clone https://aur.archlinux.org/paru.git
+sudo -i git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 
@@ -88,7 +88,7 @@ sudo paru -Syu
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
-sudo -s << EOF
+sudo -i << EOF
 for pkglist in "${pacman_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
     echo -e "[${Red}*${White}] Installing $pkg..."
