@@ -19,7 +19,8 @@ echo -e "[${Cyan}*${White}] What keymap will this system default to? (ex. 'us' f
 echo -n "keymap: "
 read -r system_keymap
 
-echo -e "[${Cyan}*${White}] What should the system network hostname be? -- NOTE: This is NOT the user."
+echo -e "[${Cyan}*${White}] What should the system network hostname be?"
+echo -e "[${Cyan}NOTE${White}] This is NOT the user."
 echo -n "hostname: "
 read -r system_hostname
 
@@ -50,14 +51,14 @@ echo -n "root password: "
 read -r root_password
 
 lsblk
-echo -e "[${Cyan}*${White}] What drive would you like to install on? \
-[${Red}WARNING${White}] ALL ORIGINAL DATA ON THE SELECTED DRIVE WILL BE LOST"
+echo -e "[${Cyan}*${White}] What drive would you like to install on?"
+echo -e "[${Red}WARNING${White}] ALL ORIGINAL DATA ON THE SELECTED DRIVE WILL BE LOST"
 echo -n "/dev/"
 read -r device
 
-echo -e "[${Cyan}*${White}] How much SWAP memory do you wish to have? Leave blank for none. \
--- ex. '+8GiB' for 8 gigabytes \
-[${Cyan}NOTE${White}] It is recommended to use an equal amount of SWAP as you have RAM for the hibernation feature."
+echo -e "[${Cyan}*${White}] How much SWAP memory do you wish to have? Leave blank for none."
+echo -e "ex. '+8GiB' for 8 gigabytes"
+echo -e "[${Cyan}NOTE${White}] It is recommended to use an equal amount of SWAP as you have RAM for the hibernation feature."
 echo -n "SWAP: "
 read -r swap
 
@@ -66,9 +67,9 @@ echo -e "[${Cyan}*${White}] What would you like to set the console font to?"
 echo -n "Font: "
 read -r font
 
-echo -e "[${Cyan}*${White}] Would you like to install Unreal Engine 5? \
-[${Cyan}NOTE${White}] It is recommended to ensure the root partition has enough space. \
-~40GB per engine version should be adequate."
+echo -e "[${Cyan}*${White}] Would you like to install Unreal Engine 5?"
+echo -e "[${Cyan}NOTE${White}] It is recommended to ensure the root partition has enough space."
+echo -e "~40GB per engine version should be adequate."
 echo -n "y/n: "
 read -r unreal_install
 
