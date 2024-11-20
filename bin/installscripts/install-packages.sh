@@ -94,7 +94,7 @@ echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
 for pkglist in "${pacman_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
     echo -e "[${Red}*${White}] Installing $pkg..."
-    sudo -i paru -S --noconfirm "$pkg" | tee -a "$LOG"
+    paru -S --noconfirm "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Package installation failed, Please check the installation logs${White}"
       exit 1
