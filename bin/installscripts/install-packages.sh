@@ -72,6 +72,9 @@ if [ davinci_install = y-studio ]; then
   echo "davinci_resolve-studio" >>./packages/miscellanious
 fi
 
+# Enable multilib for 32-bit support
+sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+
 # Update System before mass package-install
 echo -e "[${Cyan}*${White}] Updating system..."
 sudo -i pacman -Syu
