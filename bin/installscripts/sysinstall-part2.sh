@@ -104,7 +104,7 @@ mkdir -vm 776 $HOME/Applications/
 # Wine TKG
 echo -e "[${Cyan}*${White}] Installing Wine TKG"
 cd $HOME/Applications
-git clone https://github.com/Frogging-Family/wine-tkg-git.git
+sudo -i git clone https://github.com/Frogging-Family/wine-tkg-git.git
 cd wine-tkg-git
 makepkg -si
 
