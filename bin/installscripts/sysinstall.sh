@@ -181,14 +181,14 @@ echo "bash /sysinstall-part2.sh" >>$homedir/.bashrc
 #echo variables to be picked up later
 echo "[$Cyan*$White] Saving Variables for Part 2"
 echo "${Cyan}" >"/install-variables"
-echo "${White}" >"/install-variables"
-echo "${Red}" >"/install-variables"
-echo "${system_cpu}" >"/install-variables"
-echo "${system_gpu}" >"/install-variables"
-echo "${unity_install}" >"/install-variables"
-echo "${unreal_install}" >"/install-variables"
-echo "${godot_install}" >"/install-variables"
-echo "${davinci_install}" >"/install-variables"
+echo "${White}" >>"/install-variables"
+echo "${Red}" >>"/install-variables"
+echo "${system_cpu}" >>"/install-variables"
+echo "${system_gpu}" >>"/install-variables"
+echo "${unity_install}" >>"/install-variables"
+echo "${unreal_install}" >>"/install-variables"
+echo "${godot_install}" >>"/install-variables"
+echo "${davinci_install}" >>"/install-variables"
 
 EOF
 
