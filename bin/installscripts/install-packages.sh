@@ -15,6 +15,10 @@ package_lists_path=$HOME/bin/installscripts/packages/
 flatpak_lists=(end-user-flatpaks flatpak-runtimes-and-compatibility)
 pacman_lists=(minimal cli-tools audio fonts themes programming-languages desktop-environment hardware-specific)
 
+#Ignore history for commands that need password piped in
+export HISTIGNORE='*sudo -S*'
+sudopass="echo "$root_password" | sudo -S -v"
+
 # Add hardware packages to install list
 echo -e "[${Cyan}*${White}] Adding hardware-specific packages to the install list"
 amd_cpu_packages=(amd-ucode)
@@ -74,17 +78,17 @@ fi
 
 # Enable multilib for 32-bit support
 echo -e "[${Cyan}*${White}] Enabling multilib for 32-bit support"
-sudo -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+sudopass -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 # Update System before mass package-install
 echo -e "[${Cyan}*${White}] Updating system..."
-sudo -i pacman -Syu
+sudopass -i pacman -Syu
 
 # Install AUR package manager
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
-sudo -i pacman -S --needed base-devel
+sudopass -i pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd $HOME/aur/paru
 makepkg -si
@@ -97,6 +101,7 @@ for pkglist in "${pacman_lists[@]}"; do
     paru -S --noconfirm "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Package installation failed, Please check the installation logs${White}"
+      echo -e "$pkg - Installation Failed." >> "$LOG"
       #exit 1
     fi
   done
@@ -108,6 +113,7 @@ for pkglist in "${flatpak_lists[@]}"; do
     flatpak install --noninteractive "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Flatpak package installation failed, Please check the installation logs${White}"
+      echo -e "$pkg - Installation Failed." >> "$LOG"
       #exit 1
     fi
   done
@@ -115,4 +121,4 @@ done
 
 # Update Packages (Again)(Likely updates since starting if internet is slow)
 echo -e "[${Cyan}*${White}] Updating packages..."
-sudo paru -Syu
+sudopass paru -Syu
