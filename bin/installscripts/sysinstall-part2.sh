@@ -40,14 +40,13 @@ fi
 
 hooks+=" modconf kms keyboard keymap consolefont numlock block filesystems fsck"
 
-echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf modules"
+echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf modules - ($modules)"
 sed -i "/^MODULES=/ c\MODULES=($modules)" /etc/mkinitcpio.conf
 
-echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf hooks"
+echo -e "[${Cyan}*${White}] Setting /etc/mkinitcpio.conf hooks - ($hooks)"
 sed -i "/^HOOKS=/ c\HOOKS=($hooks)" /etc/mkinitcpio.conf
 
 #cat /etc/mkinitcpio.conf
-echo $hooks
 
 echo -e "[${Cyan}*${White}] Generating new initramfs..."
 mkinitcpio -P
@@ -72,21 +71,22 @@ cd $HOME/bin/installscripts
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Packages..."
-chmod +x install-packages.sh
+sudo -i chmod +x install-packages.sh
 ./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install}
 
 # Install theme
 echo -e "[${Cyan}*${White}] Installing Theme"
-chmod +x theme-installer.sh
+sudo -i chmod +x theme-installer.sh
 #./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
 
 # Enable SDDM
 echo -e "[${Cyan}*${White}] Enabling SDDM"
+sudo -i <<EOF
 systemctl enable sddm
 touch /etc/sddm.conf.d/rootless-wayland.conf
 echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
 echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
-
+EOF
 
 
 #############################
