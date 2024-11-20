@@ -74,7 +74,7 @@ fi
 
 # Update System before mass package-install
 echo -e "[${Cyan}*${White}] Updating system..."
-sudo pacman -Syu
+sudo -i pacman -Syu
 
 # Install AUR package manager
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
