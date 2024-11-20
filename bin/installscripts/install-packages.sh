@@ -108,7 +108,7 @@ for pkglist in "${flatpak_lists[@]}"; do
     flatpak install --noninteractive "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Flatpak package installation failed, Please check the installation logs${White}"
-      exit 1
+      #exit 1
     fi
   done
 done
