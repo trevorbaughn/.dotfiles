@@ -1,5 +1,5 @@
 # Passed-in variables
-LOG=$0
+root_password=$0
 Cyan=$1
 White=$2
 Red=$3
@@ -9,6 +9,7 @@ unity_install=$6
 unreal_install=$7
 godot_install=$8
 davinci_install=$9
+
 
 # Non-passed-in variables
 package_lists_path=$HOME/bin/installscripts/packages/
