@@ -9,16 +9,33 @@ unreal_install="$(sed -n 7p /install-variables)"
 godot_install="$(sed -n 8p /install-variables)"
 davinci_install="$(sed -n 9p /install-variables)"
 
+# Install dotfiles
+cd $HOME
+cd ..
+git clone https://github.com/trevorbaughn/.dotfiles.git
+shopt -s dotglob
+mv .dotfiles/* $HOME
+mv $HOME/.git $HOME/.dotfiles
+cd $HOME
+
 # Switch to installscript directory
 cd $HOME/bin/installscripts
 
 # Install packages
+echo -e "[${Cyan}*${White}] Installing Packages..."
 chmod +x install-packages.sh
 ./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install}
 
 # Install theme
+echo -e "[${Cyan}*${White}] Installing Theme"
 chmod +x theme-installer.sh
 ./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
+
+echo -e "[${Cyan}*${White}] Enabling SDDM"
+systemctl enable sddm
+touch /etc/sddm.conf.d/rootless-wayland.conf
+echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
+echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
 
 ##########################
 ### Generate initramfs ###
@@ -68,6 +85,7 @@ mkinitcpio -P
 #############################
 
 # Create directories for bookmarking
+echo -e "[${Cyan}*${White}] Creating Home directories"
 xdg-user-dirs-update
 mkdir -pvm 776 $HOME/Pictures/Screenshots/
 mkdir -vm 776 $HOME/Art/
@@ -75,6 +93,7 @@ mkdir -vm 776 $HOME/Projects/
 mkdir -vm 776 $HOME/Applications/
 
 # Wine TKG
+echo -e "[${Cyan}*${White}] Installing Wine TKG"
 cd $HOME/Applications
 git clone https://github.com/Frogging-Family/wine-tkg-git.git
 cd wine-tkg-git
