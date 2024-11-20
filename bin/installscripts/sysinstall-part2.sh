@@ -31,6 +31,7 @@ echo -e "[${Cyan}*${White}] Installing Theme"
 chmod +x theme-installer.sh
 ./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
 
+# Enable SDDM
 echo -e "[${Cyan}*${White}] Enabling SDDM"
 systemctl enable sddm
 touch /etc/sddm.conf.d/rootless-wayland.conf
