@@ -74,7 +74,7 @@ fi
 
 # Enable multilib for 32-bit support
 echo -e "[${Cyan}*${White}] Enabling multilib for 32-bit support"
-sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+sudo -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 # Update System before mass package-install
 echo -e "[${Cyan}*${White}] Updating system..."
@@ -84,11 +84,9 @@ sudo -i pacman -Syu
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
-sudo -i <<EOF
-pacman -S --needed base-devel
+sudo -i pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
-EOF
-cd paru
+cd $HOME/aur/paru
 makepkg -si
 
 # Install packages
