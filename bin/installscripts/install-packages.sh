@@ -74,10 +74,12 @@ fi
 
 # Install AUR package manager
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
+sudo << EOF
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
+EOF
 cd paru
 makepkg -si
 
@@ -87,6 +89,7 @@ sudo paru -Syu
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
+sudo << EOF
 for pkglist in "${pacman_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
     echo -e "[${Red}*${White}] Installing $pkg..."
@@ -97,6 +100,7 @@ for pkglist in "${pacman_lists[@]}"; do
     fi
   done
 done
+EOF
 echo -e "[${Cyan}*${White}] Installing Flatpak Packages..."
 for pkglist in "${flatpak_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
