@@ -169,40 +169,20 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo -e "[${Cyan}*${White}] Setting system's network hostname"
 echo ${system_hostname} >/etc/hostname
 
-# Clone repo
-# Bare repo method: https://www.atlassian.com/git/tutorials/dotfiles
-#git clone --bare https://github.com/trevorbaughn/.dotfiles.git $HOME/.dotfiles
-#function dotfiles {
-#   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
-#}
-#mkdir -p .dotfiles-backup
-#dotfiles checkout
-#if [ $? = 0 ]; then
-#  echo "Checked out dotfiles.";
-#  else
-#    echo "Backing up pre-existing dotfiles.";
-#    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
-#fi;
-#dotfiles checkout
-#dotfiles config status.showUntrackedFiles no
-
 echo -e "[${Cyan}*${White}] Installing Grub..."
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB  
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable grub-btrfsd
 
-echo -e "[${Cyan}*${White}] Enabling SDDM"
-systemctl enable sddm
-touch /etc/sddm.conf.d/rootless-wayland.conf
-echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
-echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
+homedir=$( getent passwd "$user_username" | cut -d: -f6 )
 
 echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after reboot..."
-echo "chmod +x $HOME/bin/installscripts/sysinstall-part2.sh && bash $HOME/bin/installscripts/sysinstall-part2.sh" >>$HOME/.bashrc
+curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/sysinstall-part2.sh > /sysinstall-part2.sh
+chmod +x /sysinstall-part2.sh
+echo "bash /sysinstall-part2.sh" >>$homedir/.bashrc
 
 echo "[$Cyan*$White] Printing Install Log -"
 echo "$LOG" > "sysinstall-part1-$(date +%d-%H%M%S).log"
-
 
 #echo variables to be picked up later
 echo "${Cyan}" >"install-variables"
