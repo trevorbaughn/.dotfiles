@@ -101,7 +101,7 @@ makepkg -si
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
 for pkglist in "${pacman_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
-    echo -e "[${Cyan}*${White}] Installing $pkg..."
+    echo -e "[${Cyan}*${White}] Installing ${Cyan}$pkg${White}..."
     paru -S --noconfirm "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Package installation failed, Please check the installation logs${White}"
@@ -113,7 +113,7 @@ done
 echo -e "[${Cyan}*${White}] Installing Flatpak Packages..."
 for pkglist in "${flatpak_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
-    echo -e "[${Cyan}*${White}] Installing $pkg..."
+    echo -e "[${Cyan}*${White}] Installing ${Cyan}$pkg${White}..."
     flatpak install --noninteractive "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Flatpak package installation failed, Please check the installation logs${White}"
