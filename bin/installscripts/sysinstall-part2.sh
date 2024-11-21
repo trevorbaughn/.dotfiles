@@ -10,6 +10,9 @@ unreal_install="$(sed -n 8p /install-variables)"
 godot_install="$(sed -n 9p /install-variables)"
 davinci_install="$(sed -n 10p /install-variables)"
 
+# Logging
+LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
+
 #Ignore history for commands that need password piped in
 export HISTIGNORE='*sudo -S*'
 
