@@ -54,11 +54,11 @@ else
   echo -e "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing for GPU.${White}"
 fi
 echo -e "$root_password\n" | sudo -S -v
-sudo echo "" > $HOME/bin/installscripts/packages/hardware-specific
+sudo -s echo "" > $HOME/bin/installscripts/packages/hardware-specific
 for pkg in "${cpu_pkgs[@]}" "${gpu_pkgs[@]}"; do
   echo -e "$root_password\n" | sudo -S -v
   
-  sudo chmod +w $HOME/bin/installscripts/packages/hardware-specific
+  sudo -s chmod +w $HOME/bin/installscripts/packages/hardware-specific
   sudo -i echo "$pkg" >>$HOME/bin/installscripts/packages/hardware-specific
 done
 
