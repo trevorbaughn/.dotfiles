@@ -1,5 +1,5 @@
 # Passed-in variables
-root_password="$1"
+LOG="$1"
 Cyan="$2"
 White="$3"
 Red=$4
@@ -9,6 +9,7 @@ unity_install=$7
 unreal_install=$8
 godot_install=$9
 davinci_install=$10
+root_password=$11
 
 
 # Non-passed-in variables
@@ -18,7 +19,6 @@ pacman_lists=(minimal cli-tools audio fonts themes programming-languages desktop
 
 #Ignore history for commands that need password piped in
 export HISTIGNORE='*sudo -S*'
-AutoSuDo=$" $echo $root_password | sudo -S -k";
 
 # Add hardware packages to install list
 echo -e "[${Cyan}*${White}] Adding hardware-specific packages to the install list"
@@ -79,17 +79,20 @@ fi
 
 # Enable multilib for 32-bit support
 echo -e "[${Cyan}*${White}] Enabling multilib for 32-bit support"
-$AutoSuDo -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+echo -e "$root_password\n" | sudo -S -v
+sudo -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 # Update System before mass package-install
 echo -e "[${Cyan}*${White}] Updating system..."
-AutoSuDo -i pacman -Syu
+echo -e "$root_password\n" | sudo -S -v
+sudo -i pacman -Syu
 
 # Install AUR package manager
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
-AutoSuDo -i pacman -S --needed base-devel
+echo -e "$root_password\n" | sudo -S -v
+sudo -i pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd $HOME/aur/paru
 makepkg -si
@@ -122,4 +125,5 @@ done
 
 # Update Packages (Again)(Likely updates since starting if internet is slow)
 echo -e "[${Cyan}*${White}] Updating packages..."
-AutoSuDo paru -Syu
+echo -e "$root_password\n" | sudo -S -v
+sudo paru -Syu
