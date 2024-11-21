@@ -18,6 +18,7 @@ pacman_lists=(minimal cli-tools audio fonts themes programming-languages desktop
 
 #Ignore history for commands that need password piped in
 export HISTIGNORE='*sudo -S*'
+AutoSuDo=$" $echo $root_password | sudo -S -k";
 
 # Add hardware packages to install list
 echo -e "[${Cyan}*${White}] Adding hardware-specific packages to the install list"
@@ -78,17 +79,17 @@ fi
 
 # Enable multilib for 32-bit support
 echo -e "[${Cyan}*${White}] Enabling multilib for 32-bit support"
-$echo '$root_password' | sudo -S -v -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+$AutoSuDo -i sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 # Update System before mass package-install
 echo -e "[${Cyan}*${White}] Updating system..."
-echo '$root_password' | sudo -S -v -i pacman -Syu
+AutoSuDo -i pacman -Syu
 
 # Install AUR package manager
 echo -e "[${Cyan}*${White}] Installing AUR Package Manager - paru"
 mkdir -pvm 777 $HOME/aur/
 cd $HOME/aur/
-echo '$root_password' | sudo -S -v -i pacman -S --needed base-devel
+AutoSuDo -i pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd $HOME/aur/paru
 makepkg -si
@@ -121,4 +122,4 @@ done
 
 # Update Packages (Again)(Likely updates since starting if internet is slow)
 echo -e "[${Cyan}*${White}] Updating packages..."
-echo '$root_password' | sudo -S -v paru -Syu
+AutoSuDo paru -Syu
