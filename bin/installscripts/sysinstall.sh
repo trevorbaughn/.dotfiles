@@ -172,25 +172,23 @@ systemctl enable grub-btrfsd
 homedir=$( getent passwd "$user_username" | cut -d: -f6 )
 
 echo -e "[${Cyan}*${White}] Setting up autostart for next part of script after reboot..."
-curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/sysinstall-part2.sh > /sysinstall-part2.sh
+curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/sysinstall-part2.sh > homedir/sysinstall-part2.sh
 chmod +x /sysinstall-part2.sh
-echo "bash /sysinstall-part2.sh" >>$homedir/.bashrc
 
 #echo "[$Cyan*$White] Printing Install Log -"
 #echo "$LOG" > "sysinstall-part1-$(date +%d-%H%M%S).log"
 
 #echo variables to be picked up later
 echo -e "[$Cyan*$White] Saving Variables for Part 2"
-echo "${Cyan}" >"/install-variables"
-echo "${White}" >>"/install-variables"
-echo "${Red}" >>"/install-variables"
-echo "${root_password}" >>"/install-variables"
-echo "${system_cpu}" >>"/install-variables"
-echo "${system_gpu}" >>"/install-variables"
-echo "${unity_install}" >>"/install-variables"
-echo "${unreal_install}" >>"/install-variables"
-echo "${godot_install}" >>"/install-variables"
-echo "${davinci_install}" >>"/install-variables"
+echo "${Cyan}" >"homedir/install-variables"
+echo "${White}" >>"homedir/install-variables"
+echo "${Red}" >>"homedir/install-variables"
+echo "${system_cpu}" >>"homedir/install-variables"
+echo "${system_gpu}" >>"homedir/install-variables"
+echo "${unity_install}" >>"homedir/install-variables"
+echo "${unreal_install}" >>"homedir/install-variables"
+echo "${godot_install}" >>"homedir/install-variables"
+echo "${davinci_install}" >>"homedir/install-variables"
 
 EOF
 
