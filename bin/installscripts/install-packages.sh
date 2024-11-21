@@ -11,7 +11,6 @@ godot_install=$9
 davinci_install=$10
 root_password=$11
 
-
 # Non-passed-in variables
 package_lists_path=$HOME/bin/installscripts/packages/
 flatpak_lists=(end-user-flatpaks flatpak-runtimes-and-compatibility)
@@ -53,6 +52,7 @@ elif [ "$system_gpu" = "nvidia" ]; then
 else
   echo -e "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing for GPU.${White}"
 fi
+echo -e "[${Cyan}*${White}] Hardware-Specific Install List;"
 for pkg in "${cpu_pkgs[@]}" "${gpu_pkgs[@]}"; do
   echo -e "$root_password\n" | sudo -S -v
   echo "$pkg" | sudo -i tee -a $HOME/bin/installscripts/packages/hardware-specific
@@ -60,22 +60,22 @@ done
 
 # Add options to install lists
 if [ unity_install = y ]; then
-  echo "unityhub" >>./packages/miscellanious
+  echo "unityhub" | sudo -i tee -a $HOME/bin/installscripts/packages/miscellanious
 fi
 if [ unreal_install = y ]; then
-  echo "unreal-engine" >>./packages/miscellanious
+  echo "unreal-engine" | sudo -i tee -a $HOME/bin/installscripts/packages/miscellanious
 fi
 if [ godot_install = y ]; then
-  echo "godot" >>./packages/miscellanious
+  echo "godot" | sudo -i tee -a $HOME/bin/installscripts/packages/miscellanious
 fi
 if [ godot_install = y-mono ]; then
-  echo "godot-mono-bin" >>./packages/miscellanious
+  echo "godot-mono-bin" | sudo -i tee -a $HOME/bin/installscripts/packages/miscellanious
 fi
 if [ davinci_install = y ]; then
-  echo "davinci-resolve" >>./packages/miscellanious
+  echo "davinci-resolve" | sudo -i tee -a $HOME/bin/installscripts/packages/miscellanious
 fi
 if [ davinci_install = y-studio ]; then
-  echo "davinci_resolve-studio" >>./packages/miscellanious
+  echo "davinci_resolve-studio" | sudo -i tee -a $HOME/bin/installscripts/packages/miscellanious
 fi
 
 # Enable multilib for 32-bit support
@@ -106,7 +106,7 @@ for pkglist in "${pacman_lists[@]}"; do
     paru -S --noconfirm "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Package installation failed, Please check the installation logs${White}"
-      echo -e "$pkg - Installation Failed." >> "$LOG"
+      echo "$pkg - Installation Failed." | sudo -i tee -a "$LOG"
       #exit 1
     fi
   done
@@ -118,7 +118,7 @@ for pkglist in "${flatpak_lists[@]}"; do
     flatpak install --noninteractive "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
       echo -e "${Red}[${ERROR}] $pkg Flatpak package installation failed, Please check the installation logs${White}"
-      echo -e "$pkg - Installation Failed." >> "$LOG"
+      echo "$pkg - Installation Failed." | sudo -i tee -a "$LOG"
       #exit 1
     fi
   done
