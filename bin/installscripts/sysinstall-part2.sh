@@ -172,3 +172,5 @@ cd $HOME
 
 echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
 read -r dummy
+
+reboot
