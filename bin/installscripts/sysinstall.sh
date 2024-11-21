@@ -166,6 +166,7 @@ echo ${system_hostname} >/etc/hostname
 echo -e "[${Cyan}*${White}] Installing Grub..."
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB  
 grub-mkconfig -o /boot/grub/grub.cfg
+sed -i "/ExecStart/ c\ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto" /etc/systemd/system/grub-btrfsd.service
 systemctl enable grub-btrfsd
 
 homedir=$( getent passwd "$user_username" | cut -d: -f6 )
