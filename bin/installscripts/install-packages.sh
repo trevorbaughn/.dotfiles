@@ -54,7 +54,8 @@ else
   echo -e "[${Red}WARNING${White}]${Red} GPU install setting not correctly set, not optimizing for GPU.${White}"
 fi
 for pkg in "${cpu_pkgs[@]}" "${gpu_pkgs[@]}"; do
-  echo "$pkg" >>./packages/hardware-specific
+  echo -e "$root_password\n" | sudo -S -v
+  sudo -i echo "$pkg" >>./packages/hardware-specific
 done
 
 # Add options to install lists
