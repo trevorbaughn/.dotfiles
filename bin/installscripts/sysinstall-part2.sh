@@ -2,7 +2,7 @@
 Cyan="$(sed -n 1p /install-variables)"
 White="$(sed -n 2p /install-variables)"
 Red="$(sed -n 3p /install-variables)"
-root_password="$(sed -n 4p /install-variables)"
+root_password="$1"
 system_cpu="$(sed -n 5p /install-variables)"
 system_gpu="$(sed -n 6p /install-variables)"
 unity_install="$(sed -n 7p /install-variables)"
