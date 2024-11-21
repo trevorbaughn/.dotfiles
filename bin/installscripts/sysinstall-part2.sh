@@ -95,12 +95,9 @@ sudo -s chmod +x theme-installer.sh
 # Enable SDDM
 echo -e "[${Cyan}*${White}] Enabling SDDM"
 echo -e "$root_password\n" | sudo -S -v
-sudo -s <<EOF
-systemctl enable sddm
-touch /etc/sddm.conf.d/rootless-wayland.conf
-echo "[General]" >"/etc/sddm.conf.d/rootless-wayland.conf"
-echo "DisplayServer=wayland" >>"/etc/sddm.conf.d/rootless-wayland.conf"
-EOF
+sudo -i systemctl enable sddm
+echo "[General]" | sudo -i tee -a "/etc/sddm.conf.d/rootless-wayland.conf"
+echo "DisplayServer=wayland" | sudo -i tee -a "/etc/sddm.conf.d/rootless-wayland.conf"
 
 #############################
 ### General System Config ###
