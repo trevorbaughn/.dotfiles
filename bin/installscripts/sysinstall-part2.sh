@@ -84,7 +84,7 @@ cd $HOME/bin/installscripts
 echo -e "[${Cyan}*${White}] Installing Packages..."
 echo -e "$root_password\n" | sudo -S -v
 sudo -s chmod +x install-packages.sh
-#./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password}
+./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password}
 
 # Install theme
 echo -e "[${Cyan}*${White}] Installing Theme"
@@ -97,8 +97,14 @@ echo -e "[${Cyan}*${White}] Enabling SDDM"
 echo -e "$root_password\n" | sudo -S -v
 sudo -i systemctl enable sddm
 sudo -i mkdir -p /etc/sddm.conf.d
-echo "[General]" | sudo -i tee -a /etc/sddm.conf.d/rootless-wayland.conf
-echo "DisplayServer=wayland" | sudo -i tee -a /etc/sddm.conf.d/rootless-wayland.conf
+echo "[General]" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo "HaltCommand=/usr/bin/systemctl poweroff" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo "RebootCommand=/usr/bin/systemctl reboot" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo "DisplayServer=wayland" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo "GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo "" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo "[Wayland]" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo "CompositorCommand=Hyprland" | sudo -i tee -a /etc/sddm.conf.d/general.conf
 
 #############################
 ### General System Config ###
