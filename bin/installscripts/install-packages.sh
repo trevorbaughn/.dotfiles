@@ -55,7 +55,7 @@ else
 fi
 for pkg in "${cpu_pkgs[@]}" "${gpu_pkgs[@]}"; do
   echo -e "$root_password\n" | sudo -S -v
-  echo "$pkg" | sudo -i tee $HOME/bin/installscripts/packages/hardware-specific
+  echo "$pkg" | sudo -i tee -a $HOME/bin/installscripts/packages/hardware-specific
 done
 
 # Add options to install lists
