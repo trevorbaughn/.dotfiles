@@ -1,7 +1,7 @@
 # Passed-in variables
-LOG="$1"
-Cyan="$2"
-White="$3"
+LOG=$1
+Cyan=$2
+White=$3
 Red=$4
 system_cpu=$5
 system_gpu=$6
