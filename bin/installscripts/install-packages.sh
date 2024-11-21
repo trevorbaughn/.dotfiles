@@ -1,15 +1,15 @@
 # Passed-in variables
-LOG=$1
-Cyan=$2
-White=$3
-Red=$4
-system_cpu=$5
-system_gpu=$6
-unity_install=$7
-unreal_install=$8
-godot_install=$9
-davinci_install=$10
-root_password=$11
+LOG="leg"
+Cyan=$1
+White=$2
+Red=$3
+system_cpu=$4
+system_gpu=$5
+unity_install=$6
+unreal_install=$7
+godot_install=$8
+davinci_install=$9
+root_password=$10
 
 
 # Non-passed-in variables
