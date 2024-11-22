@@ -84,7 +84,7 @@ cd $HOME/bin/installscripts
 echo -e "[${Cyan}*${White}] Installing Packages..."
 echo -e "$root_password\n" | sudo -S -v
 sudo -s chmod +x install-packages.sh
-./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password}
+#./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password}
 
 # Install theme
 echo -e "[${Cyan}*${White}] Installing Theme"
@@ -95,7 +95,7 @@ sudo -s chmod +x theme-installer.sh
 # Enable SDDM
 echo -e "[${Cyan}*${White}] Enabling SDDM"
 echo -e "$root_password\n" | sudo -S -v
-sudo -i systemctl enable sddm
+#sudo -i systemctl enable sddm
 sudo -i mkdir -p /etc/sddm.conf.d
 echo "[General]" | sudo -i tee -a /etc/sddm.conf.d/general.conf
 echo "HaltCommand=/usr/bin/systemctl poweroff" | sudo -i tee -a /etc/sddm.conf.d/general.conf
@@ -173,4 +173,4 @@ cd $HOME
 echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
 read -r dummy
 
-reboot
+#reboot
