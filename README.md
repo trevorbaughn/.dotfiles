@@ -1,28 +1,19 @@
 # Arch + Hyprland Dotfiles
-# WARNING - INSTALLATION SCRIPT HAS BEEN TESTED AND CURRENTLY DOES NOT FULLY WORK, USE AT YOUR OWN RISK
+## WARNING - INSTALLATION SCRIPT HAS BEEN TESTED AND CURRENTLY DOES NOT FULLY WORK, USE AT YOUR OWN RISK
 
 ## The System
 
 > A full list of packages can be found in [`/bin/installscripts/packages/`](/bin/installscripts/packages).
 
-| -- Key Features -- ||[*]| -- Additional Tools -- ||
-| --- | --- | --- | --- | --- |
-| - English/Japanese Input ||[*]| - Kitty | (Terminal Emulator) |
-| - Timeshift + Rsync | Automatic Btrfs Backups |[*]| - Evolution | (Mail/Calendar/Contacts) |
-| - Gruvbox Themes | Via GTK + QT/KVantum |[*]| - Floorp | (Web Browser) |
-| - Hyprpaper | (Wallpaper Daemon) |[*]| - Neovim w/LazyVim | (IDE) |
-| - Swaylock/Swayidle | (Lock Screen) |[*]| - Unity3D, Unreal Engine 5, Godot | (Game Engines) |
-| - Waybar | (Status Bar) |[*]| - Krita, GIMP, Inkscape | (Art) |
-| - wlogout | (Shutdown GUI) |[*]| - OBS Studio | (Recording) |
-| - Mako | (Notification Daemon) |[*]| - Davinci Resolve | (Video Editing) |
-| - Fuzzel | (Application Launcher) |[*]| - LMMS | (Digital Audio Workstation) |
-| - Hyprshot | (Screenshot Tool) |[*]| - Audacity | (Light Audio Editing) |
-| - Wine, Bottles, Proton | (Compatibility Layers) |[*]| - Obsidian | (Notes) |
-|||[*]| - VLC | (Media Player) |
-|||[*]| - Darktable | (Photo Editing) |
-|||[*]| - ImageLounge | (Image Viewer) |
-|||[*]| - Steam, Lutris | (Gaming) |
-|||[*]| - Vesktop, Element, Slack, Zoom | (Message Clients) |
+### -- Key Features --
+- Hyprland / SDDM / Waybar / Fuzzel
+- Automatic BTRFS Backups Selectable from Grub Boot Menu
+- Gruvbox Material theme (Theme Switcher Coming Soon)
+- Multi-lingual Input
+- Windows Compatibility Layers (Wine, Wine TTK, Bottles, Proton)
+- FOSS First (Exceptions are opt-in on installation)
+- Made for general multimedia, development, and gaming
+- Guided installation
 
 
 ## Pre-Installation
@@ -35,10 +26,6 @@ This installation guide assumes you have already completed the first several ste
 
 Once in the live environment, feel free to set your console font using `setfont <font>` if you'd like.
 If you'd like to see a full list of available fonts, you can run `ls /usr/share/kbd/consolefonts`.  Do not include the first dot or anything past it in the font name when using `setfont`.
-
-
-### (TEMP) Partition and Format Drives
-Partition and format your drives according to [the Arch Installation Guide](https://wiki.archlinux.org/title/Installation_guide#Partition_the_disks).  You must format your drives with Btrfs so that system backups work.
 
 ### Connect to the internet
 For the rest of the installation, an internet connection is needed to install packages.  Please follow the Arch Installation guide to [connect to the internet via Wi-Fi](https://wiki.archlinux.org/title/Installation_guide#Connect_to_the_internet) if you do not have an ethernet connection, which should work automatically.
@@ -53,15 +40,19 @@ In `/etc/pacman.conf`, uncomment the "Include" line under `[multilib]`.
 Optionally uncomment the Include under `ParallelDownloads` towards the top to let Pacman install multiple packages at the same time. 
 
 ## Installation
-To install these dotfiles should be mostly as simple as cloning this repository into your Home directory and running the yet-to-be-documented-or-tested install scripts under `~/bin/installscripts/`.
 
-### ~/bin/installscripts/sysinstall.sh
-Run `chmod +x ~/bin/installscripts/sysinstall.sh` followed by `~/bin/installscripts/sysinstall.sh`.  This should kick off the main installation script, which may take a while.
+Run `curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/sysinstall.sh > sysinstall.sh && chmod +x sysinstall.sh && ./sysinstall.sh` in the live environment.
+
+This should kick off the main installation process.  Answer the prompts accordingly.  You will need to provide your new root password shortly after pacstrap installs the minimal required packages to kickoff the second part of the installation script after a reboot.
+
+The main installation is complete once you reboot once more into the SDDM login screen.  Read on for necessary per-user manual configuration.
 
 ### Configure Hardware & Workspaces
 Create `~/.config/hypr/hardware.conf`.  Configure monitors according to [the Hyprland Wiki](https://wiki.hyprland.org/Configuring/Monitors/). Next, create `~/.config/hypr/workspaces.conf` and make workspaces via [workspace rules](https://wiki.hyprland.org/Configuring/Workspace-Rules/).  If not using AMD, adjust the HARDWARE section of `~/.bashrc` accordingly.
 
-### (OPTIONAL) For weather on the status bar - 
+### (TEMP) For weather on the status bar - 
+If you would like local weather information to appear on the status bar, you will need to create the necessary configuration file manually.
+
 Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
 
 Create `~/.config/waybar/modules/weather/weather_conf.py` and fill in the following;
@@ -81,12 +72,12 @@ While you could simply throw auto-starting applications into `~/.config/hypr/hyp
 ### AUTOSTART EXTRA ###
 #######################
 
-exec-once = $Terminal
+exec-once = kitty ~/bin/system-update.sh
 exec-once = ~/Applications/WebCord-4.10.0-x64.AppImage
 exec-once = flatpak run one.ablaze.floorp
 ```
 
-If you don't want to use this file, then you must remove the source from SOURCES at the top of `~/.config/hypr/hyprland.conf`.
+If you don't want to use this file to autostart anything, then you must remove the source from SOURCES at the top of `~/.config/hypr/hyprland.conf`.
 
 ### Further Configuration
 - [Hyprland Master Tutorial](https://wiki.hyprland.org/Getting-Started/Master-Tutorial/)*
@@ -113,7 +104,9 @@ If you don't want to use this file, then you must remove the source from SOURCES
   - Open terminal in directory of current terminal
 - Add CUPS start when necessary, and to waybar
 - Additional Additions to Install Script/Settings
-  - Add Error Logging
+  - Make all proprietary software opt-in in install script
+  - Simplify manual configuration
+     - Add OpenWeatherMap prompts to installation script
   - Check nvim w/Unity/Unreal?
 
 #### 2.0
