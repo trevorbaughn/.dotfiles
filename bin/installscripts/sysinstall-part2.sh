@@ -95,7 +95,6 @@ sudo -s chmod +x theme-installer.sh
 # Enable SDDM
 echo -e "[${Cyan}*${White}] Enabling SDDM"
 echo -e "$root_password\n" | sudo -S -v
-sudo -i systemctl enable sddm
 sudo -i mkdir -p /etc/sddm.conf.d
 echo "[General]" | sudo -i tee -a /etc/sddm.conf.d/general.conf
 echo "HaltCommand=/usr/bin/systemctl poweroff" | sudo -i tee -a /etc/sddm.conf.d/general.conf
@@ -105,6 +104,7 @@ echo "GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell" | sudo -i tee
 echo "" | sudo -i tee -a /etc/sddm.conf.d/general.conf
 echo "[Wayland]" | sudo -i tee -a /etc/sddm.conf.d/general.conf
 echo "CompositorCommand=Hyprland" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+sudo -i systemctl enable sddm
 
 #############################
 ### General System Config ###
