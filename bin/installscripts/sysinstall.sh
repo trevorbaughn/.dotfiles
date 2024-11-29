@@ -203,9 +203,8 @@ echo "${davinci_install}" >>"/install-variables"
 EOF
 
 echo -e "$Green[*] Installation Part 1 Complete!$White"
-echo -e "[${Cyan}*${White}] Please reboot the system..."
-#echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
-#read -r dummy
+echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
+read -r dummy
 
 # Unmount all partitions and reboot
 umount -R /mnt
