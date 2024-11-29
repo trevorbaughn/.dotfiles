@@ -1,5 +1,4 @@
 # Inject variables
-root_password="$1"
 Cyan="$(sed -n 1p /install-variables)"
 White="$(sed -n 2p /install-variables)"
 Red="$(sed -n 3p /install-variables)"
@@ -12,6 +11,10 @@ davinci_install="$(sed -n 9p /install-variables)"
 
 # Logging
 LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
+
+echo -e "[${Cyan}*${White}] What is your root password?"
+echo -n "root password: "
+read -r root_password
 
 #Ignore history for commands that need password piped in
 export HISTIGNORE='*sudo -S*'
