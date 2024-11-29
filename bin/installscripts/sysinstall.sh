@@ -66,6 +66,18 @@ echo -e "[${Cyan}*${White}] What would you like to set the console font to?"
 echo -n "Font: "
 read -r font
 
+echo -e "[${Cyan}*${White}] Input an OpenWeatherMap API key if you wish for local weather data to be displayed in your status bar. Leave blank for none."
+echo -n "API Key: "
+read -r openweathermap_apikey
+
+if [ -z "$openweathermap_apikey" ]; then
+  echo -e "[${Cyan}*${White}] Not setting up OpenWeatherMap"
+else
+  echo -e "[${Cyan}*${White}] Input an OpenWeatherMap City"
+  echo -n "City Code: "
+  read -r openweathermap_city
+fi
+
 echo -e "[${Cyan}*${White}] Would you like to install Unreal Engine 5?"
 echo -e "[${Cyan}NOTE${White}] It is recommended to ensure the root partition has enough space. ~40GB per engine version should be adequate."
 echo -n "y/n: "
