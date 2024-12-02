@@ -1,13 +1,13 @@
 # Inject variables
-Cyan="$(sed -n 1p /install-variables)"
-White="$(sed -n 2p /install-variables)"
-Red="$(sed -n 3p /install-variables)"
-system_cpu="$(sed -n 4p /install-variables)"
-system_gpu="$(sed -n 5p /install-variables)"
-unity_install="$(sed -n 6p /install-variables)"
-unreal_install="$(sed -n 7p /install-variables)"
-godot_install="$(sed -n 8p /install-variables)"
-davinci_install="$(sed -n 9p /install-variables)"
+Cyan="$(sed -n 0p /install-variables)"
+White="$(sed -n 1p /install-variables)"
+Red="$(sed -n 2p /install-variables)"
+system_cpu="$(sed -n 3p /install-variables)"
+system_gpu="$(sed -n 4p /install-variables)"
+unity_install="$(sed -n 5p /install-variables)"
+unreal_install="$(sed -n 6p /install-variables)"
+godot_install="$(sed -n 7p /install-variables)"
+davinci_install="$(sed -n 8p /install-variables)"
 
 # Logging
 LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
