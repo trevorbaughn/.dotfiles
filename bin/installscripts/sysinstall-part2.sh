@@ -99,14 +99,18 @@ sudo -s chmod +x theme-installer.sh
 echo -e "[${Cyan}*${White}] Enabling SDDM"
 echo -e "$root_password\n" | sudo -S -v
 sudo -i mkdir -p /etc/sddm.conf.d
-echo "[General]" | sudo -i tee -a /etc/sddm.conf.d/general.conf
-echo "HaltCommand=/usr/bin/systemctl poweroff" | sudo -i tee -a /etc/sddm.conf.d/general.conf
-echo "RebootCommand=/usr/bin/systemctl reboot" | sudo -i tee -a /etc/sddm.conf.d/general.conf
-echo "DisplayServer=wayland" | sudo -i tee -a /etc/sddm.conf.d/general.conf
-echo "GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell" | sudo -i tee -a /etc/sddm.conf.d/general.conf
-echo "" | sudo -i tee -a /etc/sddm.conf.d/general.conf
-echo "[Wayland]" | sudo -i tee -a /etc/sddm.conf.d/general.conf
-echo "CompositorCommand=Hyprland" | sudo -i tee -a /etc/sddm.conf.d/general.conf
+echo -e "$root_password\n" | sudo -S -v
+sudo -i tee -a /etc/sddm.conf.d/general.conf > /dev/null <<EOF
+[General]
+HaltCommand=/usr/bin/systemctl poweroff
+RebootCommand=/usr/bin/systemctl reboot
+DisplayServer=wayland
+GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell
+
+[Wayland]
+CompositorCommand=Hyprland
+EOF
+echo -e "$root_password\n" | sudo -S -v
 sudo -i systemctl enable sddm
 
 #############################
