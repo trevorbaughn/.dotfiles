@@ -12,6 +12,9 @@ davinci_install="$(sed -n 8p /install-variables)"
 # Logging
 LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
 
+echo -e "Cyan: $Cyan"
+echo -e "White: $White"
+
 echo -e "[${Cyan}*${White}] What is your root password?"
 echo -n "root password: "
 read -r root_password
@@ -87,7 +90,7 @@ cd $HOME/bin/installscripts
 echo -e "[${Cyan}*${White}] Installing Packages..."
 echo -e "$root_password\n" | sudo -S -v
 sudo -s chmod +x install-packages.sh
-#./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password}
+./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password}
 
 # Install theme
 echo -e "[${Cyan}*${White}] Installing Theme"
