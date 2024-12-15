@@ -102,6 +102,7 @@ makepkg -si
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
 for pkglist in "${pacman_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
+    echo -e "$root_password\n" | sudo -S -v
     echo -e "[${Cyan}*${White}] Installing ${Cyan}$pkg${White}..."
     paru -S --noconfirm "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
@@ -114,6 +115,7 @@ done
 echo -e "[${Cyan}*${White}] Installing Flatpak Packages..."
 for pkglist in "${flatpak_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
+    echo -e "$root_password\n" | sudo -S -v
     echo -e "[${Cyan}*${White}] Installing ${Cyan}$pkg${White}..."
     flatpak install --noninteractive "$pkg" | tee -a "$LOG"
     if [ $? -ne 0 ]; then
