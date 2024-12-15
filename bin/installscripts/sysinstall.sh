@@ -199,6 +199,8 @@ echo "${unity_install}" >>"/install-variables"
 echo "${unreal_install}" >>"/install-variables"
 echo "${godot_install}" >>"/install-variables"
 echo "${davinci_install}" >>"/install-variables"
+echo "${openweathermap_apikey}" >>"/install-variables"
+echo "${openweathermap_city}" >>"/install-variables"
 
 EOF
 
