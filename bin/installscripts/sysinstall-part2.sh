@@ -14,9 +14,6 @@ openweathermap_city="$(sed -n 11p /install-variables)"
 # Logging
 LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
 
-echo -e "Cyan: $Cyan"
-echo -e "White: $White"
-
 echo -e "[${Cyan}*${White}] What is your root password?"
 echo -n "root password: "
 read -r root_password
