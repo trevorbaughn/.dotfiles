@@ -14,7 +14,7 @@ root_password=$11
 # Non-passed-in variables
 package_lists_path=$HOME/bin/installscripts/packages/
 flatpak_lists=(end-user-flatpaks flatpak-runtimes-and-compatibility)
-pacman_lists=(cli-tools audio fonts themes programming-languages desktop-environment hardware-specific)
+pacman_lists=(cli-tools fonts themes programming-languages desktop-environment hardware-specific audio)
 
 #Ignore history for commands that need password piped in
 export HISTIGNORE='*sudo -S*'
