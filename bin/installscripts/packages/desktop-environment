@@ -23,6 +23,7 @@ openssh
 pipewire-v4l2
 polkit-kde-agent
 realtime-privileges
+sddm-git
 sshd
 steam
 strawberry
