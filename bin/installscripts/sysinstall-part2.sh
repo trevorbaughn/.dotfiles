@@ -171,6 +171,7 @@ else
 city_id = $openweathermap_city
 api_key = $openweathermap_apikey
 EOF
+sudo -i chmod a+x $HOME/.config/waybar/modules/weather/weather_conf.py
 fi
 
 # File Chooser
