@@ -129,7 +129,6 @@ arch-chroot /mnt /bin/bash <<EOF
 
 # Start & Enable NetworkManager for internet
 echo -e "[${Cyan}*${White}] Starting & Enabling NetworkManager Daemon"
-systemctl start NetworkManager
 systemctl enable NetworkManager
 
 # Set the system time zone and clock
