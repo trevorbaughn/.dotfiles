@@ -145,12 +145,14 @@ mkdir -vm 776 $HOME/Applications/
 echo -e "[${Cyan}*${White}] Installing Wine TKG"
 cd $HOME/Applications
 git clone https://github.com/Frogging-Family/wine-tkg-git.git
+ls
 cd wine-tkg-git
 makepkg -si
 
 # MIME
 echo -e "[${Cyan}*${White}] Configuring MIMEs..."
-xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+echo -e "$root_password\n" | sudo -S -v
+sudo -i xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
 # Enable Misc. Daemons
 echo -e "[${Cyan}*${White}] Start/Enabling sshd and fstrim.timer daemons..."
@@ -170,6 +172,7 @@ amixer sset Headphone unmute
 # https://wiki.archlinux.org/title/Gaming#Increase_vm.max_map_count
 echo -e "[${Cyan}*${White}] Increasing vm.max_map_count to 2147483642 for game compatibility"
 echo -e "$root_password\n" | sudo -S -v
+sudo -i touch /etc/systcl.d
 sudo -s echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
 
 # Setting up OpenWeatherMap for Waybar 
