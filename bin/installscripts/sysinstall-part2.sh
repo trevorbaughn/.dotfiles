@@ -82,6 +82,19 @@ mv $HOME/.git $HOME/.dotfiles
 rm -rf .dotfiles
 EOF
 
+# Set Hardware-specific environment variables in .bashrc
+if [ "$system_gpu" = "amd" ]; then
+  sudo -i tee -a $HOME/.bashrc > /dev/null <<EOF
+
+################
+### HARDWARE ###
+################
+
+export DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1=1
+export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
+EOF
+fi
+
 # Switch to installscript directory
 cd $HOME/bin/installscripts
 
