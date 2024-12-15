@@ -39,6 +39,11 @@ Instructions [here on the Arch Installation Guide](https://wiki.archlinux.org/ti
 In `/etc/pacman.conf`, uncomment the "Include" line under `[multilib]`.  
 Optionally uncomment the Include under `ParallelDownloads` towards the top to let Pacman install multiple packages at the same time. 
 
+### For weather on the status bar - 
+If you would like local weather information to appear on the status bar, you will need an OpenWeatherMap API key.  You will be asked to provide this during the main installation process, though it is not required.
+
+Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
+
 ## Installation
 
 Run `curl -L https://raw.githubusercontent.com/trevorbaughn/.dotfiles/refs/heads/master/bin/installscripts/sysinstall.sh > sysinstall.sh && chmod +x sysinstall.sh && ./sysinstall.sh` in the live environment.
@@ -49,19 +54,6 @@ The main installation is complete once you reboot once more into the SDDM login 
 
 ### Configure Hardware & Workspaces
 Create `~/.config/hypr/hardware.conf`.  Configure monitors according to [the Hyprland Wiki](https://wiki.hyprland.org/Configuring/Monitors/). Next, create `~/.config/hypr/workspaces.conf` and make workspaces via [workspace rules](https://wiki.hyprland.org/Configuring/Workspace-Rules/).  If not using AMD, adjust the HARDWARE section of `~/.bashrc` accordingly.
-
-### (TEMP) For weather on the status bar - 
-If you would like local weather information to appear on the status bar, you will need to create the necessary configuration file manually.
-
-Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
-
-Create `~/.config/waybar/modules/weather/weather_conf.py` and fill in the following;
-```
-# OpenWeatherMap API and City ID
-city_id = <7-digit city ID on OpenWeatherMap>
-api_key = "<API Key from OpenWeatherMap>"
-```
-Once saved, run `chmod a+x ~/.config/waybar/modules/weather/weather_conf.py` to finish enabling weather on the status bar.
 
 ## Extra Configuration
 
