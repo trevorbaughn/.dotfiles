@@ -8,6 +8,8 @@ unity_install="$(sed -n 5p /install-variables)"
 unreal_install="$(sed -n 6p /install-variables)"
 godot_install="$(sed -n 7p /install-variables)"
 davinci_install="$(sed -n 8p /install-variables)"
+openweathermap_apikey="$(sed -n 9p /install-variables)"
+openweathermap_city="$(sed -n 10p /install-variables)"
 
 # Logging
 LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
@@ -158,6 +160,18 @@ amixer sset Headphone unmute
 echo -e "[${Cyan}*${White}] Increasing vm.max_map_count to 2147483642 for game compatibility"
 echo -e "$root_password\n" | sudo -S -v
 sudo -s echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
+
+# Setting up OpenWeatherMap for Waybar 
+if [ -z "$openweathermap_apikey" ]; then
+  echo -e "[${Cyan}*${White}] Not setting up OpenWeatherMap"
+else
+  echo -e "[${Cyan}*${White}] Setting up OpenWeatherMap"
+  sudo -i tee -a $HOME/.config/waybar/modules/weather/weather_conf.py > /dev/null <<EOF
+# OpenWeatherMap API and City ID
+city_id = $openweathermap_city
+api_key = $openweathermap_apikey
+EOF
+fi
 
 # File Chooser
 echo -e "[${Cyan}*${White}] Setting file chooser startup-mode to cwd"
