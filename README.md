@@ -53,7 +53,7 @@ This should kick off the main installation process.  Answer the prompts accordin
 The main installation is complete once you reboot once more into the SDDM login screen.  Read on for necessary per-user manual configuration.
 
 ### Configure Hardware & Workspaces
-Create `~/.config/hypr/hardware.conf`.  Configure monitors according to [the Hyprland Wiki](https://wiki.hyprland.org/Configuring/Monitors/). Next, create `~/.config/hypr/workspaces.conf` and make workspaces via [workspace rules](https://wiki.hyprland.org/Configuring/Workspace-Rules/).  If not using AMD, adjust the HARDWARE section of `~/.bashrc` accordingly.
+Create `~/.config/hypr/hardware.conf`.  Configure monitors according to [the Hyprland Wiki](https://wiki.hyprland.org/Configuring/Monitors/). Next, create `~/.config/hypr/workspaces.conf` and make workspaces via [workspace rules](https://wiki.hyprland.org/Configuring/Workspace-Rules/).
 
 ## Extra Configuration
 
@@ -98,7 +98,6 @@ If you don't want to use this file to autostart anything, then you must remove t
 - Additional Additions to Install Script/Settings
   - Make all proprietary software opt-in in install script
   - Simplify manual configuration
-     - Add OpenWeatherMap prompts to installation script
   - Check nvim w/Unity/Unreal?
 
 #### 2.0
@@ -107,7 +106,6 @@ If you don't want to use this file to autostart anything, then you must remove t
 - Add accelerated video decoding
 - Performance Mode Switcher
   - Pro Audio support w/JACK (semi-there)
-  - Setup Gamescope & Better Gaming Optimization
 - Modular Theme Switcher
   - Add Everforest?
 
