@@ -84,6 +84,7 @@ EOF
 
 # Set Hardware-specific environment variables in .bashrc
 if [ "$system_gpu" = "amd" ]; then
+  echo -e "$root_password\n" | sudo -S -v
   sudo -i tee -a $HOME/.bashrc > /dev/null <<EOF
 
 ################
