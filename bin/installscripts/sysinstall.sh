@@ -142,7 +142,7 @@ timedatectl set-ntp true #Set ntp for time syncing
 
 # Locale & Keyboard layout
 echo -e "[${Cyan}*${White}] Setting Locale & Keyboard Layout"
-echo "en_US.UTF-8 UTF-8" >/etc/locale.gen
+sed -i 's/^# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 echo "ja_JP.UTF-8 UTF-8" >>/etc/locale.gen
 locale-gen
 localectl set-keymap --no-convert ${system_keymap}
