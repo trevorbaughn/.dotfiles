@@ -160,6 +160,7 @@ echo -e "$root_password\n" | sudo -S -v
 sudo -i <<EOF
 systemctl enable sshd         #SSH
 systemctl enable fstrim.timer #SSD Periodic (weekly) Trim
+systemctl enable cups.socket  #Daemon that starts cups.service when needed, but not until then (for printing)
 EOF
 
 # Unmute ALSA
