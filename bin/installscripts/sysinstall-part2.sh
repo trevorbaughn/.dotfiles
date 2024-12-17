@@ -99,11 +99,18 @@ fi
 # Switch to installscript directory
 cd $HOME/bin/installscripts
 
+# Setup multi-language support
+echo -e "[${Cyan}*${White}] Setting up multi-language support"
+kb_layouts=us,jp #TODO:get other kb_layouts here and add them to comma-delineated list here
+echo -e "$root_password\n" | sudo -S -v
+sudo -i sed -i "/^kb_layout = us/ c\kb_layout = $kb_layouts" $HOME/.config/hypr/hyprland.conf
+language_lists=( jp-language-support ) #TODO: make possible to add automatically
+
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Packages..."
 echo -e "$root_password\n" | sudo -S -v
 sudo -s chmod +x install-packages.sh
-./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password}
+./install-packages.sh ${LOG} ${Cyan} ${White} ${Red} ${system_cpu} ${system_gpu} ${unity_install} ${unreal_install} ${godot_install} ${davinci_install} ${root_password} ${language_lists}
 
 # Install theme
 echo -e "[${Cyan}*${White}] Installing Theme"
