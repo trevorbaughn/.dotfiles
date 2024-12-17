@@ -10,6 +10,7 @@ unreal_install=$8
 godot_install=$9
 davinci_install=$10
 root_password=$11
+language_lists=$12
 
 # Non-passed-in variables
 package_lists_path=$HOME/bin/installscripts/packages/
@@ -101,6 +102,19 @@ makepkg -si
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
 for pkglist in "${pacman_lists[@]}"; do
+  for pkg in $(cat $package_lists_path$pkglist); do
+    echo -e "$root_password\n" | sudo -S -v
+    echo -e "[${Cyan}*${White}] Installing ${Cyan}$pkg${White}..."
+    paru -S --noconfirm "$pkg" | tee -a "$LOG"
+    if [ $? -ne 0 ]; then
+      echo -e "${Red}[${ERROR}] $pkg Package installation failed, Please check the installation logs${White}"
+      echo "$pkg - Installation Failed." | sudo -i tee -a "$LOG"
+      #exit 1
+    fi
+  done
+done
+# Install languages in language_lists
+for pkglist in "${language_lists[@]}"; do
   for pkg in $(cat $package_lists_path$pkglist); do
     echo -e "$root_password\n" | sudo -S -v
     echo -e "[${Cyan}*${White}] Installing ${Cyan}$pkg${White}..."
