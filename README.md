@@ -91,10 +91,9 @@ If you don't want to use this file to autostart anything, then you must remove t
   - Gruvbox GTK & Kvantum Themes
   - Krita Kvantum overrides
   - Element Gruvbox
-- Fix Japanese Keyboard
+- Better Multi-language support
 - Add Hotkeys
   - Open terminal in directory of current terminal
-- Add CUPS start when necessary, and to waybar
 - Additional Additions to Install Script/Settings
   - Make all proprietary software opt-in in install script
   - Simplify manual configuration
