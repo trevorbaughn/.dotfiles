@@ -35,3 +35,14 @@ PERL_MB_OPT="--install_base \"/home/$(whoami)/perl5\""
 export PERL_MB_OPT
 PERL_MM_OPT="INSTALL_BASE=/home/$(whoami)/perl5"
 export PERL_MM_OPT
+
+################
+### LANGUAGE ###
+################
+
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+
+
+
