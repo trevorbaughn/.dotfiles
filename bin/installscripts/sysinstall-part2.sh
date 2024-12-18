@@ -100,24 +100,17 @@ fi
 
 # Setup multi-language support
 echo -e "[${Cyan}*${White}] Setting up multi-language support"
-keyboard_layouts=us $keyboard_layouts
 keyboard_layouts=($keyboard_layouts)
+kb_layouts=us
 keyboard_layout_variants=($keyboard_layout_variants)
 for layout in "${keyboard_layouts[@]}"; do
-  kb_layouts=$kb_layouts,$layout
-  language_lists=$language_lists ${layout}-language-support #add language-specific package-lists
+  kb_layouts="$kb_layouts,$layout"
+  language_lists="$language_lists ${layout}-language-support" #add language-specific package-lists
 done
 language_lists=($language_lists)
 echo -e "$root_password\n" | sudo -S -v
-sudo -i sed -i "/^kb_layout = us/ c\kb_layout = $kb_layouts" $HOME/.config/hypr/hyprland.conf
-sudo -i sed -i "/^kb_variant = qwerty/ c\kb_layout = $keyboard_layout_variants" $HOME/.config/hypr/hyprland.conf
-
-vim -e -sc 'g/^\s*#en_US.UTF-8/s/#//'
-for locale in "${locales[@]}"; do
-  #sed -i "/${locale}/s/^#//g" /etc/locale.gen
-  vim -e -sc 'g/^\s*#${locale}/s/#//' -cx /etc/locale.gen
-done
-locale-gen
+sudo -i sed -i "/^    kb_layout = us/ c\    kb_layout = ${kb_layouts}" $HOME/.config/hypr/hyprland.conf
+sudo -i sed -i "/^    kb_variant = qwerty/ c\    kb_variant = ${keyboard_layout_variants}" $HOME/.config/hypr/hyprland.conf
 
 # Switch to installscript directory
 cd $HOME/bin/installscripts
