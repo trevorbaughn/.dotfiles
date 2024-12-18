@@ -61,6 +61,20 @@ echo -e "[${Cyan}NOTE${White}] It is recommended to use an equal amount of SWAP 
 echo -n "SWAP: "
 read -r swap
 
+echo -e "[${Cyan}*${White}] Please input whichever locales you would like to use in a space-dileneated list. 'en_US.UTF-8' is included by default. Leave blank for none."
+echo -n "Locales: "
+read -r locales
+
+echo -e "[${Cyan}*${White}] Please input whichever keyboard layouts you would like to use in a space-dileneated list. 'us' is included by default. Leave blank for none."
+echo -n "Keyboard Layouts: "
+read -r keyboard_layouts
+
+echo -e "[${Cyan}*${White}] Please input whichever keyboard layout variants in a comma-delineated list in the same order as the keyboard layouts listed above, but starting with the variant for 'us'.  If you would wish to use the default variant for a layout, put a space."
+echo -e "[${Cyan}NOTE${White}] 'qwerty' is the typical variant for 'us' keyboards."
+echo -e "[${Cyan}EXAMPLE${White}] So if the layouts above were listed as 'jp de', then 'qwerty, , ' would list the variants for 'us, jp, de' in order."
+echo -n "Keyboard Layout Variants: "
+read -r keyboard_layout_variants
+
 ls /usr/share/kbd/consolefonts/
 echo -e "[${Cyan}*${White}] What would you like to set the console font to?"
 echo -n "Font: "
@@ -143,6 +157,7 @@ timedatectl set-ntp true #Set ntp for time syncing
 # Locale & Keyboard layout
 echo -e "[${Cyan}*${White}] Setting Locale & Keyboard Layout"
 sed -i 's/^# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+for 
 echo "ja_JP.UTF-8 UTF-8" >>/etc/locale.gen
 locale-gen
 localectl set-keymap --no-convert ${system_keymap}
@@ -200,7 +215,8 @@ echo "${godot_install}" >>"/install-variables"
 echo "${davinci_install}" >>"/install-variables"
 echo "${openweathermap_apikey}" >>"/install-variables"
 echo "${openweathermap_city}" >>"/install-variables"
-
+echo "${keyboard_layouts}" >>"/install-variables"
+echo "${keyboard_layout_variants}" >>"/install-variables"
 EOF
 
 echo -e "$Green[*] Installation Part 1 Complete!$White"
