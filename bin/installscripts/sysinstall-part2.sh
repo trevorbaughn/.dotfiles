@@ -10,6 +10,8 @@ godot_install="$(sed -n 8p /install-variables)"
 davinci_install="$(sed -n 9p /install-variables)"
 openweathermap_apikey="$(sed -n 10p /install-variables)"
 openweathermap_city="$(sed -n 11p /install-variables)"
+keyboard_layouts="$(sed -n 12p /install-variables)"
+keyboard_layout_variants="$(sed -n 13p /install-variables)"
 
 # Logging
 LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
@@ -101,10 +103,17 @@ cd $HOME/bin/installscripts
 
 # Setup multi-language support
 echo -e "[${Cyan}*${White}] Setting up multi-language support"
-kb_layouts=us,jp #TODO:get other kb_layouts here and add them to comma-delineated list here
+keyboard_layouts=us $keyboard_layouts
+keyboard_layouts=($keyboard_layouts)
+keyboard_layout_variants=($keyboard_layout_variants)
+for layout in "${keyboard_layouts[@]}"; do
+  kb_layouts=$kb_layouts,$layout
+  language_lists=$language_lists ${layout}-language-support #add language-specific package-lists
+done
+language_lists=($language_lists)
 echo -e "$root_password\n" | sudo -S -v
 sudo -i sed -i "/^kb_layout = us/ c\kb_layout = $kb_layouts" $HOME/.config/hypr/hyprland.conf
-language_lists=( jp-language-support ) #TODO: make possible to add automatically
+sudo -i sed -i "/^kb_variant = qwerty/ c\kb_layout = $keyboard_layout_variants" $HOME/.config/hypr/hyprland.conf
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Packages..."
