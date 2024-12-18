@@ -143,7 +143,7 @@ GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell
 CompositorCommand=Hyprland
 EOF
 echo -e "$root_password\n" | sudo -S -v
-sudo -i systemctl enable sddm
+#sudo -i systemctl enable sddm
 
 #############################
 ### General System Config ###
