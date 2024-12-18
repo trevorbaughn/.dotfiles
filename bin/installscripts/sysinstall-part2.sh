@@ -98,9 +98,6 @@ export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/v
 EOF
 fi
 
-# Switch to installscript directory
-cd $HOME/bin/installscripts
-
 # Setup multi-language support
 echo -e "[${Cyan}*${White}] Setting up multi-language support"
 keyboard_layouts=us $keyboard_layouts
@@ -114,6 +111,9 @@ language_lists=($language_lists)
 echo -e "$root_password\n" | sudo -S -v
 sudo -i sed -i "/^kb_layout = us/ c\kb_layout = $kb_layouts" $HOME/.config/hypr/hyprland.conf
 sudo -i sed -i "/^kb_variant = qwerty/ c\kb_layout = $keyboard_layout_variants" $HOME/.config/hypr/hyprland.conf
+
+# Switch to installscript directory
+cd $HOME/bin/installscripts
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Packages..."
