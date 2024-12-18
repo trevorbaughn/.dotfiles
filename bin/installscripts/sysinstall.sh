@@ -65,7 +65,7 @@ echo -e "[${Cyan}*${White}] Please input whichever locales you would like to use
 echo -n "Locales: "
 read -r locales
 
-echo -e "[${Cyan}*${White}] Please input whichever keyboard layouts you would like to use in a space-dileneated list. 'us' is included by default. Leave blank for none."
+echo -e "[${Cyan}*${White}] Please input whichever keyboard layouts you would like to use in a space-dileneated list. 'us' is included by default, do NOT include it. Leave blank for none."
 echo -n "Keyboard Layouts: "
 read -r keyboard_layouts
 
