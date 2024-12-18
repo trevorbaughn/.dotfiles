@@ -164,12 +164,6 @@ timedatectl set-ntp true #Set ntp for time syncing
 
 # Locale & Keyboard layout
 echo -e "[${Cyan}*${White}] Setting Locale & Keyboard Layout"
-#sed -i '/en_US.UTF-8/s/^#//g' /etc/locale.gen
-vim -e -sc 'g/^\s*#en_US.UTF-8/s/#//' -cx /etc/locale.gen
-for locale in "${locales[@]}"; do
-  #sed -i "/${locale}/s/^#//g" /etc/locale.gen
-  vim -e -sc 'g/^\s*#${locale}/s/#//' -cx /etc/locale.gen
-done
 locale-gen
 localectl set-keymap --no-convert ${system_keymap}
 echo "${system_keymap}" >/etc/vconsole.conf
