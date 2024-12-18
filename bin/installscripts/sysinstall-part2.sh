@@ -132,7 +132,7 @@ echo -e "[${Cyan}*${White}] Enabling SDDM"
 echo -e "$root_password\n" | sudo -S -v
 sudo -i mkdir -p /etc/sddm.conf.d
 echo -e "$root_password\n" | sudo -S -v
-sudo -i tee -a /etc/sddm.conf.d/general.conf > /dev/null <<EOF
+sudo -i tee /etc/sddm.conf.d/general.conf > /dev/null <<EOF
 [General]
 HaltCommand=/usr/bin/systemctl poweroff
 RebootCommand=/usr/bin/systemctl reboot
@@ -162,13 +162,20 @@ echo -e "[${Cyan}*${White}] Installing Wine TKG"
 cd $HOME/Applications
 git clone https://github.com/Frogging-Family/wine-tkg-git.git
 ls
-cd wine-tkg-git
+cd wine-tkg-git/wine-tkg-git
 makepkg -si
 
 # MIME
 echo -e "[${Cyan}*${White}] Configuring MIMEs..."
 echo -e "$root_password\n" | sudo -S -v
 sudo -i xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+
+# SSH
+echo -e "$root_password\n" | sudo -S -v
+sudo -i mkdir -p /etc/ssh/sshd_config.d
+sudo -i tee /etc/ssh/sshd_config.d/20-deny_root.conf > /dev/null <<EOF
+PermitRootLogin no
+EOF
 
 # Enable Misc. Daemons
 echo -e "[${Cyan}*${White}] Start/Enabling sshd and fstrim.timer daemons..."
@@ -190,14 +197,16 @@ amixer sset Headphone unmute
 echo -e "[${Cyan}*${White}] Increasing vm.max_map_count to 2147483642 for game compatibility"
 echo -e "$root_password\n" | sudo -S -v
 sudo -i touch /etc/systcl.d
-sudo -s echo "vm.max_map_count = 2147483642" >/etc/systcl.d/80-gamecompatibility.conf
+sudo -s tee -a /etc/systcl.d/80-gamecompatibility.conf > /dev/null <<EOF
+vm.max_map_count = 2147483642
+EOF
 
 # Setting up OpenWeatherMap for Waybar 
 if [ -z "$openweathermap_apikey" ]; then
   echo -e "[${Cyan}*${White}] Not setting up OpenWeatherMap"
 else
   echo -e "[${Cyan}*${White}] Setting up OpenWeatherMap"
-  sudo -i tee -a $HOME/.config/waybar/modules/weather/weather_conf.py > /dev/null <<EOF
+  sudo -i tee $HOME/.config/waybar/modules/weather/weather_conf.py > /dev/null <<EOF
 # OpenWeatherMap API and City ID
 city_id = $openweathermap_city
 api_key = $openweathermap_apikey
