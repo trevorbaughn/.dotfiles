@@ -137,6 +137,14 @@ pacstrap -K /mnt $base_pkgs
 echo -e "[${Cyan}*${White}] Generating Fstab file"
 genfstab -U /mnt >>/mnt/etc/fstab
 
+echo -e "LANguAGe"
+sed -i '/en_US.UTF-8/s/^#//g' /mnt/etc/locale.gen
+#vim -e -sc 'g/^\s*#en_US.UTF-8/s/#//'
+for locale in "${locales[@]}"; do
+  sed -i "/${locale}/s/^#//g" /mnt/etc/locale.gen
+  #vim -e -sc 'g/^\s*#${locale}/s/#//'
+done
+
 # Chroot into the system
 echo -e "[${Cyan}*${White}] Chroot-ing into the system..."
 arch-chroot /mnt /bin/bash <<EOF
