@@ -90,6 +90,10 @@ If you don't want to use this file to autostart anything, then you must remove t
   - Krita Kvantum overrides
   - Element Gruvbox
 - Better Multi-language support
+  - Fix iBus autostart
+- Hibernation support
+- Fix weather integration
+- chmod all over the place
 - Add Hotkeys
   - Open terminal in directory of current terminal
 - Additional Additions to Install Script/Settings
