@@ -112,6 +112,13 @@ echo -e "$root_password\n" | sudo -S -v
 sudo -i sed -i "/^kb_layout = us/ c\kb_layout = $kb_layouts" $HOME/.config/hypr/hyprland.conf
 sudo -i sed -i "/^kb_variant = qwerty/ c\kb_layout = $keyboard_layout_variants" $HOME/.config/hypr/hyprland.conf
 
+vim -e -sc 'g/^\s*#en_US.UTF-8/s/#//'
+for locale in "${locales[@]}"; do
+  #sed -i "/${locale}/s/^#//g" /etc/locale.gen
+  vim -e -sc 'g/^\s*#${locale}/s/#//' -cx /etc/locale.gen
+done
+locale-gen
+
 # Switch to installscript directory
 cd $HOME/bin/installscripts
 
