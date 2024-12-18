@@ -1,6 +1,5 @@
 # Arch + Hyprland Dotfiles
-## WARNING - INSTALLATION SCRIPT HAS BEEN TESTED AND CURRENTLY DOES NOT FULLY WORK, USE AT YOUR OWN RISK
-
+#### WARNING - INSTALLATION SCRIPT HAS BEEN TESTED AND CURRENTLY DOES NOT FULLY WORK, USE AT YOUR OWN RISK
 ## The System
 
 > A full list of packages can be found in [`/bin/installscripts/packages/`](/bin/installscripts/packages).
@@ -21,12 +20,6 @@
 ### Boot the live environment
 This installation guide assumes you have already completed the first several steps of the [Arch Installation guide](https://wiki.archlinux.org/title/Installation_guide), up to having [booted the live environment](https://wiki.archlinux.org/title/Installation_guide#Boot_the_live_environment).
 
-### (OPTIONAL) Set the console font
-> [!NOTE] The console is _not_ the terminal.  The console appears for logging in on boot.
-
-Once in the live environment, feel free to set your console font using `setfont <font>` if you'd like.
-If you'd like to see a full list of available fonts, you can run `ls /usr/share/kbd/consolefonts`.  Do not include the first dot or anything past it in the font name when using `setfont`.
-
 ### Connect to the internet
 For the rest of the installation, an internet connection is needed to install packages.  Please follow the Arch Installation guide to [connect to the internet via Wi-Fi](https://wiki.archlinux.org/title/Installation_guide#Connect_to_the_internet) if you do not have an ethernet connection, which should work automatically.
 
@@ -39,10 +32,16 @@ Instructions [here on the Arch Installation Guide](https://wiki.archlinux.org/ti
 In `/etc/pacman.conf`, uncomment the "Include" line under `[multilib]`.  
 Optionally uncomment the Include under `ParallelDownloads` towards the top to let Pacman install multiple packages at the same time. 
 
-### For weather on the status bar - 
+### (OPTIONAL) For weather on the status bar - 
 If you would like local weather information to appear on the status bar, you will need an OpenWeatherMap API key.  You will be asked to provide this during the main installation process, though it is not required.
 
 Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API Key for One Call API 3.0.  Feel free to limit the calls per day to 1000 so that you do not get charged anything if you wish.
+
+### (OPTIONAL) For multi-language support -
+You will need to know which locales to generate.  These are listed in the file, `/etc/locale.gen`.  Do `vim /etc/locale.gen` to see which options exist.
+> [!NOTE] While you could uncomment the locales you want here yourself, the script will ask anyways later.  If you do though, it will not be overwritten.
+
+Additionally, you will need to know which xkb keyboard layout and variants to use.  Refer to [the Arch Wiki page](https://wiki.archlinux.org/title/Xorg/Keyboard_configuration) for more details.
 
 ## Installation
 
@@ -81,7 +80,6 @@ If you don't want to use this file to autostart anything, then you must remove t
 - [Arch - Network Configuration](https://wiki.archlinux.org/title/Network_configuration)
 
 *Most settings are configured by the installation script.
-
 **A reasonable amount of settings are configured by the installation script.
 
 # TODO:
