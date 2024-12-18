@@ -41,7 +41,7 @@ Make an account on [OpenWeatherMap](https://openweathermap.org/) and get an API 
 You will need to know which locales to generate.  These are listed in the file, `/etc/locale.gen`.  Do `vim /etc/locale.gen` to see which options exist.
 > [!NOTE] While you could uncomment the locales you want here yourself, the script will ask anyways later.  If you do though, it will not be overwritten.
 
-Additionally, you will need to know which xkb keyboard layout and variants to use.  Refer to [the Arch Wiki page](https://wiki.archlinux.org/title/Xorg/Keyboard_configuration) for more details.
+Additionally, you will need to know which xkb keyboard layout and variants to use during the installation process.  Refer to [the Arch Wiki page](https://wiki.archlinux.org/title/Xorg/Keyboard_configuration) for more details.
 
 ## Installation
 
