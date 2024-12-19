@@ -127,6 +127,11 @@ echo -e "$root_password\n" | sudo -S -v
 sudo -s chmod +x theme-installer.sh
 #./theme-installer.sh ${LOG} ${Cyan} ${White} ${Red}
 
+# Update permissions (Might be bad?)
+echo -e "$root_password\n" | sudo -S -v
+sudo -i find $HOME/.var -type d -exec chmod 755 {} +
+sudo -i find $HOME/.var -type f -exec chmod 644 {} +
+
 # Enable SDDM
 echo -e "[${Cyan}*${White}] Enabling SDDM"
 echo -e "$root_password\n" | sudo -S -v
