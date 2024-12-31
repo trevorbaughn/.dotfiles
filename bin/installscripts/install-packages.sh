@@ -144,3 +144,11 @@ done
 echo -e "[${Cyan}*${White}] Updating packages..."
 echo -e "$root_password\n" | sudo -S -v
 sudo paru -Syu
+
+# Wine TKG
+echo -e "[${Cyan}*${White}] Installing Wine TKG"
+cd $HOME/Applications
+git clone https://github.com/Frogging-Family/wine-tkg-git.git
+ls
+cd wine-tkg-git/wine-tkg-git
+makepkg -si --noconfirm
