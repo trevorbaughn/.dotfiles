@@ -162,14 +162,6 @@ mkdir -vm 776 $HOME/Art/
 mkdir -vm 776 $HOME/Projects/
 mkdir -vm 776 $HOME/Applications/
 
-# Wine TKG
-echo -e "[${Cyan}*${White}] Installing Wine TKG"
-cd $HOME/Applications
-git clone https://github.com/Frogging-Family/wine-tkg-git.git
-ls
-cd wine-tkg-git/wine-tkg-git
-makepkg -si --noconfirm
-
 # MIME
 echo -e "[${Cyan}*${White}] Configuring MIMEs..."
 echo -e "$root_password\n" | sudo -S -v
