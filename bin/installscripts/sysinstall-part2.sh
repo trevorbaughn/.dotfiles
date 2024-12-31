@@ -18,7 +18,7 @@ LOG="sysinstall-part2-$(date +%d-%H%M%S).log"
 
 echo -e "[${Cyan}*${White}] What is your root password?"
 echo -n "root password: "
-read -r root_password
+read -r -s root_password
 
 #Ignore history for commands that need password piped in
 export HISTIGNORE='*sudo -S*'
