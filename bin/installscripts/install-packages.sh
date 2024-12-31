@@ -97,7 +97,7 @@ echo -e "$root_password\n" | sudo -S -v
 sudo -i pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd $HOME/aur/paru
-makepkg -si
+makepkg -si --noconfirm
 
 # Install packages
 echo -e "[${Cyan}*${White}] Installing Pacman + AUR Packages..."
