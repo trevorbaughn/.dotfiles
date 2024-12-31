@@ -168,7 +168,7 @@ cd $HOME/Applications
 git clone https://github.com/Frogging-Family/wine-tkg-git.git
 ls
 cd wine-tkg-git/wine-tkg-git
-makepkg -si
+makepkg -si --noconfirm
 
 # MIME
 echo -e "[${Cyan}*${White}] Configuring MIMEs..."
