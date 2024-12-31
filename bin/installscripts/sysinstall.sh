@@ -45,10 +45,12 @@ read -r user_username
 echo -e "[${Cyan}*${White}] What will your admin user's password be?"
 echo -n "password: "
 read -r -s user_password
+echo -n ""
 
 echo -e "[${Cyan}*${White}] What will your root password be?"
 echo -n "root password: "
 read -r -s root_password
+echo -n ""
 
 lsblk
 echo -e "[${Cyan}*${White}] What drive would you like to install on?"
