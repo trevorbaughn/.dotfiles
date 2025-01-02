@@ -230,9 +230,9 @@ if [ unreal_install = y ]; then
   sudo -s chmod -R a+rwX /opt/unreal-engine/Engine
 fi
 
-cd $HOME
-
 rm /install-variables
+
+cd $HOME
 
 echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
 read -r dummy
