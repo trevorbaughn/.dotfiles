@@ -232,6 +232,8 @@ fi
 
 cd $HOME
 
+rm /install-variables
+
 echo -e "[${Cyan}*${White}] Press Enter to Reboot..."
 read -r dummy
 
