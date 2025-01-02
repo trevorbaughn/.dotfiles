@@ -54,8 +54,8 @@ read -r -s root_password
 echo -n "
 "
 
-lsblk
 echo -e "[${Cyan}*${White}] What drive would you like to install on?"
+lsblk
 echo -e "[${Red}WARNING${White}] ALL ORIGINAL DATA ON THE SELECTED DRIVE WILL BE LOST"
 echo -n "/dev/"
 read -r device
