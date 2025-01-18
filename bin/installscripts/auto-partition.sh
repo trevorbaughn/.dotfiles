@@ -50,7 +50,7 @@ for i in $(seq 1 3); do
 done
 
 echo -e "[${Cyan}*${White}] Creating FAT32 filesystem for boot"
-mkfs.fat -F32 /dev/$boot_partition
+mkfs.fat -F 32 /dev/$boot_partition
 
 echo -e "[${Cyan}*${White}] Creating BTRFS filesystem for root"
 mkfs.btrfs -f /dev/$root_partition
