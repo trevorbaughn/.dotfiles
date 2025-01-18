@@ -9,7 +9,7 @@ swap=$7
 
 # Format drive and wipe filesystems
 sgdisk -Z /dev/$device
-wipefs -a /dev/$device*
+wipefs -af /dev/$device*
 
 # Create Partitions
 if [ $(cat /sys/firmware/efi/fw_platform_size) -eq 64 ]; then
