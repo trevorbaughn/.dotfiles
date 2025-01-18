@@ -41,6 +41,7 @@ sgdisk -n 0:0:0 -t 0:8300 -c 0:root /dev/$device # root partition
 for i in $(seq 1 3); do
   if [ "$(lsblk -dno PARTLABEL /dev/$device$i)" = "boot" ]; then
     boot_partition=$device$i
+    echo $boot_partition
   elif [ "$(lsblk -dno PARTLABEL /dev/$device$i)" = "swap" ]; then
     swap_partition=$device$i
   elif [ "$(lsblk -dno PARTLABEL /dev/$device$i)" = "root" ]; then
