@@ -1,0 +1,24 @@
+[user]
+	name = Trevor Baughn
+	email = trevor.baughn@protonmail.com
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[diff]
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+	algorithm = histogram
+[init]
+	defaultBranch = main
+[tag]
+	sort = version:refname
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
