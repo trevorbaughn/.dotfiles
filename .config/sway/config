@@ -12,7 +12,8 @@ set $right l
 # Applications
 set $term foot
 set $menu wmenu-run
-set $webbrowser librewolf
+set $file-explorer "$term ranger"
+set $web-browser librewolf
 
 ### Output configuration
 #
@@ -66,13 +67,16 @@ output DP-2 resolution 1680x1050 position 3840,0
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+q kill
+    bindsym $mod+c kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    # Start file explorer
+    bindsym $mod+e exec $file-explorer
+
     # Start a web browser
-    bindsym $mod+w exec $webbrowser
+    bindsym $mod+w exec $web-browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -148,8 +152,8 @@ output DP-2 resolution 1680x1050 position 3840,0
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+o layout tabbed
+    bindsym $mod+p layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
