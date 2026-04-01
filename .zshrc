@@ -7,5 +7,9 @@ fi
 
 source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 
+if [ -f ~/.bash_profile ]; then
+	. ~/.bash_profile;
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
