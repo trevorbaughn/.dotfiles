@@ -3,3 +3,5 @@ background-color=#282828
 text-color=#bdae93
 border-color=#fe8019
 border-radius=20
+[urgency=high]
+border-color=#fab387
