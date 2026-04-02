@@ -6,6 +6,8 @@ PACKAGES=(
 	"swaylock",
 	"swayidle",
 	"nemo",
+	"mako",
+	"waybar",
 	"flatpak",
 	"kvantum",
 	"kvantum-qt5",
@@ -15,6 +17,9 @@ PACKAGES=(
 	"qt6-base",
 	"gtk3",
 	"gtk4",
+	"lmms",
+	"ardour",
+	"ranger",
 )
 
 AUR_PACKAGES=(
@@ -27,6 +32,7 @@ AUR_PACKAGES=(
 	"adwaita-qt5-git",
 	"qadwaita-decorations-qt5",
 	"qadwaita-decorations-qt6",
+	"godot-mono",
 )
 
 FLATPAK_PACKAGES=(
