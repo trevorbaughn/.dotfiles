@@ -74,6 +74,15 @@ done
 echo "GSettings..."
 
 gsettings set org.gtk.Settings.FileChooser startup-mode cwd
+gsettings set org.cinnamon.desktop.default-applications.terminal exec foot
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
+# Temp have the flatpak overrides here
+flatpak override --user --env=KRITA_NO_STYLE_OVERRIDE=1 org.kde.krita
+flatpak override --user --filesystem=$HOME/.themes
+flatpak override --user --filesystem=$HOME/.local/share/icons
+flatpak override --user --filesystem=xdg-config/gtk-4.0
+flatpak override --user --env=QT_STYLE_OVERRIDE=kvantum --filesystem=xdg-config/Kvantum:ro
 
 #temp hardcoded... hopefully can get lxappearance working
 gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Orange-Dark-Medium
