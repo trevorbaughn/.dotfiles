@@ -14,7 +14,3 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=gtk3
-export QT_WAYLAND_DECORATION=adwaita
-export GTK_THEME=Gruvbox-Orange-Dark-Medium

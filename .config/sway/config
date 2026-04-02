@@ -12,7 +12,7 @@ set $right l
 # Applications
 set $term foot
 set $menu wmenu-run
-set $file-explorer "$term ranger"
+set $file-explorer nemo
 set $web-browser librewolf
 
 ### Output configuration
