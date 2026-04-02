@@ -1,6 +1,7 @@
-### Variables
-
-# Logo key. Use Mod1 for Alt.
+#------------------------------------------------------------
+# Variables:
+#------------------------------------------------------------
+# Logo key, use Mod1 for Alt
 set $mod Mod4
 
 # Home row direction keys, like vim
@@ -11,36 +12,37 @@ set $right l
 
 # Applications
 set $term foot
-set $menu wmenu-run
+set $app-launcher wmenu-run
 set $file-explorer nemo
 set $web-browser librewolf
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#------------------------------------------------------------
+# Output configuration:
+#------------------------------------------------------------
+# NOTE: Get names of outputs with: swaymsg -t get_outputs.
+
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
+
 output DP-1 resolution 1920x1080 position 0,0
 output HDMI-A-1 resolution 1920x1080 position 1920,0
 output DP-2 resolution 1680x1050 position 3840,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Idle configuration
- exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+#------------------------------------------------------------
+# Idle configuration:
+#------------------------------------------------------------
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-### Input configuration
-#
-# Example configuration:
-#
+    exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -c 000000'
+
+#------------------------------------------------------------
+# Input configuration:
+#------------------------------------------------------------
+
 #   input type:touchpad {
 #       dwt enabled
 #       tap enabled
@@ -55,24 +57,21 @@ output DP-2 resolution 1680x1050 position 3840,0
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 
-### Key bindings
-#
+
+
+#############################################################
+### KEY BINDINGS ############################################
+#############################################################
+
+#------------------------------------------------------------
 # Basics:
-#
-    # Start a terminal
+#------------------------------------------------------------
+
     bindsym $mod+Return exec $term
-
-    # Kill focused window
-    bindsym $mod+q kill
-
-    # Start your launcher
-    bindsym $mod+d exec $menu
-
-    # Start file explorer
+    bindsym $mod+d exec $app-launcher
     bindsym $mod+e exec $file-explorer
-
-    # Start a web browser
     bindsym $mod+w exec $web-browser
+    bindsym $mod+q kill
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -86,9 +85,11 @@ output DP-2 resolution 1680x1050 position 3840,0
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
+
+#------------------------------------------------------------
 # Moving around:
-#
+#------------------------------------------------------------
+
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -110,9 +111,11 @@ output DP-2 resolution 1680x1050 position 3840,0
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
-#
+
+#------------------------------------------------------------
 # Workspaces:
-#
+#------------------------------------------------------------
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -137,9 +140,11 @@ output DP-2 resolution 1680x1050 position 3840,0
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-#
+
+#------------------------------------------------------------
 # Layout stuff:
-#
+#------------------------------------------------------------
+
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
@@ -162,11 +167,10 @@ output DP-2 resolution 1680x1050 position 3840,0
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
-#
+
+#------------------------------------------------------------
 # Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+#------------------------------------------------------------
 
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
@@ -174,14 +178,12 @@ output DP-2 resolution 1680x1050 position 3840,0
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
+
+#------------------------------------------------------------
 # Resizing containers:
-#
+#------------------------------------------------------------
+
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
@@ -198,9 +200,11 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-#
-# Utilities:
-#
+
+#------------------------------------------------------------
+# Utilities: 
+#------------------------------------------------------------
+
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
@@ -212,14 +216,16 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
 
-#
+#------------------------------------------------------------
 # Desktop Environment Autorun
-#
-exec mako
+#------------------------------------------------------------
 
-#
+    exec mako
+
+#------------------------------------------------------------
 # Status Bar:
-#
+#------------------------------------------------------------
+
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
