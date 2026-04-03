@@ -21,7 +21,7 @@ set $web-browser librewolf
 #------------------------------------------------------------
 # NOTE: Get names of outputs with: swaymsg -t get_outputs.
 
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Pictures/Wallpapers/thewallpaper.png fill
 
 output DP-1 resolution 1920x1080 position 0,0
 output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -226,19 +226,23 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #------------------------------------------------------------
 
-# Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+     swaybar_command waybar
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+#    position top
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
 }
+
+client.focused #d65d0e #d65d0e #ffffff
 
 include /etc/sway/config.d/*

@@ -3,6 +3,7 @@
 echo "Installing Packages..."
 
 PACKAGES=(
+	"swaybg",
 	"swaylock",
 	"swayidle",
 	"nemo",

@@ -1,133 +1,265 @@
- {
-  "reload_style_on_change": true,
-  "margin-top": 5,
-  "layer": "bottom",
-  "position": "top",
-  "height": 28,
-  "spacing": 5,
-  "modules-left":  ["hyprland/workspaces",
-                    "network",
-                    "temperature", 
-                    "cpu",
-                    "memory"],
-  "modules-center":["hyprland/window"],
-  "modules-right": ["gamemode",
-                    "idle_inhibitor",
-                    "hyprland/language",
-                    "pulseaudio",
-                    "tray",
-                    "custom/weather",
-                    "clock",
-                    "custom/power"],
-  
-  "network": {
-    "interval": 5,
-    "format-wifi": "    {essid} ({signalStrength}%) ",
-    "format-ethernet": "   {ifname}: {ipaddr}/{cidr} ",
-    "format-disconnected": "  ⚠  Disconnected  ",
-    "tooltip": false,
-  },
+// Config adapted from https://github.com/flakmoppen/sway-gruvbox/tree/main/.config/waybar
 
-  "cpu": { 
-    "interval": 10, 
-    "format": "  CPU: {usage}%" 
-  },
+{
+    "layer": "top",
+    "position": "top",
 
-  "temperature": {
-    "critical-threshold": 79,
-    "interval": 4,
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": [
-        "",
-        "",
-        "",
-        "",
-        ""
+    "modules-left": [
+        "sway/workspaces",
+        "custom/arrow-right#workspaces",
+        "sway/mode",
+        "sway/window",
     ],
-    "tooltip": true
-  },
+    "modules-center": [
+        "sway/scratchpad",
+        "custom/arrow-left#day",
+        "clock#day",
+        "custom/arrow-left#time",
+        "clock#time",
+        "custom/arrow-right#time",
+        "clock#date",
+        "custom/arrow-right#date",
+        "sway/scratchpad#invisible",
+    ],
+    "modules-right": [
+        "tray",
+        "custom/arrow-left#backlight",
+        "backlight",
+        "custom/arrow-left#network",
+        "network",
+        "custom/arrow-left#audio",
+        "pulseaudio",
+        "custom/arrow-left#battery",
+        "battery",
+    ],
 
-  "memory": {
-    "interval": 30,
-    "format": "  RAM: {used:0.1f}/{total:0.1f}GiB ({percentage}%)  "
-  },
+    "fixed-center": true,
 
-  "hyprland/window": {
-    "format": "{title}"
-  },
 
-  "gamemode": {
-    "format": "{glyph}",
-    "format-alt": "{glyph} {count}",
-    "glyph": "f",
-    "hide-not-running": true,
-    "use-icon": true,
-    "icon-name": "input-gaming-symbolic",
-    "icon-spacing": 4,
-    "icon-size": 20,
-    "tooltip": true,
-    "tooltip-format": "Games running: {count}"
-  },
+//      MODULES CONFIGURATION
+//      ---------------------
 
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "\uf06e",
-      "deactivated": "\uf070"
-    }
-  },
- 
-  "hyprland/language": {
-		"format": " {}",
-    "format-en": " US",
-    "format-ja": " JP",
-		"min-length": 5,
-		"on-click": "hyprctl switchxkblayout semico-usb-keyboard next",
-		"tooltip": false
-	},
 
-  "pulseaudio": {
-    "format": " {icon}  {volume}% ",
-    "format-icons": {
-      "default": ["\uf026", "\uf027", "\uf028"]
+//-----	LEFT MODULES: -----
+
+    "sway/workspaces": {
+        "format": "{icon}",
+        "disable-scroll": false,
+        "smooth-scrolling-threshold": 1,
+        "enable-bar-scroll": true,
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "urgent": "",
+            "focused": "󰁊",
+            "default": "",
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+        },
     },
-    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click": "pkill pavucontrol || pavucontrol",
-    "format-muted": "\uf00d {volume}%"
-  },
 
-  "tray": {
-    "icon-size": 20,
-    "spacing": 10
-  },
-  
-  "custom/weather": {
-    "format": "{}",
-    "format-alt": "{alt}",
-    "format-alt-click": "click-right",
-    "interval": 1800,
-    "return-type": "json",
-    "exec": "~/.config/waybar/modules/weather/weather.py",
-    "exec-if": "ping openweathermap.org -c1",
-    "signal": 8
-  },
-
-  "clock": {
-    "interval": 30,
-    "format": "  {:%e %b %Y, %H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b>{}</b></span>"
-      }
+    "sway/mode": {
+        "format": "{}:",
+        "tooltip": false,
     },
-    "on-click": "pkill 'evolution' || org.gnome.Evolution && pkill 'evolution'"
-  },
 
-  "custom/power": {
-		"format": " ",
-		"on-click": "wlogout"
-	},
- 
+    "sway/window": {
+        "format": {},
+        "max-length": 45,
+        "tooltip": false,
+        "rewrite": {
+            "(.*) - Ablaze Floorp": "$1",
+        }
+    },
+
+
+//-----	CENTER MODULES: -----
+
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": true,
+        "format-icons": ["󰙏", "󰙏"],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "clock#day": {
+        "format": "{:%A}",
+        "tooltip-format": "Vecka: {:%V}",
+    },
+
+    "clock#time": {
+        "timezone": "America/Los_Angeles",
+        "tooltip-format": "<big>{:%Z %z}</big>\n<small>Pacific Time</small>",
+    },
+
+    "clock#date": {
+        "format": "{:%m-%d-%Y}",
+        "tooltip-format": "<big>{calendar}</big>",
+    },
+
+    "sway/scratchpad#invisible": {
+        "format": "{icon} {count}",
+        "show-empty": true,
+        "format-icons": ["󰙏", "󰙏"],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+
+//-----	RIGHT MODULES: -----
+
+    "tray": {
+        "spacing": 8
+    },
+
+    "backlight": {
+        "format": "{icon}",
+        "format-icons": [
+//            "", // nf-weather-moon_new
+//            "", // nf-weather-moon_alt_waxing_gibbous_6
+            "", // ..
+            "",
+            "",
+//            "",
+            "", // nf-weather-moon_alt_waxing_gibbous_1
+            "", // nf-weather-moon_alt_first_quarter
+            "", // nf-weather-moon_alt_waxing_crescent_6
+//            "", // ..
+            "",
+            "",
+//            "",
+            "", // nf-weather-moon_alt_waxing_crescent_1
+            ""  // nf-weather-moon_full
+        ],
+        "tooltip-format": "{percent}%",
+    },
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
+        "format-disabled": "⚠",
+        "format-disconnected": "󰤮",
+        "tooltip-format": "{ipaddr}",
+        "tooltip-format-wifi": "{ipaddr} via {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Not connected",
+        "tooltip-format-disabled": "Not abled",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "on-click-middle": "hostname -i | wl-copy -on",
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "󰖁 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "tooltip-format": "{volume}%",
+        "on-click": "pavucontrol",
+    },
+
+    "battery": {
+        "format-full": "󰁹",
+        "tooltip-format-full": "Full",
+
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+        ],
+        "format": "{icon}",
+        "tooltip-format-discharging": "Time to empty: {time}\nCurrently at: {capacity}%",
+
+        "states": {
+            "below10": 10,
+            "below20": 20,
+            "below30": 30,
+            "below40": 40,
+            "below50": 50,
+            "below60": 60,
+            "below70": 70,
+            "below80": 80,
+            "below90": 90,
+            "below100": 100,
+        },
+        "format-charging-below10": "󰢟",
+        "format-charging-below20": "󰢜",
+        "format-charging-below30": "󰂆",
+        "format-charging-below40": "󰂇",
+        "format-charging-below50": "󰂈",
+        "format-charging-below60": "󰢝",
+        "format-charging-below70": "󰂉",
+        "format-charging-below80": "󰢞",
+        "format-charging-below90": "󰂊",
+        "format-charging-below100": "󰂋",
+        "tooltip-format-charging": "Time to full: {time}\nCurrently at: {capacity}%",
+    },
+
+
+//	ARROWS
+//	------
+
+    "custom/arrow-right#workspaces": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/arrow-right#time": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/arrow-right#date": {
+        "format": "",
+        "tooltip": false,
+    },
+
+    "custom/arrow-left#day": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/arrow-left#time": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/arrow-left#backlight": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/arrow-left#network": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/arrow-left#audio": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/arrow-left#battery": {
+        "format": "",
+        "tooltip": false,
+    },
 }
