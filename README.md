@@ -6,7 +6,7 @@ My daily-driving dotfiles for gaming and development.
 - Installation Script Included!
 
 ## Installation
-This installation guide assumes you have already completed the [CachyOS Installation](https://wiki.archlinux.org/title/Installation_guide) with Sway selected for the desktop environment.
+This installation guide assumes you have already completed the [CachyOS Installation](https://wiki.cachyos.org/cachyos_basic/download/) with Sway selected for the desktop environment.
 
 ### Run the installation script -
 > WARNING: This installation script has yet to be tested.  It may be a better idea to manually execute what is listed inside.
