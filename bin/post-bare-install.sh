@@ -18,9 +18,9 @@ PACKAGES=(
 	"qt6-base",
 	"gtk3",
 	"gtk4",
-	"lmms",
-	"ardour",
+	"pro-audio",
 	"ranger",
+	"tldr"
 )
 
 AUR_PACKAGES=(
@@ -34,6 +34,7 @@ AUR_PACKAGES=(
 	"qadwaita-decorations-qt5",
 	"qadwaita-decorations-qt6",
 	"godot-mono",
+	"librewolf-bin"
 )
 
 FLATPAK_PACKAGES=(
@@ -54,7 +55,9 @@ FLATPAK_PACKAGES=(
 	"im.riot.Riot",
 	"com.vscodium.codium",
 	"md.obsidian.Obsidian",
-	"us.zoom.Zoom"
+	"us.zoom.Zoom",
+	"org.gnome.Evolution",
+	"org.darktable.Darktable",
 )
 
 for PACKAGE in "${PACKAGES[@]}"; do
@@ -85,7 +88,7 @@ flatpak override --user --filesystem=$HOME/.local/share/icons
 flatpak override --user --filesystem=xdg-config/gtk-4.0
 flatpak override --user --env=QT_STYLE_OVERRIDE=kvantum --filesystem=xdg-config/Kvantum:ro
 
-#temp hardcoded... hopefully can get lxappearance working
+#temp hardcoded... hopefully can get lxappearance working eventually
 gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Orange-Dark-Medium
 gsettings set org.gnome.desktop.interface icon-theme Gruvbox-Dark
 
