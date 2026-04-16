@@ -12,7 +12,7 @@ set $right l
 
 # Applications
 set $term foot
-set $app-launcher wmenu-run
+set $app-launcher "wmenu-run -S d65d0e"
 set $file-explorer nemo
 set $web-browser librewolf
 
@@ -228,21 +228,8 @@ bindsym $mod+r mode "resize"
 
 bar {
      swaybar_command waybar
-
-
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
 }
 
-client.focused #d65d0e #d65d0e #ffffff
+client.focused #d65d0e #d65d0e #ffffff #d65d0e #d65d0e
 
 include /etc/sway/config.d/*
