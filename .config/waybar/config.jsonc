@@ -1,6 +1,7 @@
 // Config adapted from https://github.com/flakmoppen/sway-gruvbox/tree/main/.config/waybar
 
 {
+    "reload_style_on_change": true,
     "layer": "top",
     "position": "top",
 
@@ -23,8 +24,8 @@
     ],
     "modules-right": [
         "tray",
-        "custom/arrow-left#backlight",
-        "backlight",
+        "custom/arrow-left#idle_inhibitor",
+        "idle_inhibitor",
         "custom/arrow-left#network",
         "network",
         "custom/arrow-left#audio",
@@ -52,6 +53,8 @@
             "2": "",
             "3": "",
             "4": "",
+            "5": "",
+            "6": "",
             "urgent": "",
             "focused": "󰁊",
             "default": "",
@@ -61,6 +64,8 @@
             "2": [],
             "3": [],
             "4": [],
+            "5": [],
+            "6": [],
         },
     },
 
@@ -91,7 +96,7 @@
 
     "clock#day": {
         "format": "{:%A}",
-        "tooltip-format": "Vecka: {:%V}",
+        "tooltip-format": "Week: {:%V}",
     },
 
     "clock#time": {
@@ -119,27 +124,14 @@
         "spacing": 8
     },
 
-    "backlight": {
+    "idle_inhibitor": {
         "format": "{icon}",
-        "format-icons": [
-//            "", // nf-weather-moon_new
-//            "", // nf-weather-moon_alt_waxing_gibbous_6
-            "", // ..
-            "",
-            "",
-//            "",
-            "", // nf-weather-moon_alt_waxing_gibbous_1
-            "", // nf-weather-moon_alt_first_quarter
-            "", // nf-weather-moon_alt_waxing_crescent_6
-//            "", // ..
-            "",
-            "",
-//            "",
-            "", // nf-weather-moon_alt_waxing_crescent_1
-            ""  // nf-weather-moon_full
-        ],
-        "tooltip-format": "{percent}%",
+        "format-icons": {
+            "activated": "\uf06e",
+            "deactivated": "\uf070"
+        }
     },
+
 
     "network": {
         "format": "{ifname}",
@@ -151,7 +143,7 @@
         "tooltip-format-wifi": "{ipaddr} via {essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ipaddr}/{cidr}",
         "tooltip-format-disconnected": "Not connected",
-        "tooltip-format-disabled": "Not abled",
+        "tooltip-format-disabled": "Not enbled",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "on-click-middle": "hostname -i | wl-copy -on",
     },
@@ -246,7 +238,7 @@
         "format": "",
         "tooltip": false,
     },
-    "custom/arrow-left#backlight": {
+    "custom/arrow-left#idle_inhibitor": {
         "format": "",
         "tooltip": false,
     },

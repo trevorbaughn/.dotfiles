@@ -85,7 +85,7 @@
 @define-color day               @orange1;
 @define-color time              @orange2;
 @define-color date              @orange1;
-@define-color backlight         @bg-gray;
+@define-color idle_inhibitor    @bg-gray;
 @define-color network           @bg4;
 @define-color audio             @bg3;
 @define-color battery           @bg2;
@@ -234,8 +234,8 @@ widget label,
     -gtk-icon-effect: highlight;
 }
 
-#backlight {
-    background-color: @backlight;
+#idle_inhibitor {
+    background-color: @idle_inhibitor;
 }
 
 #network {
@@ -289,10 +289,10 @@ widget label,
 }
 #custom-arrow-left.network {
     color: @network;
-    background-color: @backlight;
+    background-color: @idle_inhibitor;
 }
-#custom-arrow-left.backlight {
-    color: @backlight;
+#custom-arrow-left.idle_inhibitor {
+    color: @idle_inhibitor;
     background-color: transparent;
 }
 #custom-arrow-left.time {

@@ -16,24 +16,19 @@ Run the installation script by running `sudo chmod +x ~/bin/post-bare-install.sh
 ## To-Do:
 > NOTE: These dotfiles are a constant work-in-progress.  The items listed below are not guaranteed to be added anytime soon.
 - Waybar
-    - Idle Inhibitor
     - wlogout
     - CPU load
     - RAM load
     - Language
 - Neovim transparent bg
-- Write this README better
 - Add calculator
 - Add more screenshot / recording bindings
-- Theme app launcher
-- Fix workspace numbers
 - Integrate Gammastep
 - TMUX for remote SSH sessions
 - Adjust GTK Icons
 - QT Flatpak consistent theming
 
 ### Possibly To-Do?:
-- Floating Nemo
 - Theme lock screen
 - Guided installer
 - Waybar (2nd bar on bottom?)
