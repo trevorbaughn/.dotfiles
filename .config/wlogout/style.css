@@ -1,0 +1,84 @@
+/*
+
+██╗    ██╗██╗      ██████╗  ██████╗  ██████╗ ██╗   ██╗████████╗
+██║    ██║██║     ██╔═══██╗██╔════╝ ██╔═══██╗██║   ██║╚══██╔══╝
+██║ █╗ ██║██║     ██║   ██║██║  ███╗██║   ██║██║   ██║   ██║   
+██║███╗██║██║     ██║   ██║██║   ██║██║   ██║██║   ██║   ██║   
+╚███╔███╔╝███████╗╚██████╔╝╚██████╔╝╚██████╔╝╚██████╔╝   ██║   
+ ╚══╝╚══╝ ╚══════╝ ╚═════╝  ╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   
+
+Original WLogout Config File by Arfan Zubi
+Modified by Trevor Baughn
+
+*/
+
+window {
+    color: #D3C6AA;
+    background-color: rgba(45, 53, 59, 0.7);
+    font-family: 'FiraCode Nerd Font', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+button {
+    margin: 5px;
+    color: #D3C6AA;
+    background-color: #272E33;
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 5px solid #D3C6AA;
+    border-radius: 15px;
+    box-shadow: none;
+    text-shadow: none;
+    opacity: 0.9;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:focus, button:active, button:hover {
+    color: #ebdbb2;
+    background-color: #d65d0e;
+    text-shadow: none;
+}
+
+#lock {
+    background-image: image(url("./icons/lock.png"));
+}
+#lock:hover, #lock:focus {
+    background-image: image(url("./icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+}
+#logout:hover, #logout:focus {
+    background-image: image(url("./icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("./icons/suspend.png"));
+}
+#suspend:hover, #suspend:focus {
+    background-image: image(url("./icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate.png"));
+}
+#hibernate:hover, #hibernate:focus {
+    background-image: image(url("./icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("./icons/shutdown.png"));
+}
+#shutdown:hover, #shutdown:focus {
+    background-image: image(url("./icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/reboot.png"));
+}
+#reboot:hover, #reboot:focus {
+    background-image: image(url("./icons/reboot.png"));
+}

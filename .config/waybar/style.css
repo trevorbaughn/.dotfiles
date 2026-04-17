@@ -234,6 +234,10 @@ widget label,
     -gtk-icon-effect: highlight;
 }
 
+#language {
+    background-color: @idle_inhibitor;
+}
+
 #idle_inhibitor {
     background-color: @idle_inhibitor;
 }
@@ -254,6 +258,10 @@ widget label,
 }
 #battery.discharging {
     background: linear-gradient(to right, @battery 30%, @alert);
+}
+
+#custom-power {
+  background-color: @battery;
 }
 
 

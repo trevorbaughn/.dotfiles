@@ -16,10 +16,9 @@ Run the installation script by running `sudo chmod +x ~/bin/post-bare-install.sh
 ## To-Do:
 > NOTE: These dotfiles are a constant work-in-progress.  The items listed below are not guaranteed to be added anytime soon.
 - Waybar
-    - wlogout
     - CPU load
     - RAM load
-    - Language
+    - Language (partial complete)
 - Neovim transparent bg
 - Add calculator
 - Add more screenshot / recording bindings

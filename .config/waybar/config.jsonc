@@ -26,12 +26,14 @@
         "tray",
         "custom/arrow-left#idle_inhibitor",
         "idle_inhibitor",
+        "sway/language",
         "custom/arrow-left#network",
         "network",
         "custom/arrow-left#audio",
         "pulseaudio",
         "custom/arrow-left#battery",
         "battery",
+        "custom/power"
     ],
 
     "fixed-center": true,
@@ -132,6 +134,10 @@
         }
     },
 
+    "sway/language": {
+		"format": " {short}_{shortDescription}",
+	},
+
 
     "network": {
         "format": "{ifname}",
@@ -212,6 +218,11 @@
         "format-charging-below100": "󰂋",
         "tooltip-format-charging": "Time to full: {time}\nCurrently at: {capacity}%",
     },
+
+    "custom/power": {
+		"format": " ",
+		"on-click": "wlogout"
+	},
 
 
 //	ARROWS
