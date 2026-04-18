@@ -9,6 +9,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+export GRIMSHOT_FILENAME_FORMAT="$(date --iso-8601=ns | tr ':' -)"
+
 # Better defaults
 alias ls='ls -a --color=auto'
 #alias grep='grep --color=auto'

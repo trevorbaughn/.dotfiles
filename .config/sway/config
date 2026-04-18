@@ -209,6 +209,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bindsym $mod+Ctrl+h resize shrink width 20px
+bindsym $mod+Ctrl+l resize grow width 20px
+bindsym $mod+Ctrl+j resize shrink height 20px
+bindsym $mod+Ctrl+k resize grow height 20px
+
 #------------------------------------------------------------
 # Utilities: 
 #------------------------------------------------------------
@@ -218,18 +223,26 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
+
+    # Special key to take screenshots with grimshot
+    bindsym Print exec grimshot savecopy anything "$HOME/Pictures/Screenshots/$(date --iso-8601=ns | tr ':' -)"
+
+    # Special key for a colorpicker
+    bindsym $mod+Ctrl+c exec grimpicker -c
 
 #------------------------------------------------------------
 # Desktop Environment Autorun
 #------------------------------------------------------------
 
-    exec mako
-    exec fcitx5
+    exec_always mako
+    exec_always fcitx5
+    exec_always gammastep -l manual -t 6500:3500
+    exec_always wl-paste --type text --watch cliphist store
+    exec_always wl-paste --type image --watch cliphist store
 
 #------------------------------------------------------------
 # Status Bar:

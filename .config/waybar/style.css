@@ -234,10 +234,6 @@ widget label,
     -gtk-icon-effect: highlight;
 }
 
-#language {
-    background-color: @idle_inhibitor;
-}
-
 #idle_inhibitor {
     background-color: @idle_inhibitor;
 }

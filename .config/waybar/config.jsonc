@@ -26,7 +26,6 @@
         "tray",
         "custom/arrow-left#idle_inhibitor",
         "idle_inhibitor",
-        "sway/language",
         "custom/arrow-left#network",
         "network",
         "custom/arrow-left#audio",
@@ -134,12 +133,6 @@
         }
     },
 
-    "sway/language": {
-		"format": "{flag} {shortDescription}_{short}",
-        "on-click": "sway input type:keyboard xkb_switch_layout next && unset LANG && localectl set-locale LANG={shortDescription}_{short}.UTF-8 && source /etc/profile.d/locale.sh",
-	},
-
-
     "network": {
         "format": "{ifname}",
         "format-wifi": "{icon}",
@@ -241,7 +234,6 @@
         "format": "",
         "tooltip": false,
     },
-
     "custom/arrow-left#day": {
         "format": "",
         "tooltip": false,

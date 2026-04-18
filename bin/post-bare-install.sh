@@ -24,7 +24,10 @@ PACKAGES=(
 	"colordiff",
 	"atop",
 	"fcitx5-im",
-	"fcitx5-mozc"
+	"fcitx5-mozc",
+	"sway-contrib",
+	"cliphist",
+	"tmux",
 )
 
 AUR_PACKAGES=(
@@ -86,6 +89,8 @@ for PACKAGE in "${FLATPAK_PACKAGES[@]}"; do
 	echo "INSTALLING: ${PACKAGE}"
 	flatpak install --noninteractive "$PACKAGE"
 done
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "Cloning Dotfiles"
 cd $HOME
