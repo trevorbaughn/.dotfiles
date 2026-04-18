@@ -20,7 +20,6 @@ Run the installation script by running `sudo chmod +x ~/bin/post-bare-install.sh
     - RAM load
 - Neovim transparent bg
 - Add calculator
-- TMUX for remote SSH sessions
 - Adjust GTK Icons
 - QT Flatpak consistent theming
 
