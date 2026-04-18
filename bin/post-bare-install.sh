@@ -20,7 +20,11 @@ PACKAGES=(
 	"gtk4",
 	"pro-audio",
 	"ranger",
-	"tldr"
+	"tldr",
+	"colordiff",
+	"atop",
+	"fcitx5-im",
+	"fcitx5-mozc"
 )
 
 AUR_PACKAGES=(
@@ -34,7 +38,15 @@ AUR_PACKAGES=(
 	"qadwaita-decorations-qt5",
 	"qadwaita-decorations-qt6",
 	"godot-mono",
-	"librewolf-bin"
+	"librewolf-bin",
+	"all-repository-fonts",
+	"ttf-google-fonts-git",
+	"tex-gyre-math-fonts",
+	"ttf-hanazono",
+	"ttf-koruri",
+	"ttf-monapo",
+	"ttf-mplus-git",
+	"ttf-kanjistrokeorders"
 )
 
 FLATPAK_PACKAGES=(
@@ -75,6 +87,15 @@ for PACKAGE in "${FLATPAK_PACKAGES[@]}"; do
 	flatpak install --noninteractive "$PACKAGE"
 done
 
+echo "Cloning Dotfiles"
+cd $HOME
+cd ..
+git clone https://github.com/trevorbaughn/.dotfiles.git
+shopt -s dotglob
+cp -R .dotfiles/* $HOME
+mv $HOME/.git $HOME/.dotfiles
+
+
 echo "GSettings..."
 
 gsettings set org.gtk.Settings.FileChooser startup-mode cwd
@@ -91,5 +112,12 @@ flatpak override --user --env=QT_STYLE_OVERRIDE=kvantum --filesystem=xdg-config/
 #temp hardcoded... hopefully can get lxappearance working eventually
 gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Orange-Dark-Medium
 gsettings set org.gnome.desktop.interface icon-theme Gruvbox-Dark
+
+
+echo "Languages"
+sudo sed -i '/ja_JP.UTF-8 UTF-8/s/^#//g' /etc/locale.gen
+sudo sed -i '/en_US.UTF-8 UTF-8/s/^#//g' /etc/locale.gen
+locale-gen
+
 
 echo "Done!"

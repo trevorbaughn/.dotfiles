@@ -135,7 +135,8 @@
     },
 
     "sway/language": {
-		"format": " {short}_{shortDescription}",
+		"format": "{flag} {shortDescription}_{short}",
+        "on-click": "sway input type:keyboard xkb_switch_layout next && unset LANG && localectl set-locale LANG={shortDescription}_{short}.UTF-8 && source /etc/profile.d/locale.sh",
 	},
 
 

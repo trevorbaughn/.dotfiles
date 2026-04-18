@@ -50,9 +50,9 @@ output DP-2 resolution 1680x1050 position 3840,0
 #       middle_emulation enabled
 #   }
 #
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
+   input type:keyboard {
+       xkb_layout "us,jp"
+   }
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
@@ -229,6 +229,7 @@ bindsym $mod+r mode "resize"
 #------------------------------------------------------------
 
     exec mako
+    exec fcitx5
 
 #------------------------------------------------------------
 # Status Bar:
