@@ -18,6 +18,8 @@ Run the installation script by running `sudo chmod +x ~/bin/post-bare-install.sh
 - Waybar
     - CPU load
     - RAM load
+    - Bluetooth
+    - Mic Mute
 - Neovim transparent bg
 - Add calculator
 - Adjust GTK Icons
@@ -33,6 +35,6 @@ Run the installation script by running `sudo chmod +x ~/bin/post-bare-install.sh
     - Power usage
     - Mediaplayer
     - Gammastep manager
-    - Bluetooth
 - Theme switcher
+- Background switcher
 - Hibernation support

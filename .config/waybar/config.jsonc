@@ -108,6 +108,7 @@
     "clock#date": {
         "format": "{:%m-%d-%Y}",
         "tooltip-format": "<big>{calendar}</big>",
+        "on-click": "flatpak run org.gnome.Evolution"
     },
 
     "sway/scratchpad#invisible": {
